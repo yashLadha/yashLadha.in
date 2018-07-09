@@ -49,9 +49,9 @@ const NavBar = (props) => {
           root: classes.root,
         }}>
           <Toolbar classes={{ root: classes.toolbar }}>
-            <Typography classes={{ root: classes.headerTitle, }} variant='title' color='primary'>Yash Ladha</Typography>
-            <Typography classes={{ root: classes.headerTitle, }} variant='title' color='primary'>About Me</Typography>
-            <Typography classes={{ root: classes.headerTitle, }} variant='title' color='primary'>Projects</Typography>
+            <Typography classes={{ root: classes.headerTitle, }} variant='title' color='primary'><a style={{ textDecoration: 'none' }} href='#Home'>Yash Ladha</a></Typography>
+            <Typography classes={{ root: classes.headerTitle, }} variant='title' color='primary'><a style={{ textDecoration: 'none' }} href='#about'>About Me</a></Typography>
+            <Typography classes={{ root: classes.headerTitle, }} variant='title' color='primary'><a style={{ textDecoration: 'none' }} href='#projects'>Projects</a></Typography>
           </Toolbar>
         </AppBar>
       </Hidden>
@@ -61,7 +61,6 @@ const NavBar = (props) => {
 
 NavBar.propTypes = {
   classes: PropTypes.object.isRequired,
-  width: PropTypes.object.isRequired,
 }
 
 export default compose(
