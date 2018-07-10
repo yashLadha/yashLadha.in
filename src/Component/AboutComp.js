@@ -6,9 +6,15 @@ import { compose } from 'recompose';
 const styles = theme => ({
   root: {
     flexGrow: 1,
-    background: '#234',
     margin: 'auto',
     minHeight: '100vh',
+
+    backgroundImage: 'url(/images/bg.png)',
+    backgroundAttachement: 'fixed',
+    backgroundPosition: 'center',
+    backgroundRepeat: 'no-repeat',
+    backgroundSize: 'cover',
+
   },
   mainGrid: {
     maxWidth: '720px',
@@ -26,8 +32,10 @@ const styles = theme => ({
   socialMediaGrid: {
     bottom: 0,
     position: 'absolute',
-    maxWidth: '720px',
-    margin: 'auto',
+    maxWidth: '240px',
+    right: 0,
+    left: 0,
+    margin: '0 auto',
   },
   media: {
     width: '100%',
@@ -42,12 +50,13 @@ const styles = theme => ({
     fontFamily: 'Raleway, sans-serif',
     fontWeight: 'bold',
     [theme.breakpoints.down('sm')]: {
-      fontSize: '1.7rem',
+      fontSize: '1.0rem',
     },
     [theme.breakpoints.up('md')]: {
-      fontSize: '2rem',
+      fontSize: '1.4rem',
     },
-    background: 'linear-gradient(90deg, #FC466B 0%, #3F5EFB 100%)',
+    textAlign: 'justify',
+    background: 'linear-gradient(90deg, #00C9FF 0%, #92FE9D 100%);',
     WebkitBackgroundClip: 'text',
     WebkitTextFillColor: 'transparent',
     backgroundClip: 'text',
@@ -60,13 +69,15 @@ const AboutComp = (props) => {
   const { classes } = props;
 
   return (
-    <div className={classes.root}>
+    <div className={classes.root} id='about'>
       <Grid className={classes.mainGrid} alignItems={'center'} container spacing={8}>
         <Grid item md={3} xs={12}>
           <img alt='profileImage' className={classes.media} src='/images/profile.jpeg' />
         </Grid>
         <Grid item md={9} xs={12}>
-          <p className={classes.contentStyle}>This is a Short Introduction about me. I currently study Computer Science and i love to code.</p>
+          <p className={classes.contentStyle}>I am a sophomore currently pursuing Bachelors of Technology from IIIT Vadodara. I have experience in development with Andorid, Python
+          based web frameworks like Django and Flask, Nodejs, frontend MVC frameworks like Angular and Ember, View frameworks like React. I always strive to learn new things. I have previously worked with Google (GSoC)
+          and actively looking for job opportunities.</p>
         </Grid>
       </Grid>
 
