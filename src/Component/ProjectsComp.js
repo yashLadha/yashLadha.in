@@ -55,7 +55,7 @@ class ProjectComponent extends Component {
               <CardMedia
                 className={classes.media}
                 image='/images/angular.png'
-                title='Bavarder'
+                title='Incresto'
                />
               <CardContent>
                 <Typography style={{ fontFamily: 'Raleway, sans-serif', }} variant='headline' component='h2'>Incresto</Typography>
@@ -70,7 +70,7 @@ class ProjectComponent extends Component {
               <CardMedia
                 className={classes.media}
                 image='/images/android.png'
-                title='Bavarder'
+                title='Newpie'
                />
               <CardContent>
                 <Typography style={{ fontFamily: 'Raleway, sans-serif', }} variant='headline' component='h2'>NewPie</Typography>
@@ -85,7 +85,7 @@ class ProjectComponent extends Component {
               <CardMedia
                 className={classes.media}
                 image='/images/python.png'
-                title='Bavarder'
+                title='10-fast-fingers'
                />
               <CardContent>
                 <Typography style={{ fontFamily: 'Raleway, sans-serif', }} variant='headline' component='h2'>10-fast-fingers-hack</Typography>
@@ -100,7 +100,7 @@ class ProjectComponent extends Component {
               <CardMedia
                 className={classes.media}
                 image='/images/c.jpg'
-                title='Bavarder'
+                title='VIDHI'
                />
               <CardContent>
                 <Typography style={{ fontFamily: 'Raleway, sans-serif', }} variant='headline' component='h2'>VIDHI</Typography>
@@ -115,7 +115,7 @@ class ProjectComponent extends Component {
               <CardMedia
                 className={classes.media}
                 image='/images/android.png'
-                title='Bavarder'
+                title='Design github'
                />
               <CardContent>
                 <Typography style={{ fontFamily: 'Raleway, sans-serif', }} variant='headline' component='h2'>Design Github</Typography>
@@ -130,7 +130,7 @@ class ProjectComponent extends Component {
               <CardMedia
                 className={classes.media}
                 image='/images/js.svg'
-                title='Bavarder'
+                title='Hatsphere server'
                />
               <CardContent>
                 <Typography style={{ fontFamily: 'Raleway, sans-serif', }} variant='headline' component='h2'>HatSphere Server</Typography>
@@ -145,12 +145,27 @@ class ProjectComponent extends Component {
               <CardMedia
                 className={classes.media}
                 image='/images/android.png'
-                title='Bavarder'
+                title='Hatspher user'
                />
               <CardContent>
                 <Typography style={{ fontFamily: 'Raleway, sans-serif', }} variant='headline' component='h2'>HatSphere User Android App</Typography>
                 <Typography style={{ fontFamily: 'Raleway, sans-serif', }} component='p'>
                   Android application for user HatSphere. 
+                </Typography>
+              </CardContent>
+            </Card>
+          </Grid>
+          <Grid item md={4} xs={12}>
+            <Card>
+              <CardMedia
+                className={classes.media}
+                image='/images/js.svg'
+                title='React Portfolio'
+               />
+              <CardContent>
+                <Typography style={{ fontFamily: 'Raleway, sans-serif', }} variant='headline' component='h2'>React Portfolio</Typography>
+                <Typography style={{ fontFamily: 'Raleway, sans-serif', }} component='p'>
+                  This is my portfolio created in React.
                 </Typography>
               </CardContent>
             </Card>
