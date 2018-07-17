@@ -79,7 +79,7 @@ const AboutComp = props => {
           <img
             alt="profileImage"
             className={classes.media}
-            src="/images/profile.jpeg"
+            src="/images/profile.webp"
           />
         </Grid>
         <Grid item md={9} xs={12}>
