@@ -84,12 +84,12 @@ const AboutComp = props => {
         </Grid>
         <Grid item md={9} xs={12}>
           <p className={classes.contentStyle}>
-            I am a sophomore currently pursuing Bachelors of Technology from
-            IIIT Vadodara. I have experience in development with Andorid, Python
-            based web frameworks like Django and Flask, Nodejs, frontend MVC
-            frameworks like Angular and Ember, View frameworks like React. I
-            always strive to learn new things. I have previously worked with
-            Google (GSoC) and actively looking for job opportunities.
+            I am a senior year student currently pursuing Bachelors of
+            Technology from IIIT Vadodara. I have experience in development with
+            Andorid, Python based web frameworks like Django and Flask, Nodejs,
+            frontend MVC frameworks like Angular and Ember, View frameworks like
+            React. I always strive to learn new things. I have previously worked
+            with Google (GSoC) and actively looking for job opportunities.
           </p>
         </Grid>
       </Grid>
