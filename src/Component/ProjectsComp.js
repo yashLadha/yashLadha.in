@@ -22,6 +22,9 @@ const styles = theme => ({
     height: 0,
     paddingTop: '100%', // 16:9
   },
+  cardLayout: {
+    height: '410px',
+  },
 });
 
 class ProjectComponent extends Component {
@@ -44,7 +47,7 @@ class ProjectComponent extends Component {
             </Typography>
           </Grid>
           <Grid item md={4} xs={12}>
-            <Card>
+            <Card className={classes.cardLayout}>
               <CardMedia
                 className={classes.media}
                 image="/images/python.png"
@@ -68,7 +71,7 @@ class ProjectComponent extends Component {
             </Card>
           </Grid>
           <Grid item md={4} xs={12}>
-            <Card>
+            <Card className={classes.cardLayout}>
               <CardMedia
                 className={classes.media}
                 image="/images/angular.png"
@@ -93,7 +96,7 @@ class ProjectComponent extends Component {
             </Card>
           </Grid>
           <Grid item md={4} xs={12}>
-            <Card>
+            <Card className={classes.cardLayout}>
               <CardMedia
                 className={classes.media}
                 image="/images/android.png"
@@ -118,7 +121,7 @@ class ProjectComponent extends Component {
             </Card>
           </Grid>
           <Grid item md={4} xs={12}>
-            <Card>
+            <Card className={classes.cardLayout}>
               <CardMedia
                 className={classes.media}
                 image="/images/python.png"
@@ -143,7 +146,7 @@ class ProjectComponent extends Component {
             </Card>
           </Grid>
           <Grid item md={4} xs={12}>
-            <Card>
+            <Card className={classes.cardLayout}>
               <CardMedia
                 className={classes.media}
                 image="/images/c.jpg"
@@ -168,7 +171,7 @@ class ProjectComponent extends Component {
             </Card>
           </Grid>
           <Grid item md={4} xs={12}>
-            <Card>
+            <Card className={classes.cardLayout}>
               <CardMedia
                 className={classes.media}
                 image="/images/android.png"
@@ -193,7 +196,7 @@ class ProjectComponent extends Component {
             </Card>
           </Grid>
           <Grid item md={4} xs={12}>
-            <Card>
+            <Card className={classes.cardLayout}>
               <CardMedia
                 className={classes.media}
                 image="/images/js.svg"
@@ -218,7 +221,7 @@ class ProjectComponent extends Component {
             </Card>
           </Grid>
           <Grid item md={4} xs={12}>
-            <Card>
+            <Card className={classes.cardLayout}>
               <CardMedia
                 className={classes.media}
                 image="/images/android.png"
@@ -242,7 +245,7 @@ class ProjectComponent extends Component {
             </Card>
           </Grid>
           <Grid item md={4} xs={12}>
-            <Card>
+            <Card className={classes.cardLayout}>
               <CardMedia
                 className={classes.media}
                 image="/images/js.svg"
