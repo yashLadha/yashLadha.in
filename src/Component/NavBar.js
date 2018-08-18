@@ -6,6 +6,9 @@ import {
   Typography,
   withStyles,
   withWidth,
+  ListItem,
+  ListItemText,
+  List,
 } from '@material-ui/core';
 import MenuIcon from '@material-ui/icons/Menu';
 import PropTypes from 'prop-types';
@@ -19,11 +22,12 @@ const styles = theme => ({
   },
   headerTitle: {
     fontFamily: 'Raleway, sans-serif',
-    margin: theme.spacing.unit,
+    margin: '0 auto',
     padding: '1em 0em',
     fontWeight: 'bold',
     fontSize: '1.4rem',
     color: '#fff',
+    textAlign: 'center',
   },
   toolbar: {
     margin: '0 auto',
@@ -36,7 +40,20 @@ const styles = theme => ({
 });
 
 class NavBar extends Component {
-  handleClick = id => {
+  constructor(props) {
+    super(props);
+    this.state = {
+      open: false,
+    };
+  }
+
+  toggleDrawer = openState => () => {
+    this.setState({
+      open: openState,
+    });
+  };
+
+  handleClick = id => () => {
     if (document.getElementById(id) !== null) {
       document.getElementById(id).scrollIntoView();
     }
@@ -44,18 +61,30 @@ class NavBar extends Component {
 
   render() {
     const { classes } = this.props;
+
+    const ListOptions = () => {
+      return (
+        <div>
+          <List component="nav">
+            <ListItem button>
+              <ListItemText primary="Home" />
+            </ListItem>
+            <ListItem button>
+              <ListItemText primary="About" />
+            </ListItem>
+            <ListItem button>
+              <ListItemText primary="Projects" />
+            </ListItem>
+          </List>
+        </div>
+      );
+    };
+
     return (
       <div>
         <Hidden mdUp>
           <AppBar classes={{ root: classes.smallDisplayNav }}>
             <Toolbar>
-              <IconButton
-                className={classes.menuButton}
-                color="inherit"
-                aria-label="Menu"
-              >
-                <MenuIcon />
-              </IconButton>
               <Typography
                 variant="title"
                 color="inherit"
