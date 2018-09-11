@@ -8,8 +8,7 @@ const styles = theme => ({
     flexGrow: 1,
     margin: 'auto',
     minHeight: '100vh',
-
-    backgroundImage: 'url(/images/bg.webp)',
+    backgroundImage: 'url("../../images/bg.jpg")',
     backgroundAttachement: 'fixed',
     backgroundPosition: 'center',
     backgroundRepeat: 'no-repeat',
@@ -21,8 +20,8 @@ const styles = theme => ({
     textAlign: 'center',
     padding: '8px',
     [theme.breakpoints.up('md')]: {
-      top: '50%',
-      bottom: '50%',
+      top: '30%',
+      bottom: '30%',
       position: 'absolute',
       left: '30%',
       right: '30%',
@@ -55,7 +54,9 @@ const styles = theme => ({
       fontSize: '1.4rem',
     },
     textAlign: 'justify',
-    background: 'linear-gradient(90deg, #00C9FF 0%, #92FE9D 100%);',
+    backgroundColor: '#FEE140',
+    backgroundImage: 'linear-gradient(90deg, #FEE140 0%, #FA709A 100%);',
+
     WebkitBackgroundClip: 'text',
     WebkitTextFillColor: 'transparent',
     backgroundClip: 'text',

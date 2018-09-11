@@ -1,16 +1,11 @@
 import {
   AppBar,
   Hidden,
-  IconButton,
   Toolbar,
   Typography,
   withStyles,
   withWidth,
-  ListItem,
-  ListItemText,
-  List,
 } from '@material-ui/core';
-import MenuIcon from '@material-ui/icons/Menu';
 import PropTypes from 'prop-types';
 import React, { Component } from 'react';
 import { compose } from 'recompose';
@@ -22,7 +17,7 @@ const styles = theme => ({
   },
   headerTitle: {
     fontFamily: 'Raleway, sans-serif',
-    margin: '0 auto',
+    margin: '0 8px',
     padding: '1em 0em',
     fontWeight: 'bold',
     fontSize: '1.4rem',
@@ -61,24 +56,6 @@ class NavBar extends Component {
 
   render() {
     const { classes } = this.props;
-
-    const ListOptions = () => {
-      return (
-        <div>
-          <List component="nav">
-            <ListItem button>
-              <ListItemText primary="Home" />
-            </ListItem>
-            <ListItem button>
-              <ListItemText primary="About" />
-            </ListItem>
-            <ListItem button>
-              <ListItemText primary="Projects" />
-            </ListItem>
-          </List>
-        </div>
-      );
-    };
 
     return (
       <div>

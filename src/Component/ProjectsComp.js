@@ -28,6 +28,10 @@ const styles = theme => ({
 });
 
 class ProjectComponent extends Component {
+  projectSelect = (id, details) => () => {
+    alert(id + ' ' + details);
+  };
+
   render() {
     const { classes } = this.props;
     return (
@@ -47,7 +51,10 @@ class ProjectComponent extends Component {
             </Typography>
           </Grid>
           <Grid item md={4} xs={12}>
-            <Card className={classes.cardLayout}>
+            <Card
+              onClick={this.projectSelect('test', 'test')}
+              className={classes.cardLayout}
+            >
               <CardMedia
                 className={classes.media}
                 image="/images/python.png"
