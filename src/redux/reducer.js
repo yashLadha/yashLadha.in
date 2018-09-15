@@ -13,11 +13,6 @@ export const Reducer = (
         ...state,
         projectsList: action.payload,
       };
-    case ActionTypes.PROJECT_INFO:
-      return {
-        ...state,
-        projectInfo: action.payload,
-      };
     default:
       return state;
   }

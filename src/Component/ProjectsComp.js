@@ -1,13 +1,14 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
 import {
-  withStyles,
+  Card,
+  CardContent,
+  CardMedia,
   Grid,
   Typography,
-  Card,
-  CardMedia,
-  CardContent,
+  withStyles,
+  Chip,
 } from '@material-ui/core';
+import PropTypes from 'prop-types';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchProjects } from '../redux/actions';
 
@@ -17,15 +18,24 @@ const styles = theme => ({
     minHeight: '100vh',
   },
   projectGrid: {
-    maxWidth: '720px',
+    maxWidth: theme.spacing.unit * 150,
     margin: 'auto',
   },
+  chip: {
+    margin: theme.spacing.unit,
+  },
   media: {
-    height: 0,
-    paddingTop: '100%', // 16:9
+    height: '150px',
+    width: '150px',
+    margin: '0 auto',
   },
   cardLayout: {
-    height: '410px',
+    padding: '24px',
+    height: '300px',
+    [theme.breakpoints.down('sm')]: {
+      padding: '16px',
+      height: '350px',
+    },
   },
 });
 
@@ -42,8 +52,12 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const ProjectRender = ({ classes, project }) => {
+  const inflateTags = project.tags.map(tag => {
+    return <Chip className={classes.chip} label={tag} />;
+  });
+
   return (
-    <Grid key={project.id} item md={4} xs={12}>
+    <Grid item md={4} xs={12}>
       <Card className={classes.cardLayout}>
         <CardMedia
           className={classes.media}
@@ -64,6 +78,7 @@ const ProjectRender = ({ classes, project }) => {
           >
             {project.content}
           </Typography>
+          {inflateTags}
         </CardContent>
       </Card>
     </Grid>
@@ -71,17 +86,17 @@ const ProjectRender = ({ classes, project }) => {
 };
 
 class ProjectComponent extends Component {
+  state = {
+    modalOpen: false,
+    projectInfo: null,
+  };
+
   componentWillMount() {
     this.props.fetchProjects();
   }
 
-  projectSelect = (id, details) => () => {
-    alert(id + ' ' + details);
-  };
-
   render() {
     const { classes, projects } = this.props;
-
     const renderProjectList = projects.projectsList.map(project => {
       return (
         <ProjectRender key={project.id} classes={classes} project={project} />
@@ -91,7 +106,7 @@ class ProjectComponent extends Component {
     if (projects.projectsList.length > 0) {
       return (
         <div className={classes.root} id="projects">
-          <Grid className={classes.projectGrid} container spacing={8}>
+          <Grid className={classes.projectGrid} container spacing={32}>
             <Grid item xs={12}>
               <Typography
                 style={{

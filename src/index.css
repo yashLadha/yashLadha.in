@@ -1,8 +1,12 @@
 body {
-  margin: 0;
-  padding: 0;
+    margin: 0;
+    padding: 0;
+}
+
+::-webkit-scrollbar {
+    display: none;
 }
 
 a:visited {
-  color: '#E1BBA1',
+    color: '#E1BBA1';
 }
