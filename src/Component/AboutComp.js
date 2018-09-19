@@ -1,6 +1,6 @@
-import React from 'react';
+import { Grid, SvgIcon, withStyles, withWidth } from '@material-ui/core';
 import PropTypes from 'prop-types';
-import { withStyles, Grid, withWidth, SvgIcon } from '@material-ui/core';
+import React from 'react';
 import { compose } from 'recompose';
 
 const styles = theme => ({
@@ -8,6 +8,7 @@ const styles = theme => ({
     flexGrow: 1,
     margin: 'auto',
     minHeight: '100vh',
+    position: 'relative',
     backgroundImage: 'url("../../images/bg.jpg")',
     backgroundAttachement: 'fixed',
     backgroundPosition: 'center',
@@ -20,6 +21,8 @@ const styles = theme => ({
     textAlign: 'center',
     padding: '8px',
     [theme.breakpoints.up('md')]: {
+      backgroundColor: 'rgba(0, 0, 0, 0.5)',
+      borderRadius: '3%',
       top: '30%',
       bottom: '30%',
       position: 'absolute',
@@ -51,7 +54,7 @@ const styles = theme => ({
       fontSize: '1.0rem',
     },
     [theme.breakpoints.up('md')]: {
-      fontSize: '1.4rem',
+      fontSize: '1.2rem',
     },
     textAlign: 'justify',
     backgroundColor: '#FEE140',
@@ -141,7 +144,7 @@ const AboutComp = props => {
           </a>
         </Grid>
         <Grid item>
-          <a href="https://www.linkedin.com/in/yash-ladha-853aa8140/">
+          <a href="https://www.linkedin.com/in/yashLadha">
             <SvgIcon
               style={{ width: '24px', height: '24px' }}
               viewBox="0 0 24 24"

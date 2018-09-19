@@ -19,6 +19,9 @@ const styles = theme => ({
   },
   projectGrid: {
     maxWidth: theme.spacing.unit * 150,
+    [theme.breakpoints.down('sm')]: {
+      maxWidth: theme.spacing.unit * 45,
+    },
     margin: 'auto',
   },
   chip: {

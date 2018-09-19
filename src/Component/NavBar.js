@@ -87,7 +87,7 @@ class NavBar extends Component {
               >
                 <a
                   onClick={this.handleClick('Home')}
-                  style={{ textDecoration: 'none', color: '#E1BBA1' }}
+                  style={{ textDecoration: 'none', color: '#81d4fa' }}
                   href="#Home"
                 >
                   Yash Ladha
@@ -100,7 +100,7 @@ class NavBar extends Component {
               >
                 <a
                   onClick={this.handleClick('about')}
-                  style={{ textDecoration: 'none', color: '#E1BBA1' }}
+                  style={{ textDecoration: 'none', color: '#81d4fa' }}
                   href="#about"
                 >
                   About Me
@@ -113,7 +113,7 @@ class NavBar extends Component {
               >
                 <a
                   onClick={this.handleClick('projects')}
-                  style={{ textDecoration: 'none', color: '#E1BBA1' }}
+                  style={{ textDecoration: 'none', color: '#81d4fa' }}
                   href="#projects"
                 >
                   Projects
