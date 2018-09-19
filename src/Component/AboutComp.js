@@ -57,9 +57,8 @@ const styles = theme => ({
       fontSize: '1.2rem',
     },
     textAlign: 'justify',
-    backgroundColor: '#FEE140',
-    backgroundImage: 'linear-gradient(90deg, #FEE140 0%, #FA709A 100%);',
-
+    backgroundColor: '#21D4FD',
+    backgroundImage: 'linear-gradient(19deg, #21D4FD 0%, #B721FF 100%);',
     WebkitBackgroundClip: 'text',
     WebkitTextFillColor: 'transparent',
     backgroundClip: 'text',

@@ -28,7 +28,9 @@ const styles = theme => ({
     margin: '0 auto',
   },
   smallDisplayNav: {
-    backgroundColor: '#E1BBA1',
+    // backgroundColor: '#E1BBA1',
+    zIndex: '1',
+    backgroundColor: '#21D4FD',
     position: 'sticky',
     boxShadow: 'none',
   },
@@ -87,7 +89,7 @@ class NavBar extends Component {
               >
                 <a
                   onClick={this.handleClick('Home')}
-                  style={{ textDecoration: 'none', color: '#81d4fa' }}
+                  style={{ textDecoration: 'none', color: 'primary' }}
                   href="#Home"
                 >
                   Yash Ladha
@@ -100,7 +102,7 @@ class NavBar extends Component {
               >
                 <a
                   onClick={this.handleClick('about')}
-                  style={{ textDecoration: 'none', color: '#81d4fa' }}
+                  style={{ textDecoration: 'none', color: 'primary' }}
                   href="#about"
                 >
                   About Me
@@ -113,7 +115,7 @@ class NavBar extends Component {
               >
                 <a
                   onClick={this.handleClick('projects')}
-                  style={{ textDecoration: 'none', color: '#81d4fa' }}
+                  style={{ textDecoration: 'none', color: 'primary' }}
                   href="#projects"
                 >
                   Projects
