@@ -56,7 +56,7 @@ const mapDispatchToProps = dispatch => ({
 
 const ProjectRender = ({ classes, project }) => {
   const inflateTags = project.tags.map(tag => {
-    return <Chip className={classes.chip} label={tag} />;
+    return <Chip key={tag} className={classes.chip} label={tag} />;
   });
 
   return (

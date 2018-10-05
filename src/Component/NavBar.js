@@ -25,7 +25,8 @@ const styles = theme => ({
     textAlign: 'center',
   },
   toolbar: {
-    margin: '0 auto',
+    position: 'absolute',
+    right: 0,
   },
   smallDisplayNav: {
     // backgroundColor: '#E1BBA1',
@@ -61,19 +62,6 @@ class NavBar extends Component {
 
     return (
       <div>
-        <Hidden mdUp>
-          <AppBar classes={{ root: classes.smallDisplayNav }}>
-            <Toolbar>
-              <Typography
-                variant="title"
-                color="inherit"
-                classes={{ root: classes.headerTitle }}
-              >
-                Yash Ladha
-              </Typography>
-            </Toolbar>
-          </AppBar>
-        </Hidden>
         <Hidden smDown>
           <AppBar
             classes={{
@@ -88,21 +76,8 @@ class NavBar extends Component {
                 color="primary"
               >
                 <a
-                  onClick={this.handleClick('Home')}
-                  style={{ textDecoration: 'none', color: 'primary' }}
-                  href="#Home"
-                >
-                  Yash Ladha
-                </a>
-              </Typography>
-              <Typography
-                classes={{ root: classes.headerTitle }}
-                variant="title"
-                color="primary"
-              >
-                <a
                   onClick={this.handleClick('about')}
-                  style={{ textDecoration: 'none', color: 'primary' }}
+                  style={{ textDecoration: 'none', color: '#E0E0E0' }}
                   href="#about"
                 >
                   About Me
@@ -115,7 +90,7 @@ class NavBar extends Component {
               >
                 <a
                   onClick={this.handleClick('projects')}
-                  style={{ textDecoration: 'none', color: 'primary' }}
+                  style={{ textDecoration: 'none', color: '#E0E0E0' }}
                   href="#projects"
                 >
                   Projects
