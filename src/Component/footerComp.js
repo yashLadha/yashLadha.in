@@ -7,6 +7,7 @@ import { fetchSocialMedia } from '../redux/actions';
 const style = theme => ({
   root: {
     display: 'flex',
+    marginTop: '16px',
     background: theme.palette.secondary.main,
   },
 });

@@ -9,8 +9,11 @@ const style = theme => ({
   root: {
     padding: theme.spacing.unit,
     display: 'flex' /* NEW, Spec - Firefox, Chrome, Opera */,
+    // eslint-disable-next-line
     display: '-webkit-box' /* OLD - iOS 6-, Safari 3.1-6, BB7 */,
+    // eslint-disable-next-line
     display: '-ms-flexbox' /* TWEENER - IE 10 */,
+    // eslint-disable-next-line
     display: '-webkit-flex' /* NEW - Safari 6.1+. iOS 7.1+, BB10 */,
 
     flexDirection: 'column',
@@ -33,38 +36,60 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-const Project = ({ project }) => {
-  return (
-    <Card
-      style={{
-        margin: 'auto',
-        maxWidth: '450px',
-        height: '300px',
-        background: '#f5f5f5',
-      }}
-    >
-      <div
-        style={{
-          maxWidth: '128px',
-          textAlign: 'center',
-          margin: '8px auto',
-        }}
-      >
-        <svg className={`icon icon-${project.image}`}>
-          <use xlinkHref={`#icons_${project.image}`} />
-        </svg>
+class Project extends Component {
+  state = {
+    isHovering: false,
+  };
+
+  onMouseEnter = () => {
+    this.setState({
+      isHovering: true,
+    });
+  };
+
+  onMouseLeave = () => {
+    this.setState({
+      isHovering: false,
+    });
+  };
+
+  render() {
+    const { project } = this.props;
+    return (
+      <div onMouseEnter={this.onMouseEnter} onMouseLeave={this.onMouseLeave}>
+        <Card
+          raised={this.state.isHovering}
+          style={{
+            margin: 'auto',
+            maxWidth: '450px',
+            height: '300px',
+            background: '#f5f5f5',
+          }}
+        >
+          <div
+            style={{
+              maxWidth: '128px',
+              textAlign: 'center',
+              margin: '8px auto',
+            }}
+          >
+            <svg className={`icon icon-${project.image}`}>
+              <use xlinkHref={`#icons_${project.image}`} />
+            </svg>
+          </div>
+          <CardContent>
+            <Typography color="secondary" component="h2">
+              {project.name}
+            </Typography>
+            <Typography color="secondary" component="h5">
+              {project.content}
+            </Typography>
+          </CardContent>
+        </Card>
       </div>
-      <CardContent>
-        <Typography color="secondary" component="h2">
-          {project.name}
-        </Typography>
-        <Typography color="secondary" component="h5">
-          {project.content}
-        </Typography>
-      </CardContent>
-    </Card>
-  );
-};
+    );
+  }
+}
 
 class Projects extends Component {
   componentWillMount() {
