@@ -24,7 +24,7 @@ class NavBar extends Component {
                 style={{
                   textDecoration: 'none',
                 }}
-                href="/resume"
+                href="https://drive.google.com/file/d/1srijAOwk1Wwrkpr26lMAXG6XoR_AJ6uq/view?usp=sharing"
               >
                 <Typography variant="title">Resume</Typography>
               </a>
