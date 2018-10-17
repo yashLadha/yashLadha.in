@@ -9,8 +9,11 @@ const style = theme => ({
     height: '600px',
     textAlign: 'center',
     display: 'flex' /* NEW, Spec - Firefox, Chrome, Opera */,
+    // eslint-disable-next-line
     display: '-webkit-box' /* OLD - iOS 6-, Safari 3.1-6, BB7 */,
+    // eslint-disable-next-line
     display: '-ms-flexbox' /* TWEENER - IE 10 */,
+    // eslint-disable-next-line
     display: '-webkit-flex' /* NEW - Safari 6.1+. iOS 7.1+, BB10 */,
 
     justifyContent: 'center',
