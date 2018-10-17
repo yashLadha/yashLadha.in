@@ -4,6 +4,7 @@ export const Reducer = (
   state = {
     projectsList: [],
     projectInfo: {},
+    socialList: [],
   },
   action
 ) => {
@@ -12,6 +13,11 @@ export const Reducer = (
       return {
         ...state,
         projectsList: action.payload,
+      };
+    case ActionTypes.ADD_SOCIAL_MEDIA:
+      return {
+        ...state,
+        socialList: action.payload,
       };
     default:
       return state;
