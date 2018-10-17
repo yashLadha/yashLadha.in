@@ -1,44 +1,21 @@
-import {
-  Card,
-  CardContent,
-  CardMedia,
-  Grid,
-  Typography,
-  withStyles,
-  Chip,
-} from '@material-ui/core';
-import PropTypes from 'prop-types';
+import { Card, CardContent, Grid, Typography } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchProjects } from '../redux/actions';
+import '../shared/icons.svg';
 
-const styles = theme => ({
+const style = theme => ({
   root: {
-    flexGrow: 1,
-    minHeight: '100vh',
-  },
-  projectGrid: {
-    maxWidth: theme.spacing.unit * 150,
-    [theme.breakpoints.down('sm')]: {
-      maxWidth: theme.spacing.unit * 45,
-    },
-    margin: 'auto',
-  },
-  chip: {
-    margin: theme.spacing.unit,
-  },
-  media: {
-    height: '150px',
-    width: '150px',
-    margin: '0 auto',
-  },
-  cardLayout: {
-    padding: '24px',
-    height: '300px',
-    [theme.breakpoints.down('sm')]: {
-      padding: '16px',
-      height: '350px',
-    },
+    padding: theme.spacing.unit,
+    display: 'flex' /* NEW, Spec - Firefox, Chrome, Opera */,
+    display: '-webkit-box' /* OLD - iOS 6-, Safari 3.1-6, BB7 */,
+    display: '-ms-flexbox' /* TWEENER - IE 10 */,
+    display: '-webkit-flex' /* NEW - Safari 6.1+. iOS 7.1+, BB10 */,
+
+    flexDirection: 'column',
+    justifyContent: 'center',
+    alignItems: 'center',
   },
 });
 
@@ -48,96 +25,87 @@ const mapStateToProps = state => {
   };
 };
 
-const mapDispatchToProps = dispatch => ({
-  fetchProjects: () => {
-    dispatch(fetchProjects());
-  },
-});
+const mapDispatchToProps = dispatch => {
+  return {
+    fetchProjects: () => {
+      dispatch(fetchProjects());
+    },
+  };
+};
 
-const ProjectRender = ({ classes, project }) => {
-  const inflateTags = project.tags.map(tag => {
-    return <Chip className={classes.chip} label={tag} />;
-  });
-
+const Project = ({ project }) => {
   return (
-    <Grid item md={4} xs={12}>
-      <Card className={classes.cardLayout}>
-        <CardMedia
-          className={classes.media}
-          image={project.image}
-          title={project.name}
-        />
-        <CardContent>
-          <Typography
-            style={{ fontFamily: 'Raleway, sans-serif' }}
-            variant="headline"
-            component="h2"
-          >
-            {project.name}
-          </Typography>
-          <Typography
-            style={{ fontFamily: 'Raleway, sans-serif' }}
-            component="p"
-          >
-            {project.content}
-          </Typography>
-          {inflateTags}
-        </CardContent>
-      </Card>
-    </Grid>
+    <Card
+      style={{
+        margin: 'auto',
+        maxWidth: '450px',
+        height: '300px',
+        background: '#f5f5f5',
+      }}
+    >
+      <div
+        style={{
+          maxWidth: '128px',
+          textAlign: 'center',
+          margin: '8px auto',
+        }}
+      >
+        <svg className={`icon icon-${project.image}`}>
+          <use xlinkHref={`#icons_${project.image}`} />
+        </svg>
+      </div>
+      <CardContent>
+        <Typography color="secondary" component="h2">
+          {project.name}
+        </Typography>
+        <Typography color="secondary" component="h5">
+          {project.content}
+        </Typography>
+      </CardContent>
+    </Card>
   );
 };
 
-class ProjectComponent extends Component {
-  state = {
-    modalOpen: false,
-    projectInfo: null,
-  };
-
+class Projects extends Component {
   componentWillMount() {
     this.props.fetchProjects();
   }
 
   render() {
     const { classes, projects } = this.props;
-    const renderProjectList = projects.projectsList.map(project => {
+
+    const inflateProjects = projects.projectsList.map(project => {
       return (
-        <ProjectRender key={project.id} classes={classes} project={project} />
+        <Grid key={project.id} item xs={12} md={4}>
+          <Project project={project} />
+        </Grid>
       );
     });
 
-    if (projects.projectsList.length > 0) {
-      return (
-        <div className={classes.root} id="projects">
-          <Grid className={classes.projectGrid} container spacing={32}>
-            <Grid item xs={12}>
-              <Typography
-                style={{
-                  textAlign: 'center',
-                  fontFamily: 'Raleway, Roboto, sans-serif',
-                  fontSize: '2rem',
-                  fontWeight: '500',
-                }}
-                variant="title"
-              >
-                Projects
-              </Typography>
-            </Grid>
-            {renderProjectList}
+    return (
+      <div className={classes.root}>
+        <h1>Projects</h1>
+        <div
+          style={{
+            maxWidth: '900px',
+          }}
+        >
+          <Grid
+            spacing={16}
+            container
+            direction="row"
+            justify="center"
+            alignItems="center"
+          >
+            {inflateProjects}
           </Grid>
         </div>
-      );
-    } else {
-      return <div />;
-    }
+      </div>
+    );
   }
 }
-
-ProjectComponent.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(withStyles(styles)(ProjectComponent));
+)(withStyles(style)(Projects));

@@ -1,137 +1,42 @@
-import {
-  AppBar,
-  Hidden,
-  Toolbar,
-  Typography,
-  withStyles,
-  withWidth,
-} from '@material-ui/core';
-import PropTypes from 'prop-types';
 import React, { Component } from 'react';
-import { compose } from 'recompose';
+import { AppBar, Toolbar, Typography } from '@material-ui/core';
+import { withStyles } from '@material-ui/core/styles';
 
-const styles = theme => ({
+const styles = {
   root: {
-    backgroundColor: 'rgba(255, 255, 255, 0)',
-    boxShadow: 'none',
+    width: '100%',
   },
-  headerTitle: {
-    fontFamily: 'Raleway, sans-serif',
-    margin: '0 8px',
-    padding: '1em 0em',
-    fontWeight: 'bold',
-    fontSize: '1.4rem',
-    color: '#fff',
-    textAlign: 'center',
-  },
-  toolbar: {
-    margin: '0 auto',
-  },
-  smallDisplayNav: {
-    backgroundColor: '#E1BBA1',
-    position: 'sticky',
-    boxShadow: 'none',
-  },
-});
+};
 
 class NavBar extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      open: false,
-    };
-  }
-
-  toggleDrawer = openState => () => {
-    this.setState({
-      open: openState,
-    });
-  };
-
-  handleClick = id => () => {
-    if (document.getElementById(id) !== null) {
-      document.getElementById(id).scrollIntoView();
-    }
-  };
-
   render() {
     const { classes } = this.props;
 
     return (
-      <div>
-        <Hidden mdUp>
-          <AppBar classes={{ root: classes.smallDisplayNav }}>
+      <div className={classes.root}>
+        <AppBar position="fixed" color="primary">
+          <div className={classes.centerBar}>
             <Toolbar>
-              <Typography
-                variant="title"
-                color="inherit"
-                classes={{ root: classes.headerTitle }}
+              <div style={{ flexGrow: 1 }} />
+              <Typography variant="title">Yash</Typography>
+              <div style={{ flexGrow: 1 }} />
+              <a
+                style={{
+                  textDecoration: 'none',
+                }}
+                href="/resume"
               >
-                Yash Ladha
-              </Typography>
+                <Typography variant="title">Resume</Typography>
+              </a>
+              &emsp;
+              <Typography variant="title">Projects</Typography>
+              <div style={{ flexGrow: 1 }} />
             </Toolbar>
-          </AppBar>
-        </Hidden>
-        <Hidden smDown>
-          <AppBar
-            classes={{
-              root: classes.root,
-            }}
-            position="absolute"
-          >
-            <Toolbar classes={{ root: classes.toolbar }}>
-              <Typography
-                classes={{ root: classes.headerTitle }}
-                variant="title"
-                color="primary"
-              >
-                <a
-                  onClick={this.handleClick('Home')}
-                  style={{ textDecoration: 'none', color: '#81d4fa' }}
-                  href="#Home"
-                >
-                  Yash Ladha
-                </a>
-              </Typography>
-              <Typography
-                classes={{ root: classes.headerTitle }}
-                variant="title"
-                color="primary"
-              >
-                <a
-                  onClick={this.handleClick('about')}
-                  style={{ textDecoration: 'none', color: '#81d4fa' }}
-                  href="#about"
-                >
-                  About Me
-                </a>
-              </Typography>
-              <Typography
-                classes={{ root: classes.headerTitle }}
-                variant="title"
-                color="primary"
-              >
-                <a
-                  onClick={this.handleClick('projects')}
-                  style={{ textDecoration: 'none', color: '#81d4fa' }}
-                  href="#projects"
-                >
-                  Projects
-                </a>
-              </Typography>
-            </Toolbar>
-          </AppBar>
-        </Hidden>
+          </div>
+        </AppBar>
       </div>
     );
   }
 }
 
-NavBar.propTypes = {
-  classes: PropTypes.object.isRequired,
-};
-
-export default compose(
-  withStyles(styles),
-  withWidth()
-)(NavBar);
+export default withStyles(styles)(NavBar);
