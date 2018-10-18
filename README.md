@@ -17,4 +17,3 @@ I have used firebase for the deployment. To deploy using firebase use:
 > firebase deploy
 ```
 
-Using `preact` and `preact-compat` to reduce bundle size.
