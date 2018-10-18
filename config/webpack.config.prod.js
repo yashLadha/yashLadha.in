@@ -90,8 +90,6 @@ module.exports = {
     // for React Native Web.
     extensions: ['.web.js', '.mjs', '.js', '.json', '.web.jsx', '.jsx'],
     alias: {
-      react: 'preact-compat',
-      'react-dom': 'preact-compat',
       // Not necessary unless you consume a module using `createClass`
       'create-react-class': 'preact-compat/lib/create-react-class',
       // Not necessary unless you consume a module requiring `react-dom-factories`
@@ -270,6 +268,7 @@ module.exports = {
     // Minify the code.
     new webpack.optimize.UglifyJsPlugin({
       compress: {
+        reduce_vars: true,
         warnings: false,
         // Disabled because of an issue with Uglify breaking seemingly valid code:
         // https://github.com/facebookincubator/create-react-app/issues/2376
