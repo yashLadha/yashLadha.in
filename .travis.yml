@@ -11,5 +11,7 @@ deploy:
     provider: firebase
     token:
         scecure: c+fRmjok/vsD9XznIQOhYxVcnQoc+PRqCJy90VpU4f8V8WsT+qyKzcW7dsMmTGB7IbuaqM2C9kZ7xf211HfkKz14Gwy7jkVpyeqHWnPsUh0py+8Qi72V/ddKUNhK5PI/BmSrqKo6FcUuIyxrkgFKT+7slUctIYSnxFRjTx0AIeokanz0K+eVXkvNRNYq002NHpNcOSONdLM/uGpn0v+SMtmuYPUmkrGKpJIi0RtShu5Q3s2gFgqiAMWCvjv6YHTtxifJs+ih86yu9o3WlV2QkSP3dESZcwiIt1vNso1oa2Y/CF1tPmOUnR/lz6PT+M1hzIyUTIuXzQgF9s00NIUwEP3RqSL7clNEKiy/eKv8mLg7GmWyLCq3dcd7lJgA2jmQN4IQMpFkvTi+V0S9w8MnegxfCaHlfnYm7SoiOvcJVgwDbFRZM1uahDdP22bSB6grVasvGCn36Avb0rL+GY95CLQfIc+3RK+GTpSiLGb6hhJYVx1oV8lLnVNuhosCsV1ULxV+4itxHbMA9kow+fKm/aT91u2KVE5i+Z1ougfiVNTADXwce54Ms1koH7Gv2Udw3S82UP2jTho8EzOIR0ZfUTI5J23oXqcvhKonlCShl00G+u8hjICgvYCSV8YOxFoax4NmWGgj7ALcbzM8N/lM2qK8WPUY2G6s/m9sdIb41xY=
+    on:
+        branch: release
 notifications:
     webhooks: https://fathomless-fjord-24024.herokuapp.com/notify
