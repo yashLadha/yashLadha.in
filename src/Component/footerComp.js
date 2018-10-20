@@ -47,7 +47,7 @@ class Footer extends Component {
               style={{
                 width: '24px',
                 height: '24px',
-                padding: '8px',
+                padding: '16px',
                 margin: '0 auto',
               }}
             >
@@ -67,7 +67,7 @@ class Footer extends Component {
     });
 
     return (
-      <div className={classes.root}>
+      <div id="#contact" className={classes.root}>
         <div
           style={{
             maxWidth: '720px',

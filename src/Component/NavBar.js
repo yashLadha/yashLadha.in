@@ -37,10 +37,14 @@ class NavBar extends Component {
     });
   };
 
+  handleClick = tag => {
+    document.getElementById('#' + tag).scrollIntoView();
+  };
+
   render() {
     const { classes } = this.props;
 
-    const ListInflator = ['Resume', 'Projects'].map(item => {
+    const ListInflator = ['Resume', 'contact'].map(item => {
       if (item === 'Resume') {
         return (
           <ListItem key={item} button>
@@ -55,9 +59,18 @@ class NavBar extends Component {
           </ListItem>
         );
       }
+      var href = '#' + item;
       return (
         <ListItem key={item} button>
-          <ListItemText primary={item} />
+          <a
+            onClick={() => this.handleClick(item)}
+            style={{ textDecoration: 'none' }}
+            href={href}
+          >
+            <ListItemText
+              primary={item.charAt(0).toUpperCase() + item.slice(1)}
+            />
+          </a>
         </ListItem>
       );
     });
@@ -86,7 +99,13 @@ class NavBar extends Component {
                   <Typography variant="title">Resume</Typography>
                 </a>
                 &emsp;
-                <Typography variant="title">Projects</Typography>
+                <a
+                  style={{ textDecoration: 'none' }}
+                  onClick={() => this.handleClick('contact')}
+                  href="#contact"
+                >
+                  <Typography variant="title">Contact</Typography>
+                </a>
                 <div style={{ flexGrow: 1 }} />
               </Toolbar>
             </div>
