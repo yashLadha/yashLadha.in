@@ -29,4 +29,10 @@ export const SOCIAL_MEDIA = [
     title: 'Telegram',
     link: 'https://t.me/yashLadha',
   },
+  {
+    id: 5,
+    name: 'gmail',
+    title: 'Gmail',
+    link: 'mailto:admin@yashladha.in',
+  },
 ];
