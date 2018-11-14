@@ -3,6 +3,7 @@ import { withStyles } from '@material-ui/core/styles';
 import { Grid } from '@material-ui/core';
 import { connect } from 'react-redux';
 import { fetchSocialMedia } from '../redux/actions';
+import SvgRender from './SvgRender';
 
 const style = theme => ({
   root: {
@@ -51,15 +52,7 @@ class Footer extends Component {
                 margin: '0 auto',
               }}
             >
-              <svg
-                style={{
-                  width: '24px',
-                  height: '24px',
-                }}
-                className={`icon icon-${social.name}`}
-              >
-                <use xlinkHref={`#icons_${social.name}`} />
-              </svg>
+              <SvgRender width="24" height="24" elem={social.name} />
             </div>
           </a>
         </Grid>

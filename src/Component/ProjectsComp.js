@@ -3,7 +3,7 @@ import { withStyles } from '@material-ui/core/styles';
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchProjects } from '../redux/actions';
-import '../shared/icons.svg';
+import SvgRender from './SvgRender';
 
 const style = theme => ({
   root: {
@@ -73,9 +73,7 @@ class Project extends Component {
               margin: '8px auto',
             }}
           >
-            <svg className={`icon icon-${project.image}`}>
-              <use xlinkHref={`#icons_${project.image}`} />
-            </svg>
+            <SvgRender elem={project.image} />
           </div>
           <CardContent>
             <Typography color="secondary" component="h2">
