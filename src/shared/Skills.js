@@ -31,4 +31,12 @@ export const SKILLS = [
     id: 7,
     name: 'React',
   },
+  {
+    id: 8,
+    name: 'AWS',
+  },
+  {
+    id: 9,
+    name: 'GoogleCloud',
+  },
 ];

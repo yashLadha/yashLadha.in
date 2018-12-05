@@ -4,7 +4,14 @@ export const PROJECTS = [
     name: 'Bavarder',
     image: 'python',
     content: 'This is a realtime chat server created in Django',
-    tags: ['Django', 'Python', 'Scoket'],
+    tags: ['Django', 'Python', 'Socket'],
+  },
+  {
+    id: 9,
+    name: 'Parsy',
+    image: 'python',
+    content: 'Messenger Chat bot for extracting text in image, goto OCR bot',
+    tags: ['Flask', 'AWS', 'OCR'],
   },
   {
     id: 1,
@@ -12,6 +19,13 @@ export const PROJECTS = [
     image: 'angular',
     content: 'This is a sample mini-blog created with Angular 5 and bootstrap.',
     tags: ['Angular', 'JS'],
+  },
+  {
+    id: 8,
+    name: 'React Portfolio',
+    image: 'react',
+    content: 'This is my portfolio created in React.',
+    tags: ['React', 'JS', 'Redux'],
   },
   {
     id: 2,
@@ -59,12 +73,5 @@ export const PROJECTS = [
     image: 'android',
     content: 'Android application for user HatSphere.',
     tags: ['Android', 'Kotlin', 'Firebase'],
-  },
-  {
-    id: 8,
-    name: 'React Portfolio',
-    image: 'react',
-    content: 'This is my portfolio created in React.',
-    tags: ['React', 'JS', 'Redux'],
   },
 ];

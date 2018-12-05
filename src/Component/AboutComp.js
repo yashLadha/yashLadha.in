@@ -44,10 +44,10 @@ class About extends Component {
             <h1 style={{ color: '#689F38' }}>Developer</h1>
             Hi, I'm <span className={classes.secondContent}>Yash!</span> I am a
             computer science engineer. My work is to write some lines on the
-            computer screen and let him understand the rest. <br />I was Google
+            computer screen and voila things are working. <br />I was Google
             Summer of Code 2018 Intern and have done Open Source Contribution in
             organisations like FOSSASIA, Oppia. I also mentor students for Open
-            Source Contribution (GCI mentor)
+            Source Contribution (GCI mentor).
           </div>
         </div>
         <Skills />
