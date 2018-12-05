@@ -5,6 +5,7 @@ export const Reducer = (
     projectsList: [],
     projectInfo: {},
     socialList: [],
+    skillsList: [],
   },
   action
 ) => {
@@ -18,6 +19,11 @@ export const Reducer = (
       return {
         ...state,
         socialList: action.payload,
+      };
+    case ActionTypes.ADD_SKILLS:
+      return {
+        ...state,
+        skillsList: action.payload,
       };
     default:
       return state;

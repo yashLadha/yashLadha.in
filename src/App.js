@@ -4,7 +4,6 @@ import Footer from './Component/footerComp';
 import AboutComp from './Component/AboutComp';
 import { Provider } from 'react-redux';
 import { ConfigureStore } from './redux/store';
-// import Contact from './Component/ContactComp';
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import theme from './MaterialTheme';
 
