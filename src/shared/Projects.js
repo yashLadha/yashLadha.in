@@ -28,6 +28,13 @@ export const PROJECTS = [
     tags: ['React', 'JS', 'Redux'],
   },
   {
+    id: 10,
+    name: 'yaas',
+    image: 'nodejs',
+    content: 'URL Shortener resembling to my domain',
+    tags: ['React', 'Redux', 'ExpressJS', 'Compute Engine'],
+  },
+  {
     id: 2,
     name: 'Newpie',
     image: 'android',
