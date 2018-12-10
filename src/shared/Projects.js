@@ -9,7 +9,7 @@ export const PROJECTS = [
   {
     id: 9,
     name: 'Parsy',
-    image: 'python',
+    image: 'flask',
     content: 'Messenger Chat bot for extracting text in image, goto OCR bot',
     tags: ['Flask', 'AWS', 'OCR'],
   },
