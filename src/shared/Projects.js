@@ -35,6 +35,13 @@ export const PROJECTS = [
     tags: ['React', 'Redux', 'ExpressJS', 'Compute Engine'],
   },
   {
+    id: 11,
+    name: 'cRaxYnM',
+    image: 'android',
+    content: 'Flutter application to generate crazy name generator',
+    tags: ['Android', 'Flutter'],
+  },
+  {
     id: 2,
     name: 'Newpie',
     image: 'android',
