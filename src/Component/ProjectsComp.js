@@ -46,13 +46,13 @@ class Project extends Component {
   handleMouseEnter = () => {
     this.setState({
       enterRadius: 0,
-      leaveRadius: 6,
+      leaveRadius: 4,
     });
   };
 
   handleMouseLeave = () => {
     this.setState({
-      enterRadius: 6,
+      enterRadius: 4,
       leaveRadius: 0,
     });
   };
@@ -74,9 +74,9 @@ class Project extends Component {
                 margin: 'auto',
                 maxWidth: '450px',
                 height: '300px',
+                borderRadius: '5%',
                 background: '#f5f5f5',
-                boxShadow:
-                  '0px 0px 16px ' + props.shadowLength + 'px #989797d9',
+                boxShadow: '0px 0px 8px ' + props.shadowLength + 'px #989797d9',
               }}
             >
               <div
@@ -84,15 +84,22 @@ class Project extends Component {
                   maxWidth: '128px',
                   textAlign: 'center',
                   margin: '8px auto',
+                  padding: '16px',
                 }}
               >
                 <SvgRender elem={project.image} />
               </div>
               <CardContent>
-                <Typography color="secondary" component="h2">
-                  {project.name}
+                <Typography color="secondary" variant="p">
+                  <b>{project.name}</b>
                 </Typography>
-                <Typography color="secondary" component="h5">
+                <Typography
+                  style={{
+                    fontSize: '0.9rem',
+                  }}
+                  color="secondary"
+                  variant="p"
+                >
                   {project.content}
                 </Typography>
               </CardContent>
