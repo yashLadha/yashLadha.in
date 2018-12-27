@@ -36,7 +36,7 @@ export const SKILLS = [
     name: 'Flask',
   },
   {
-    id: 8,
+    id: 10,
     name: 'AWS',
   },
   {

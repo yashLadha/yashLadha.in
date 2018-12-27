@@ -72,7 +72,7 @@ class Project extends Component {
             <Card
               style={{
                 margin: 'auto',
-                maxWidth: '450px',
+                maxWidth: '300px',
                 height: '300px',
                 borderRadius: '5%',
                 background: '#f5f5f5',
@@ -136,7 +136,7 @@ class Projects extends Component {
           }}
         >
           <Grid
-            spacing={16}
+            spacing={32}
             container
             direction="row"
             justify="center"
