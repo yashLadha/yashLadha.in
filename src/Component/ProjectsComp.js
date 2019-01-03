@@ -20,6 +20,7 @@ const style = theme => ({
 
     flexDirection: 'column',
     justifyContent: 'center',
+    fontFamily: 'Source Code Pro',
     alignItems: 'center',
   },
 });
@@ -107,7 +108,7 @@ class Project extends Component {
                   </Typography>
                   <Typography
                     style={{
-                      fontSize: '0.9rem',
+                      fontSize: '0.8rem',
                     }}
                     color="secondary"
                     variant="p"

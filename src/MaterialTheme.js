@@ -3,7 +3,7 @@ import { createMuiTheme } from '@material-ui/core/styles';
 const theme = createMuiTheme({
   typography: {
     useNextVariants: true,
-    fontFamily: ['Roboto'],
+    fontFamily: ['Source Code Pro'],
   },
   palette: {
     type: 'dark',

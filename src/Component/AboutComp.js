@@ -23,6 +23,7 @@ const style = theme => ({
     padding: theme.spacing.unit,
     maxWidth: '600px',
     fontSize: '1.3rem',
+    fontFamily: 'Source Code Pro',
     textAlign: 'center',
     lineHeight: '1.5em',
   },
@@ -41,12 +42,12 @@ class About extends Component {
         <div className={classes.basicBg}>
           <div className={classes.aboutContent}>
             <h1 style={{ color: '#689F38' }}>Developer</h1>
-            Hi, I'm <span className={classes.secondContent}>Yash!</span> I am a
-            computer science engineer. My work is to write some lines on the
-            computer screen and voila things are working. <br />I was Google
-            Summer of Code 2018 Intern and have done Open Source Contribution in
-            organisations like FOSSASIA, Oppia. I also mentor students for Open
-            Source Contribution (GCI mentor).
+            <span className={classes.secondContent}>Yash</span> is a computer
+            science engineer interested in <b>Web Technologies</b>,{' '}
+            <b>Native Mobile Development</b> and <b>Open Source</b>. <br />
+            He was Google Summer of Code 2018 Intern and had done Open Source
+            Contribution in organisations like FOSSASIA, Oppia. He also mentor
+            students for Open Source Contribution (GCI mentor).
           </div>
         </div>
         <Skills />
