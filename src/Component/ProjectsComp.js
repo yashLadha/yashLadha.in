@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { fetchProjects } from '../redux/actions';
 import SvgRender from './SvgRender';
+import theme from '../MaterialTheme';
 import { Spring } from 'react-spring';
 
 const style = theme => ({
@@ -41,12 +42,14 @@ class Project extends Component {
   state = {
     enterRadius: 0,
     leaveRadius: 0,
+    bgColor: '#000',
   };
 
   handleMouseEnter = () => {
     this.setState({
       enterRadius: 0,
       leaveRadius: 4,
+      bgColor: theme.palette.secondary.accentColor,
     });
   };
 
@@ -54,6 +57,7 @@ class Project extends Component {
     this.setState({
       enterRadius: 4,
       leaveRadius: 0,
+      bgColor: '#000',
     });
   };
 
@@ -65,45 +69,54 @@ class Project extends Component {
         onMouseLeave={this.handleMouseLeave}
       >
         <Spring
-          from={{ shadowLength: this.state.enterRadius }}
-          to={{ shadowLength: this.state.leaveRadius }}
+          from={{
+            shadowLength: this.state.enterRadius,
+            backColor: this.state.bgColor,
+          }}
+          to={{
+            shadowLength: this.state.leaveRadius,
+            backColor: this.state.bgColor,
+          }}
         >
           {props => (
-            <Card
-              style={{
-                margin: 'auto',
-                maxWidth: '300px',
-                height: '300px',
-                borderRadius: '5%',
-                background: '#f5f5f5',
-                boxShadow: '0px 0px 8px ' + props.shadowLength + 'px #989797d9',
-              }}
-            >
-              <div
+            <a href={project.link} style={{ textDecoration: 'none' }}>
+              <Card
                 style={{
-                  maxWidth: '128px',
-                  textAlign: 'center',
-                  margin: '8px auto',
-                  padding: '16px',
+                  margin: 'auto',
+                  maxWidth: '300px',
+                  height: '300px',
+                  borderRadius: '5%',
+                  background: '#f5f5f5',
+                  boxShadow:
+                    '0px 0px 8px ' + props.shadowLength + 'px #989797d9',
                 }}
               >
-                <SvgRender elem={project.image} />
-              </div>
-              <CardContent>
-                <Typography color="secondary" variant="p">
-                  <b>{project.name}</b>
-                </Typography>
-                <Typography
+                <div
                   style={{
-                    fontSize: '0.9rem',
+                    maxWidth: '128px',
+                    textAlign: 'center',
+                    margin: '8px auto',
+                    padding: '16px',
                   }}
-                  color="secondary"
-                  variant="p"
                 >
-                  {project.content}
-                </Typography>
-              </CardContent>
-            </Card>
+                  <SvgRender elem={project.image} color={props.backColor} />
+                </div>
+                <CardContent>
+                  <Typography color="secondary" variant="p">
+                    <b>{project.name}</b>
+                  </Typography>
+                  <Typography
+                    style={{
+                      fontSize: '0.9rem',
+                    }}
+                    color="secondary"
+                    variant="p"
+                  >
+                    {project.content}
+                  </Typography>
+                </CardContent>
+              </Card>
+            </a>
           )}
         </Spring>
       </div>

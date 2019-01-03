@@ -4,6 +4,7 @@ import { connect } from 'react-redux';
 import { fetchSkills } from '../redux/actions';
 import SvgRender from './SvgRender';
 import { Spring } from 'react-spring';
+import theme from '../MaterialTheme';
 
 const mapStateToProps = state => {
   return state;
@@ -21,12 +22,14 @@ class CircularCard extends Component {
   state = {
     enterRadius: 0,
     leaveRadius: 0,
+    bgColor: '#000',
   };
 
   handleMouseEnter = () => {
     this.setState({
       enterRadius: 0,
       leaveRadius: 6,
+      bgColor: theme.palette.secondary.darkAccentColor,
     });
   };
 
@@ -34,6 +37,7 @@ class CircularCard extends Component {
     this.setState({
       enterRadius: 6,
       leaveRadius: 0,
+      bgColor: '#000',
     });
   };
 
@@ -41,8 +45,14 @@ class CircularCard extends Component {
     const { skill } = this.props;
     return (
       <Spring
-        from={{ shadowLength: this.state.enterRadius }}
-        to={{ shadowLength: this.state.leaveRadius }}
+        from={{
+          shadowLength: this.state.enterRadius,
+          backColor: this.state.bgColor,
+        }}
+        to={{
+          shadowLength: this.state.leaveRadius,
+          backColor: this.state.bgColor,
+        }}
       >
         {props => (
           <div
@@ -61,7 +71,12 @@ class CircularCard extends Component {
               color: '#fff',
             }}
           >
-            <SvgRender elem={skill.name.toLowerCase()} width="60" height="60" />
+            <SvgRender
+              elem={skill.name.toLowerCase()}
+              color={props.backColor}
+              width="60"
+              height="60"
+            />
           </div>
         )}
       </Spring>

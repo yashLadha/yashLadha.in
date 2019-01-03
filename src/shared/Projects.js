@@ -1,6 +1,7 @@
 export const PROJECTS = [
   {
     id: 0,
+    link: 'https://github.com/yashLadha/Bavarder',
     name: 'Bavarder',
     image: 'python',
     content: 'This is a realtime chat server created in Django',
@@ -8,6 +9,7 @@ export const PROJECTS = [
   },
   {
     id: 9,
+    link: 'https://github.com/yashLadha/Parsy',
     name: 'Parsy',
     image: 'flask',
     content: 'Messenger Chat bot for extracting text in image, goto OCR bot',
@@ -15,6 +17,7 @@ export const PROJECTS = [
   },
   {
     id: 1,
+    link: 'https://github.com/yashLadha/Incresto',
     name: 'Incresto',
     image: 'angular',
     content: 'This is a sample mini-blog created with Angular 5 and bootstrap.',
@@ -22,6 +25,7 @@ export const PROJECTS = [
   },
   {
     id: 8,
+    link: 'https://github.com/yashLadha/React-portfolio',
     name: 'React Portfolio',
     image: 'react',
     content: 'This is my portfolio created in React.',
@@ -29,6 +33,7 @@ export const PROJECTS = [
   },
   {
     id: 10,
+    link: 'https://github.com/yashLadha/yaas',
     name: 'yaas',
     image: 'nodejs',
     content: 'URL Shortener resembling to my domain',
@@ -36,6 +41,7 @@ export const PROJECTS = [
   },
   {
     id: 11,
+    link: 'https://github.com/yashLadha/cRaxYnM',
     name: 'cRaxYnM',
     image: 'android',
     content: 'Flutter application to generate crazy name generator',
@@ -43,6 +49,7 @@ export const PROJECTS = [
   },
   {
     id: 2,
+    link: 'https://github.com/yashLadha/NewPie',
     name: 'Newpie',
     image: 'android',
     content:
@@ -51,6 +58,7 @@ export const PROJECTS = [
   },
   {
     id: 3,
+    link: 'https://github.com/yashLadha/10-fast-fingers-hack',
     name: '10-fast-fingers-hack',
     image: 'python',
     content:
@@ -59,6 +67,7 @@ export const PROJECTS = [
   },
   {
     id: 4,
+    link: 'https://github.com/yashLadha/VIDHI',
     name: 'VIDHI',
     image: 'c',
     content:
@@ -67,6 +76,7 @@ export const PROJECTS = [
   },
   {
     id: 5,
+    link: 'https://github.com/yashLadha/DesignGithub',
     name: 'Design Github',
     image: 'android',
     content:
@@ -75,6 +85,7 @@ export const PROJECTS = [
   },
   {
     id: 6,
+    link: 'https://github.com/Hatsphere/FHServer',
     name: 'Hatsphere Server',
     image: 'nodejs',
     content:
@@ -83,6 +94,7 @@ export const PROJECTS = [
   },
   {
     id: 7,
+    link: 'https://github.com/Hatsphere/Android-User',
     name: 'Hatsphere user',
     image: 'android',
     content: 'Android application for user HatSphere.',

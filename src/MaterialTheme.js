@@ -3,7 +3,7 @@ import { createMuiTheme } from '@material-ui/core/styles';
 const theme = createMuiTheme({
   typography: {
     useNextVariants: true,
-    fontFamily: ['Montserrat', 'Roboto'],
+    fontFamily: ['Roboto'],
   },
   palette: {
     type: 'dark',
@@ -12,6 +12,8 @@ const theme = createMuiTheme({
     },
     secondary: {
       main: '#e91e63',
+      accentColor: '#f48fb1',
+      darkAccentColor: '#c2185b',
     },
   },
 });

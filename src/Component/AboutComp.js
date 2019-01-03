@@ -4,7 +4,6 @@ import Skills from './SkillsComponent';
 
 const style = theme => ({
   basicBg: {
-    marginTop: theme.spacing.unit,
     background: theme.palette.primary.main,
     color: theme.palette.primary.contrastText,
     height: '600px',
