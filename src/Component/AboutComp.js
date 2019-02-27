@@ -1,10 +1,9 @@
-import React, { Component } from 'react';
-import { withStyles } from '@material-ui/core/styles';
-import Skills from './SkillsComponent';
+import React, { Component } from 'react'
+import { withStyles } from '@material-ui/core/styles'
+import Skills from './SkillsComponent'
 
 const style = theme => ({
   basicBg: {
-    background: theme.palette.primary.main,
     color: theme.palette.primary.contrastText,
     height: '600px',
     textAlign: 'center',
@@ -20,6 +19,7 @@ const style = theme => ({
     alignItems: 'center',
   },
   aboutContent: {
+    background: 'white',
     padding: theme.spacing.unit,
     maxWidth: '600px',
     fontSize: '1.3rem',
@@ -32,11 +32,11 @@ const style = theme => ({
     fontSize: '1.1rem',
     fontWeight: '600',
   },
-});
+})
 
 class About extends Component {
   render() {
-    const { classes } = this.props;
+    const { classes } = this.props
     return (
       <div>
         <div className={classes.basicBg}>
@@ -52,8 +52,8 @@ class About extends Component {
         </div>
         <Skills />
       </div>
-    );
+    )
   }
 }
 
-export default withStyles(style)(About);
+export default withStyles(style)(About)

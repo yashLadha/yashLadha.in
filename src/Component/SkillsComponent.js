@@ -1,48 +1,48 @@
-import React, { Component } from 'react';
-import Grid from '@material-ui/core/Grid/Grid';
-import { connect } from 'react-redux';
-import { fetchSkills } from '../redux/actions';
-import SvgRender from './SvgRender';
-import { Spring } from 'react-spring';
-import theme from '../MaterialTheme';
+import React, { Component } from 'react'
+import Grid from '@material-ui/core/Grid/Grid'
+import { connect } from 'react-redux'
+import { fetchSkills } from '../redux/actions'
+import SvgRender from './SvgRender'
+import { Spring } from 'react-spring'
+import theme from '../MaterialTheme'
 
 const mapStateToProps = state => {
-  return state;
-};
+  return state
+}
 
 const mapDispatchToProps = dispatch => {
   return {
     fetchSkills: () => {
-      dispatch(fetchSkills());
+      dispatch(fetchSkills())
     },
-  };
-};
+  }
+}
 
 class CircularCard extends Component {
   state = {
     enterRadius: 0,
     leaveRadius: 0,
     bgColor: '#000',
-  };
+  }
 
   handleMouseEnter = () => {
     this.setState({
       enterRadius: 0,
       leaveRadius: 6,
       bgColor: theme.palette.secondary.darkAccentColor,
-    });
-  };
+    })
+  }
 
   handleMouseLeave = () => {
     this.setState({
       enterRadius: 6,
       leaveRadius: 0,
       bgColor: '#000',
-    });
-  };
+    })
+  }
 
   render() {
-    const { skill } = this.props;
+    const { skill } = this.props
     return (
       <Spring
         from={{
@@ -80,24 +80,24 @@ class CircularCard extends Component {
           </div>
         )}
       </Spring>
-    );
+    )
   }
 }
 
 class Skills extends Component {
   componentDidMount() {
-    this.props.fetchSkills();
+    this.props.fetchSkills()
   }
 
   render() {
-    const { skillsList } = this.props;
+    const { skillsList } = this.props
     const renderSkills = skillsList.map(skill => {
       return (
         <Grid key={skill.id} item xs={12} md={4}>
           <CircularCard skill={skill} />
         </Grid>
-      );
-    });
+      )
+    })
     return (
       <div
         style={{ maxWidth: '720px', textAlign: 'center', margin: '16px auto' }}
@@ -107,11 +107,11 @@ class Skills extends Component {
           {renderSkills}
         </Grid>
       </div>
-    );
+    )
   }
 }
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(Skills);
+)(Skills)

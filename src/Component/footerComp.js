@@ -1,39 +1,39 @@
-import React, { Component } from 'react';
-import { withStyles } from '@material-ui/core/styles';
-import { Grid } from '@material-ui/core';
-import { connect } from 'react-redux';
-import { fetchSocialMedia } from '../redux/actions';
-import SvgRender from './SvgRender';
+import React, { Component } from 'react'
+import { withStyles } from '@material-ui/core/styles'
+import { Grid } from '@material-ui/core'
+import { connect } from 'react-redux'
+import { fetchSocialMedia } from '../redux/actions'
+import SvgRender from './SvgRender'
 
 const style = theme => ({
   root: {
     display: 'flex',
     marginTop: '16px',
-    background: theme.palette.secondary.main,
+    background: 'white',
   },
-});
+})
 
 const mapStateToProps = state => {
   return {
     socialMedia: state.socialList,
-  };
-};
+  }
+}
 
 const mapDispatchToProps = dispatch => {
   return {
     fetchSocialMedia: () => {
-      dispatch(fetchSocialMedia());
+      dispatch(fetchSocialMedia())
     },
-  };
-};
+  }
+}
 
 class Footer extends Component {
   componentWillMount() {
-    this.props.fetchSocialMedia();
+    this.props.fetchSocialMedia()
   }
 
   render() {
-    const { classes, socialMedia } = this.props;
+    const { classes, socialMedia } = this.props
 
     const inflateSocialMedia = socialMedia.map(social => {
       return (
@@ -56,8 +56,8 @@ class Footer extends Component {
             </div>
           </a>
         </Grid>
-      );
-    });
+      )
+    })
 
     return (
       <div id="#contact" className={classes.root}>
@@ -79,11 +79,11 @@ class Footer extends Component {
           </Grid>
         </div>
       </div>
-    );
+    )
   }
 }
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(withStyles(style)(Footer));
+)(withStyles(style)(Footer))

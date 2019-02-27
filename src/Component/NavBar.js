@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component } from 'react'
 import {
   AppBar,
   Toolbar,
@@ -9,9 +9,9 @@ import {
   ListItem,
   Drawer,
   ListItemText,
-} from '@material-ui/core';
-import MenuIcon from '@material-ui/icons/Menu';
-import { withStyles } from '@material-ui/core/styles';
+} from '@material-ui/core'
+import MenuIcon from '@material-ui/icons/Menu'
+import { withStyles } from '@material-ui/core/styles'
 
 const styles = {
   root: {
@@ -24,25 +24,25 @@ const styles = {
   list: {
     width: 250,
   },
-};
+}
 
 class NavBar extends Component {
   state = {
     left: false,
-  };
+  }
 
   toggleDrawer = isOpen => {
     this.setState({
       left: isOpen,
-    });
-  };
+    })
+  }
 
   handleClick = tag => {
-    document.getElementById('#' + tag).scrollIntoView();
-  };
+    document.getElementById('#' + tag).scrollIntoView()
+  }
 
   render() {
-    const { classes } = this.props;
+    const { classes } = this.props
 
     const ListInflator = ['Resume', 'contact'].map(item => {
       if (item === 'Resume') {
@@ -57,9 +57,9 @@ class NavBar extends Component {
               <ListItemText primary={item} />
             </a>
           </ListItem>
-        );
+        )
       }
-      var href = '#' + item;
+      var href = '#' + item
       return (
         <ListItem key={item} button>
           <a
@@ -72,18 +72,18 @@ class NavBar extends Component {
             />
           </a>
         </ListItem>
-      );
-    });
+      )
+    })
 
     const sideList = (
       <div className={classes.list}>
         <List>{ListInflator}</List>
       </div>
-    );
+    )
 
     return (
       <div className={classes.root}>
-        <AppBar position="fixed" color="primary">
+        <AppBar elevation={0} position="fixed" color="primary">
           <Hidden smDown>
             <div className={classes.centerBar}>
               <Toolbar>
@@ -140,8 +140,8 @@ class NavBar extends Component {
           </Hidden>
         </AppBar>
       </div>
-    );
+    )
   }
 }
 
-export default withStyles(styles)(NavBar);
+export default withStyles(styles)(NavBar)

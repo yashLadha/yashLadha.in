@@ -1,4 +1,4 @@
-import { createMuiTheme } from '@material-ui/core/styles';
+import { createMuiTheme } from '@material-ui/core/styles'
 
 const theme = createMuiTheme({
   typography: {
@@ -6,9 +6,9 @@ const theme = createMuiTheme({
     fontFamily: ['Source Code Pro'],
   },
   palette: {
-    type: 'dark',
+    type: 'light',
     primary: {
-      main: '#212121',
+      main: '#FFFFFF',
     },
     secondary: {
       main: '#e91e63',
@@ -16,6 +16,6 @@ const theme = createMuiTheme({
       darkAccentColor: '#c2185b',
     },
   },
-});
+})
 
-export default theme;
+export default theme

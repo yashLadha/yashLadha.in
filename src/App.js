@@ -1,15 +1,15 @@
-import React, { lazy, Suspense, Component } from 'react';
-import NavBar from './Component/NavBar';
-import Footer from './Component/footerComp';
-import AboutComp from './Component/AboutComp';
-import { Provider } from 'react-redux';
-import { ConfigureStore } from './redux/store';
-import { MuiThemeProvider } from '@material-ui/core/styles';
-import theme from './MaterialTheme';
+import React, { lazy, Suspense, Component } from 'react'
+import NavBar from './Component/NavBar'
+import Footer from './Component/footerComp'
+import AboutComp from './Component/AboutComp'
+import { Provider } from 'react-redux'
+import { ConfigureStore } from './redux/store'
+import { MuiThemeProvider } from '@material-ui/core/styles'
+import theme from './MaterialTheme'
 
-const ProjectComponent = lazy(() => import('./Component/ProjectsComp'));
+const ProjectComponent = lazy(() => import('./Component/ProjectsComp'))
 
-const store = ConfigureStore();
+const store = ConfigureStore()
 
 class App extends Component {
   render() {
@@ -23,13 +23,11 @@ class App extends Component {
               <ProjectComponent />
             </Suspense>
           </MuiThemeProvider>
-          {/* TODO : Add Function on firebase to automatically update the interface of admin application */}
-          {/* <Contact /> */}
           <Footer />
         </div>
       </Provider>
-    );
+    )
   }
 }
 
-export default App;
+export default App
