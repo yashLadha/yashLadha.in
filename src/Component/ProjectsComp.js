@@ -1,11 +1,11 @@
-import { Card, CardContent, Grid, Typography } from '@material-ui/core';
-import { withStyles } from '@material-ui/core/styles';
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
-import { fetchProjects } from '../redux/actions';
-import SvgRender from './SvgRender';
-import theme from '../MaterialTheme';
-import { Spring } from 'react-spring';
+import { Card, CardContent, Chip, Grid, Typography } from '@material-ui/core'
+import { withStyles } from '@material-ui/core/styles'
+import React, { Component } from 'react'
+import { connect } from 'react-redux'
+import { fetchProjects } from '../redux/actions'
+import SvgRender from './SvgRender'
+import theme from '../MaterialTheme'
+import { Spring } from 'react-spring'
 
 const style = theme => ({
   root: {
@@ -23,47 +23,64 @@ const style = theme => ({
     fontFamily: 'Source Code Pro',
     alignItems: 'center',
   },
-});
+  chip: {
+    margin: theme.spacing.unit,
+  },
+})
 
 const mapStateToProps = state => {
   return {
     projects: state,
-  };
-};
+  }
+}
 
 const mapDispatchToProps = dispatch => {
   return {
     fetchProjects: () => {
-      dispatch(fetchProjects());
+      dispatch(fetchProjects())
     },
-  };
-};
+  }
+}
 
 class Project extends Component {
   state = {
     enterRadius: 0,
     leaveRadius: 0,
     bgColor: '#000',
-  };
+  }
 
   handleMouseEnter = () => {
     this.setState({
       enterRadius: 0,
       leaveRadius: 4,
       bgColor: theme.palette.secondary.accentColor,
-    });
-  };
+    })
+  }
 
   handleMouseLeave = () => {
     this.setState({
       enterRadius: 4,
       leaveRadius: 0,
       bgColor: '#000',
-    });
-  };
+    })
+  }
 
   render() {
-    const { project } = this.props;
+    const { project } = this.props
+    // Render chips component
+    const projectChipComponent = project.tags.map((tag, idx) => {
+      return (
+        <Chip
+          style={{
+            margin: '4px',
+          }}
+          color="secondary"
+          key={idx}
+          label={tag}
+          variant="outlined"
+        />
+      )
+    })
     return (
       <div
         onMouseEnter={this.handleMouseEnter}
@@ -85,7 +102,7 @@ class Project extends Component {
                 style={{
                   margin: 'auto',
                   maxWidth: '300px',
-                  height: '300px',
+                  height: '400px',
                   borderRadius: '5%',
                   background: '#f5f5f5',
                   boxShadow:
@@ -115,31 +132,32 @@ class Project extends Component {
                   >
                     {project.content}
                   </Typography>
+                  {projectChipComponent}
                 </CardContent>
               </Card>
             </a>
           )}
         </Spring>
       </div>
-    );
+    )
   }
 }
 
 class Projects extends Component {
   componentWillMount() {
-    this.props.fetchProjects();
+    this.props.fetchProjects()
   }
 
   render() {
-    const { classes, projects } = this.props;
+    const { classes, projects } = this.props
 
     const inflateProjects = projects.projectsList.map(project => {
       return (
         <Grid key={project.id} item xs={12} md={4}>
           <Project project={project} />
         </Grid>
-      );
-    });
+      )
+    })
 
     return (
       <div className={classes.root}>
@@ -160,11 +178,11 @@ class Projects extends Component {
           </Grid>
         </div>
       </div>
-    );
+    )
   }
 }
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
-)(withStyles(style)(Projects));
+)(withStyles(style)(Projects))
