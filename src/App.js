@@ -12,22 +12,22 @@ const ProjectComponent = lazy(() => import('./Component/ProjectsComp'))
 const store = ConfigureStore()
 
 class App extends Component {
-  render() {
-    return (
-      <Provider store={store}>
-        <div>
-          <MuiThemeProvider theme={theme}>
-            <NavBar />
-            <AboutComp />
-            <Suspense fallback={<div>Fetching Project details... </div>}>
-              <ProjectComponent />
-            </Suspense>
-          </MuiThemeProvider>
-          <Footer />
-        </div>
-      </Provider>
-    )
-  }
+	render() {
+		return (
+			<Provider store={store}>
+				<div>
+					<MuiThemeProvider theme={theme}>
+						<NavBar />
+						<AboutComp />
+						<Suspense fallback={<div>Fetching Project details... </div>}>
+							<ProjectComponent />
+						</Suspense>
+					</MuiThemeProvider>
+					<Footer />
+				</div>
+			</Provider>
+		)
+	}
 }
 
 export default App
