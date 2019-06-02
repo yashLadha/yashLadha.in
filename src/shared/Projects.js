@@ -100,4 +100,12 @@ export const PROJECTS = [
 		content: 'Android application for user HatSphere.',
 		tags: ['Android', 'Kotlin', 'Firebase'],
 	},
+	{
+		id: 12,
+		link: 'https://github.com/yashLadha/go-moji',
+		name: 'go-moji',
+		image: 'go',
+		content: 'Emojify your git commits',
+		tags: ['Golang'],
+	},
 ]
