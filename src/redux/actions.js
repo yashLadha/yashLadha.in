@@ -47,10 +47,14 @@ export const fetchGithubPublicEvents = () => async dispatch => {
         return map;
       }, displayData);
     const parsedData = Object.keys(displayData)
-      .map(val => ({
-        timestamp: val,
-        contributions: displayData[val],
-      }))
+      .map(val => {
+        const dateObj = new Date(val);
+        return {
+          xAxisRep: `${dateObj.getDate()}/${dateObj.getMonth()}`,
+          timestamp: val,
+          contributions: displayData[val],
+        };
+      })
       .reverse();
     dispatch(addGithubData(parsedData));
   } catch (err) {

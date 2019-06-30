@@ -1,4 +1,4 @@
-import React, { PureComponent } from 'react';
+import React, { Component } from 'react';
 import { connect } from 'react-redux';
 import { Legend, Line, LineChart, Tooltip, XAxis, YAxis } from 'recharts';
 import { fetchGithubPublicEvents } from '../redux/actions';
@@ -17,9 +17,30 @@ const mapDispatchToProps = dispatch => {
   };
 };
 
-class GraphComponent extends PureComponent {
+class GraphComponent extends Component {
   componentWillMount() {
     this.props.fetchEventData();
+    this.updateDimension();
+  }
+
+  updateDimension = () => {
+    const chartWidth =
+      window.innerWidth < 600
+        ? window.innerWidth - window.innerWidth / 10
+        : 600;
+    const chartHeight = window.innerHeight < 1000 ? 200 : 300;
+    this.setState({
+      height: chartHeight,
+      width: chartWidth,
+    });
+  };
+
+  componentDidMount() {
+    window.addEventListener('resize', this.updateDimension);
+  }
+
+  componentWillUnmount() {
+    window.removeEventListener('resize', this.updateDimension);
   }
 
   render() {
@@ -27,15 +48,15 @@ class GraphComponent extends PureComponent {
     if (githubData.length > 0) {
       return (
         <LineChart
-          width={600}
-          height={300}
+          width={this.state.width}
+          height={this.state.height}
           data={githubData}
           style={{
             margin: 'auto',
             padding: '8px',
           }}
         >
-          <XAxis dataKey="timestamp" />
+          <XAxis dataKey="xAxisRep" name="date/month" interval={2} />
           <YAxis dataKey="contributions" />
           <Tooltip />
           <Legend />
