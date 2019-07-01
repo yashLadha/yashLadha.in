@@ -5,6 +5,7 @@ import { fetchSkills } from '../redux/actions';
 import SvgRender from './SvgRender';
 import { Spring } from 'react-spring';
 import theme from '../MaterialTheme';
+import { Typography } from '@material-ui/core';
 
 const mapStateToProps = state => {
   return state;
@@ -102,7 +103,13 @@ class Skills extends Component {
       <div
         style={{ maxWidth: '720px', textAlign: 'center', margin: '16px auto' }}
       >
-        <h1>Skills</h1>
+        <Typography
+          color="textSecondary"
+          variant="h4"
+          style={{ padding: '8px' }}
+        >
+          Skills
+        </Typography>
         <Grid container spacing={16}>
           {renderSkills}
         </Grid>

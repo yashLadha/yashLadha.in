@@ -7,6 +7,7 @@ import { Provider } from 'react-redux';
 import { ConfigureStore } from './redux/store';
 import { MuiThemeProvider } from '@material-ui/core/styles';
 import theme from './MaterialTheme';
+import { Typography } from '@material-ui/core';
 
 const ProjectComponent = lazy(() => import('./Component/ProjectsComp'));
 
@@ -24,6 +25,13 @@ class App extends Component {
               <ProjectComponent />
             </Suspense>
             <Suspense fallback={<div>Fetching Github details... </div>}>
+              <Typography
+                color="textSecondary"
+                variant="h4"
+                style={{ textAlign: 'center', padding: '8px' }}
+              >
+                Github Contribution Graph
+              </Typography>
               <GraphComponent />
             </Suspense>
           </MuiThemeProvider>

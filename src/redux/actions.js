@@ -6,7 +6,7 @@ import { SOCIAL_MEDIA } from '../shared/SocialMedia';
 import * as ActionTypes from './ActionTypes';
 
 const gitInstance = axios.create({
-  timeout: 5000,
+  timeout: 10000,
 });
 
 export const fetchProjects = () => dispatch => {
@@ -46,16 +46,15 @@ export const fetchGithubPublicEvents = () => async dispatch => {
         map[val] = (map[val] || 0) + 1;
         return map;
       }, displayData);
-    const parsedData = Object.keys(displayData)
-      .map(val => {
-        const dateObj = new Date(val);
-        return {
-          xAxisRep: `${dateObj.getDate()}/${dateObj.getMonth()}`,
-          timestamp: val,
-          contributions: displayData[val],
-        };
-      })
-      .reverse();
+    const parsedData = Object.keys(displayData).map(val => {
+      const dateObj = new Date(val);
+      return {
+        xAxisRep: `${dateObj.getDate()}/${dateObj.getMonth()}`,
+        timestamp: val,
+        contributions: displayData[val],
+      };
+    });
+
     dispatch(addGithubData(parsedData));
   } catch (err) {
     console.error(err);

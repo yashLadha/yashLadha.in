@@ -161,7 +161,13 @@ class Projects extends Component {
 
     return (
       <div className={classes.root}>
-        <h1>Projects</h1>
+        <Typography
+          color="textSecondary"
+          variant="h4"
+          style={{ padding: '8px' }}
+        >
+          Projects
+        </Typography>
         <div
           style={{
             maxWidth: '900px',
