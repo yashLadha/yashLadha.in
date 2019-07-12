@@ -28,7 +28,7 @@ class App extends Component {
               <Typography
                 color="textSecondary"
                 variant="h4"
-                style={{ textAlign: 'center', padding: '8px' }}
+                style={{ textAlign: 'center', padding: '8px', margin: '20px' }}
               >
                 Github Contribution Graph
               </Typography>

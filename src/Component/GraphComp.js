@@ -4,6 +4,7 @@ import { Legend, Line, LineChart, Tooltip, XAxis, YAxis } from 'recharts';
 import { fetchGithubPublicEvents } from '../redux/actions';
 import { Card } from '@material-ui/core';
 import { Spring } from 'react-spring';
+import { motion } from 'framer-motion';
 
 const mapStateToProps = state => {
   return {
@@ -71,9 +72,10 @@ class GraphComponent extends Component {
     const { githubData } = this.props.data;
     if (githubData.length > 0) {
       return (
-        <div
-          onMouseEnter={this.handleMouseEnter}
-          onMouseLeave={this.handleMouseLeave}
+        <motion.div
+          whileHover={{ scale: 1.05 }}
+          onHoverStart={this.handleMouseEnter}
+          onHoverEnd={this.handleMouseLeave}
         >
           <Spring
             from={{
@@ -126,7 +128,7 @@ class GraphComponent extends Component {
               </Card>
             )}
           </Spring>
-        </div>
+        </motion.div>
       );
     } else {
       return <div />;

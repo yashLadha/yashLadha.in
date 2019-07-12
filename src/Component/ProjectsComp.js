@@ -6,6 +6,7 @@ import { Spring } from 'react-spring';
 import theme from '../MaterialTheme';
 import { fetchProjects } from '../redux/actions';
 import SvgRender from './SvgRender';
+import { motion } from 'framer-motion';
 
 const style = theme => ({
   root: {
@@ -82,9 +83,10 @@ class Project extends Component {
       );
     });
     return (
-      <div
-        onMouseEnter={this.handleMouseEnter}
-        onMouseLeave={this.handleMouseLeave}
+      <motion.div
+        whileHover={{ scale: 1.1 }}
+        onHoverStart={this.handleMouseEnter}
+        onHoverEnd={this.handleMouseLeave}
       >
         <Spring
           from={{
@@ -138,7 +140,7 @@ class Project extends Component {
             </a>
           )}
         </Spring>
-      </div>
+      </motion.div>
     );
   }
 }
@@ -164,7 +166,7 @@ class Projects extends Component {
         <Typography
           color="textSecondary"
           variant="h4"
-          style={{ padding: '8px' }}
+          style={{ padding: '8px', margin: '20px' }}
         >
           Projects
         </Typography>

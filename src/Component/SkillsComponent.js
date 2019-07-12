@@ -6,6 +6,7 @@ import SvgRender from './SvgRender';
 import { Spring } from 'react-spring';
 import theme from '../MaterialTheme';
 import { Typography } from '@material-ui/core';
+import { motion } from 'framer-motion';
 
 const mapStateToProps = state => {
   return state;
@@ -56,9 +57,10 @@ class CircularCard extends Component {
         }}
       >
         {props => (
-          <div
-            onMouseEnter={this.handleMouseEnter}
-            onMouseLeave={this.handleMouseLeave}
+          <motion.div
+            whileHover={{ scale: 1.1 }}
+            onHoverStart={this.handleMouseEnter}
+            onHoverEnd={this.handleMouseLeave}
             style={{
               height: '100px',
               width: '100px',
@@ -78,7 +80,7 @@ class CircularCard extends Component {
               width="60"
               height="60"
             />
-          </div>
+          </motion.div>
         )}
       </Spring>
     );
