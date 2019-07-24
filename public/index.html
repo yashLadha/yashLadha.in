@@ -31,12 +31,25 @@
     <body>
         <noscript> You need to enable JavaScript to run this app. </noscript>
         <div id="root"></div>
-        <link
-            href="https://fonts.googleapis.com/css?family=Source+Code+Pro"
-            rel="preload"
-            as="style"
-            lazyload
-        />
+
+        <script type="text/javascript">
+            WebFontConfig = {
+                google: { families: ['Source Code Pro'] },
+            };
+            (function() {
+                var wf = document.createElement('script');
+                wf.src =
+                    ('https:' == document.location.protocol
+                        ? 'https'
+                        : 'http') +
+                    '://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js';
+                wf.type = 'text/javascript';
+                wf.async = 'true';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(wf, s);
+            })();
+            // ]]>
+        </script>
         <!--
             This HTML file is a template.
             If you open it directly in the browser, you will see an empty page.
