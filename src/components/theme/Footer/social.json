@@ -1,0 +1,20 @@
+[
+  {
+    "id": 0,
+    "name": "Telegram",
+    "link": "https://t.me/yashLadha",
+    "icon": "/icons/telegram.svg"
+  },
+  {
+    "id": 1,
+    "name": "Github",
+    "link": "https://github.com/yashLadha",
+    "icon": "/icons/github.svg"
+  },
+  {
+    "id": 3,
+    "name": "Twitter",
+    "link": "https://twitter.com/yashLadha_",
+    "icon": "/icons/twitter.svg"
+  }
+]
