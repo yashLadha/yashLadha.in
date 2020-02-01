@@ -9,7 +9,7 @@ export const Grid = styled.div`
   align-items: center;
   grid-template-columns: repeat(3, 1fr);
   grid-template-rows: 8fr;
-  gap: 1.2rem 1.2rem;
+  gap: 1.5rem 1.5rem;
 
   @media (max-width: 960px) {
     grid-template-columns: repeat(2, 1fr);
@@ -24,6 +24,12 @@ export const Item = styled.div`
   width: 100%;
   height: 100%;
   overflow: hidden;
+  color: transparent;
+  -moz-border-radius: 15px;
+  -webkit-border-radius: 15px;
+  border-radius: 15px; /* future proofing */
+  -khtml-border-radius: 15px; /* for old Konqueror browsers */
+
   box-shadow: 0 1px 6px 0 rgba(0, 0, 0, 0.11);
 
   h4 {

@@ -606,6 +606,7 @@ export const Global = createGlobalStyle`
       color: hsla(0, 0%, 0%, 0.8);
       font-weight: normal;
       word-wrap: break-word;
+      background-color: #cddcf7;
       font-kerning: normal;
       -moz-font-feature-settings: 'kern', 'liga', 'clig', 'calt';
       -ms-font-feature-settings: 'kern', 'liga', 'clig', 'calt';
