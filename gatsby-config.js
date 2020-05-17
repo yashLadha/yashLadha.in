@@ -6,6 +6,7 @@ require('dotenv').config({
 
 module.exports = {
   siteMetadata: {
+    siteUrl: 'https://yashladha.in',
     title: config.defaultTitle,
     description: config.defaultDescription,
     author: config.author,
