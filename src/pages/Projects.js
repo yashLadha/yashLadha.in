@@ -32,7 +32,7 @@ function Projects() {
       <div className="grid p-3 md:p-0 md:grid-cols-2 lg:grid-cols-3 grid-flow-row auto-rows-max md:grid-cols-2 gap-3">
         {ProjectsList.map(projectCard)}
       </div>
-      <button className="transition duration-300 ease-out hover:shadow-xl transform hover:-translate-y-0.5 hover:scale-105 bg-blue-400 p-3 text-white shadow-lg relative left-1/2 rounded-3xl">
+      <button className="transition duration-300 ease-out hover:shadow-xl transform hover:-translate-y-0.5 hover:scale-105 bg-blue-400 p-3 text-white shadow-lg relative left-80 rounded-3xl">
         <a href="https://github.com/yashLadha" target="_blank" rel="noreferrer">
           Find More...
         </a>
