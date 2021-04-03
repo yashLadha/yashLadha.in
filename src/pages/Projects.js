@@ -8,7 +8,14 @@ const projectCard = (project) => {
       target="_blank"
       rel="noreferrer nofollow"
     >
-      <div className="rounded-lg transition-shadow ease-in-out duration-500 h-full rounded overflow-hidden shadow-md hover:shadow-xl mb-4">
+      <div
+        className="rounded-lg transition-shadow ease-in-out duration-500
+    transition-background
+    transition-opacity
+    hover:bg-blue-100
+    hover:bg-opactiy-75
+    h-full rounded overflow-hidden shadow-md hover:shadow-xl mb-4"
+      >
         <div className="px-6 py-4">
           <div className="font-bold text-xl mb-2 inline-flex">
             {project.name}
