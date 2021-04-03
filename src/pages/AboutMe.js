@@ -1,6 +1,6 @@
 function AboutMe() {
   return (
-    <div className="font-regular leading-relaxed">
+    <div className="px-2 md:px-0 font-regular leading-relaxed">
       <p className="mb-4 md:relative">
         Hi there 👋. I am a Software Engineer currently working with
         BrowserStack 🚀. In the day I am a Software Engineer and in the night I
