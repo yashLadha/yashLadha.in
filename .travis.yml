@@ -11,5 +11,3 @@ script:
     - yarn prod
 after_script:
     - test $TRAVIS_PULL_REQUEST = "false" && firebase deploy --token $FIREBASE_TOKEN --non-interactive
-notifications:
-    webhooks: https://fathomless-fjord-24024.herokuapp.com/notify
