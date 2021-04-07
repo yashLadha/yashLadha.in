@@ -3,6 +3,10 @@ import NavBar from "./NavBar";
 import Content from "./Content";
 import Footer from "./Footer";
 import { BrowserRouter } from "react-router-dom";
+import ReactGA from 'react-ga';
+
+const TRACKING_ID = 'UA-131743535-1';
+ReactGA.initialize(TRACKING_ID);
 
 function App() {
   return (
