@@ -41,7 +41,7 @@ function Footer() {
           <li className="">
             <a
               className="cursor-pointer inline-flex text-sm transition duration-500 ease-in-out text-blue-500 hover:text-blue-700 transform hover:-translate-y-1 items-center"
-              href="https://www.linkedin.com/in/yashladha/"
+              href="https://twitter.com/yashladha_"
               rel="nofollow noreferrer"
               target="_blank"
             >
