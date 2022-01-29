@@ -37,7 +37,6 @@ html {
   /* 1 */
   -webkit-text-size-adjust: 100%;
   /* 2 */
-  -moz-tab-size: 4;
   /* 3 */
   tab-size: 4;
   /* 3 */
@@ -552,12 +551,10 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 
 .flex {
-  display: -webkit-flex;
   display: flex;
 }
 
 .inline-flex {
-  display: -webkit-inline-flex;
   display: inline-flex;
 }
 
@@ -612,13 +609,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 
 .flex-row {
-  -webkit-flex-direction: row;
-          flex-direction: row;
+  flex-direction: row;
 }
 
 .flex-col {
-  -webkit-flex-direction: column;
-          flex-direction: column;
+  flex-direction: column;
 }
 
 .place-content-center {
@@ -626,13 +621,11 @@ Ensure the default browser behavior of the `hidden` attribute.
 }
 
 .items-center {
-  -webkit-align-items: center;
-          align-items: center;
+  align-items: center;
 }
 
 .justify-center {
-  -webkit-justify-content: center;
-          justify-content: center;
+  justify-content: center;
 }
 
 .gap-3 {
