@@ -3,10 +3,9 @@ function AboutMe() {
     <div className="px-2 md:px-0 font-regular leading-relaxed">
       <p className="mb-4 md:relative">
         Hi there 👋. I am a Software Engineer currently working with Amazon 🚀,
-        previously was part of the rocket ship BrowserStack. Along with working
-        on my day job i am also part of the team that maintains the NodeJS core
-        project and like to contribute to other open source projects that equips
-        others to solve problems.
+        previously was part of the rocket ship <a className="text-sky-800" href="https://www.browserstack.com/" target="_blank" rel="noreferrer">BrowserStack</a>. Along with working
+        on my day job, I am also part of the team that maintains the <a className="text-sky-800" href="https://github.com/nodejs/node" target="_blank" rel="noreferrer">NodeJS</a> core
+        project.
       </p>
       <p className="mb-4 md:relative">
         You can check out my{' '}

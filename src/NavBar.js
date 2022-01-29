@@ -10,6 +10,9 @@ function NavBar() {
         <Link to="/projects">Projects</Link>
       </div>
       <div className="capitalize text-blue-700 p-2 m-0 md:m-2">
+        <a href="https://blog.yashladha.in/blog" target="_blank" rel="noreferrer">Blog</a>
+      </div>
+      <div className="capitalize text-blue-700 p-2 m-0 md:m-2">
         <Link to="/works">Contact Me</Link>
       </div>
     </div>
