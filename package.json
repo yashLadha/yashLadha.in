@@ -14,7 +14,7 @@
     "web-vitals": "^0.2.4"
   },
   "scripts": {
-    "build:style": "tailwind build src/styles/index.css -o src/styles/tailwind.css",
+    "build:style": "tailwindcss -i src/styles/index.css -o src/styles/tailwind.css",
     "frontend": "npm run build:style && react-scripts start",
     "build": "react-scripts build",
     "prod": "NODE_ENV='production' yarn run build",
@@ -40,9 +40,8 @@
     ]
   },
   "devDependencies": {
-    "@tailwindcss/postcss7-compat": "npm:@tailwindcss/postcss7-compat@^2.0.4",
     "autoprefixer": "^9.8.6",
-    "postcss": "^8.2.10",
-    "tailwindcss": "npm:@tailwindcss/postcss7-compat@^2.0.4"
+    "postcss": "^8.4.5",
+    "tailwindcss": "^3.0.18"
   }
 }
