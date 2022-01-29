@@ -8,9 +8,6 @@ function ProfileImage() {
         src={profileImage}
         alt="me"
       />
-      <div className="mx-auto w-40 text-center font-bold my-2 text-2xl capitalize">
-        Yash Ladha
-      </div>
     </div>
   );
 }
