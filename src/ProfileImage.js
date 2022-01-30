@@ -1,29 +1,41 @@
 import profileImage from "./profile.jpeg";
 import { useSpring, animated } from "react-spring";
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 
 function ProfileImage() {
-  const [cnt, setCounter] = useState(0);
+  const [state, setState] = useState({
+    cnt: 0,
+    init: false,
+  });
+
   const DURATION = 3000;
   const MAX_BLOBS = 3;
   const { svgAnim } = useSpring({
     config: {
       duration: DURATION,
     },
-    svgAnim: cnt,
+    svgAnim: state.cnt,
   });
 
+  const updatePathIndex = useCallback((isInit) =>
+    setState({
+      ...state,
+      ...(isInit && { init: isInit }),
+      cnt: (state.cnt + ((Math.random() * 10) % MAX_BLOBS)) % MAX_BLOBS,
+    }), [state]);
+
   useEffect(() => {
+    if (!state.init) {
+      updatePathIndex(true);
+      return;
+    }
+
     const id = setTimeout(() => {
-      setCounter((cnt + ((Math.random() * 10) % MAX_BLOBS)) % MAX_BLOBS);
+      updatePathIndex();
     }, DURATION + 100);
 
     return () => clearTimeout(id);
-  }, [cnt]);
-
-  useEffect(() => {
-    setCounter(0);
-  }, []);
+  }, [state, updatePathIndex]);
 
   return (
     <div className="py-10">
