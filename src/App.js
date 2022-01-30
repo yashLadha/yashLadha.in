@@ -7,7 +7,7 @@ import { BrowserRouter } from "react-router-dom";
 function App() {
   return (
     <BrowserRouter>
-      <div className="container mx-auto w-1/2">
+      <div className="container mx-auto sm:w-1/2">
         <ProfileImage />
         <NavBar />
       </div>
