@@ -45,8 +45,8 @@ function ProfileImage() {
           src={profileImage}
           alt="me"
         />
-        <div className="absolute inset-0 max-w-md -z-10 mx-auto opacity-30">
-          <svg id="visual" viewBox="0 0 450 200" version="1.1">
+        <div className="absolute inset-0 -top-8 max-w-md -z-10 mx-auto opacity-30">
+          <svg id="visual" viewBox="0 0 450 200" version="1.1" style={{ aspectRatio: '400/220' }}>
             <g transform="translate(224.84326207098945 84.6046077811243)">
               <animated.path
                 d={svgAnim.to({
