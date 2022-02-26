@@ -7,7 +7,7 @@ function AboutMe() {
         Hi there 👋. I am a Software Engineer currently working with{" "}
         <StyledLink text="Amazon 🚀" href="https://amazon.com" />, previously was part of the
         rocket ship{" "}
-        <StyledLink href="https://www.browserstack.com/" text="BrowserStack" />.
+        <StyledLink text="BrowserStack" href="https://www.browserstack.com/" />.
         Along with working on my day job, I am also part of the team that
         maintains the{" "}
         <StyledLink href="https://github.com/nodejs/node" text="NodeJS" /> core
