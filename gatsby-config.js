@@ -11,7 +11,13 @@ module.exports = {
   plugins: ["gatsby-plugin-postcss", "gatsby-plugin-image", "gatsby-plugin-react-helmet", "gatsby-plugin-sitemap", "gatsby-plugin-postcss", {
     resolve: 'gatsby-plugin-manifest',
     options: {
-      "icon": "src/images/icon.png"
+      icon: "src/images/icon.png",
+      name: `Yash Ladha`,
+      short_name: `yashLadha`,
+      start_url: `/`,
+      theme_color: "#000000",
+      background_color: "#ffffff",
+      display: `standalone`
     }
   }, "gatsby-plugin-sharp", "gatsby-transformer-sharp", {
       resolve: 'gatsby-source-filesystem',
