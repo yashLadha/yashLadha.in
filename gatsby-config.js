@@ -1,8 +1,12 @@
 module.exports = {
   siteMetadata: {
     title: `Yash Ladha`,
+    url: 'https://yashladha.in',
+    titleTemplate: '%s | Software Developer',
+    image: '/icon.png',
     siteUrl: `https://yashladha.in`,
-    description: `Personal website of Yash Ladha`
+    description: `Personal website of Yash Ladha`,
+    twitterUsername: `yashLadha_`
   },
   plugins: ["gatsby-plugin-postcss", "gatsby-plugin-image", "gatsby-plugin-react-helmet", "gatsby-plugin-sitemap", "gatsby-plugin-postcss", {
     resolve: 'gatsby-plugin-manifest',
