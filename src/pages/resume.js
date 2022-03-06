@@ -1,15 +1,12 @@
-import React, { lazy, Suspense } from "react";
+import React from "react";
 import HEADER_INFO from "../../static/resumeHeaderDetails";
+import { Helmet } from 'react-helmet';
+import Achievements from "../components/resume/achievements";
+import JobDetails from "../components/resume/jobDetails";
+import Projects from "../components/resume/projects";
+import Skills from "../components/resume/skills";
 import Line from "../components/line";
 import Education from "../components/resume/education";
-import { Helmet } from 'react-helmet';
-
-const Achievements = lazy(() => import("../components/resume/achievements"));
-const JobDetails = lazy(() => import("../components/resume/jobDetails"));
-const Projects = lazy(() => import("../components/resume/projects"));
-const Skills = lazy(() => import("../components/resume/skills"));
-
-const loadingComponent = () => <div>Loading...</div>
 
 function renderHeaderDetail(headerInfo) {
   if (headerInfo.isEmail) {
@@ -43,19 +40,17 @@ function Resume() {
         <meta name={`robots`} content={`noindex, nofollow`} />
       </Helmet>
       <div className="container md:mx-auto w-full p-2 lg:p-0 lg:w-1/2">
-        <Suspense fallback={loadingComponent}>
-          <Header />
-          <Line />
-          <JobDetails />
-          <Line />
-          <Skills />
-          <Line />
-          <Projects />
-          <Line />
-          <Achievements />
-          <Line />
-          <Education />
-        </Suspense>
+        <Header />
+        <Line />
+        <JobDetails />
+        <Line />
+        <Skills />
+        <Line />
+        <Projects />
+        <Line />
+        <Achievements />
+        <Line />
+        <Education />
       </div>
     </>
   )
