@@ -6,7 +6,7 @@ const JOBS_INFO = [
     to: 'Present',
     location: 'Banglore, IN',
     details: [
-      'Working on scaling the UPI Platform and building the next generation payment infrastructure'
+      'Working with the UPI Platform team, to improve the CX for use of UPI across on amazon.'
     ]
   },
   {
@@ -16,10 +16,10 @@ const JOBS_INFO = [
     to: 'Aug 2021',
     location: 'Mumbai, IN',
     details: [
-      'Built integration of Puppeteer and Playwright in grid setup on BrowserStack from ground up.',
+      'Built integration with Puppeteer and Playwright in distributed DC setup on BrowserStack from ground up.',
       'Created in-house framework for documentation which reduced the deploy cycle from 2-4 days to 10-15 minutes.',
-      'Working on the Automate & Screenshot Product.',
-      'Handling systems that serves more than 50+ million requests in a day to support testing at scale across various regions',
+      'Individual Contributor and Owner of Screenshots and Responsive Product offering.',
+      'Built systems that serves more than 50+ million requests in a day to support testing at scale.',
     ]
   },
   {
@@ -29,10 +29,9 @@ const JOBS_INFO = [
     to: 'April 2019',
     location: 'Gurugram, IN',
     details: [
-      `Worked on the backend of EXIM (Export Import Module).`,
-      `Implemented the initial backend for RFQ system.`,
-      `Created and Deployed service to generate excel sheets which shared among different projects in the company.`,
-      `Created application forthe unified shipment tracking system from ground up.`
+      `Worked on the team responsible for creating the first EXIM (Export Import Module) in the company.`,
+      `Created and Deployed serverless function to generate excel sheets and extensible for use-case in other projects as well.`,
+      `Created application for the unified shipment tracking system from ground up.`
     ]
   },
   {
@@ -42,11 +41,10 @@ const JOBS_INFO = [
     to: 'Aug 2018',
     location: 'Gurugram, IN',
     details: [
-      `Worked on the project badgeyay.`,
-      `Integrated Cloud functions for automating tasks and logging.`,
-      `Created Python package of the backend`,
-      `Added badge customization feature and refactored backend for modularity.`,
-      `Created Admin interface and logic for managing the site functionality.`
+      `Created platform to generate and customize badges for events.`,
+      `Integrated Cloud functions for automating tasks like sending notification, emails.`,
+      `Added badge customization features and refactored backend for modularity following SOLID principles.`,
+      `Created Admin interface and analytics dashboard for managing the site functionality.`
     ]
   },
 ];

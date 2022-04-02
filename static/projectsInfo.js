@@ -2,19 +2,19 @@ const PROJECTS_INFO = [
   {
     name: 'NodeJS',
     link: 'https://github.com/nodejs/node',
-    detail: 'Working as a collaborator on the nodejs project. More than 70K+ stars on Github',
+    detail: 'Working as collaborator on the nodejs project. More than 70K+ stars on Github',
     languages: ''
   },
   {
     name: 'Badgeyay',
     link: 'https://github.com/fossasia/badgeyay',
-    detail: 'It is a badge generator service that provides huge set of customizations and management features for generation of badges. More than 1K+ stars on Github.',
+    detail: 'It is a badge generator service with extensive customizations and management features. More than 1K+ stars on Github.',
     languages: ''
   },
   {
     name: 'Jarvis',
     link: 'https://github.com/sukeesh/Jarvis',
-    detail: 'A Simple personal commandline personal assistant. It uses rule based logic and external APIs to fetch data around metrics like location or weather. More than 1K+ stars on Github.',
+    detail: 'A Simple commandline assistant. It uses rule based logic and external APIs to fetch data around queries like location or weather. More than 1K+ stars on Github.',
     languages: ''
   },
   {
