@@ -15,7 +15,7 @@
     "clean": "yarn autoclean --force && gatsby clean"
   },
   "dependencies": {
-    "@fontsource/lato": "^4.5.2",
+    "@fontsource/raleway": "^4.5.5",
     "autoprefixer": "^10.4.2",
     "gatsby": "^4.8.0",
     "gatsby-plugin-image": "^2.8.1",
