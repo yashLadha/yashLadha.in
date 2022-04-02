@@ -1,12 +1,12 @@
 import React from "react";
 import HEADER_INFO from "../../static/resumeHeaderDetails";
 import { Helmet } from 'react-helmet';
-import Achievements from "../components/resume/achievements";
-import JobDetails from "../components/resume/jobDetails";
-import Projects from "../components/resume/projects";
-import Skills from "../components/resume/skills";
+import Achievements from "../components/resume/resumeAchievements";
+import WorkExperience from "../components/resume/workExperience";
+import ResumeProjects from "../components/resume/resumeProjects";
+import Skills from "../components/resume/resumeSkills";
 import Line from "../components/line";
-import Education from "../components/resume/education";
+import Education from "../components/resume/resumeEducation";
 
 function renderHeaderDetail(headerInfo) {
   if (headerInfo.isEmail) {
@@ -42,11 +42,11 @@ function Resume() {
       <div className="container md:mx-auto w-full p-2 lg:p-0 lg:w-1/2">
         <Header />
         <Line />
-        <JobDetails />
+        <WorkExperience />
         <Line />
         <Skills />
         <Line />
-        <Projects />
+        <ResumeProjects />
         <Line />
         <Achievements />
         <Line />

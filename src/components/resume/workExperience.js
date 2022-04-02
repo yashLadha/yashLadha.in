@@ -23,13 +23,13 @@ function createJobDetail(jobDetail) {
   )
 }
 
-function JobDetails() {
+function WorkExperience() {
   return (
     <div>
-      <div className="text-base font-semibold"> Work Experience </div>
+      <div className="text-base font-light"> Work Experience </div>
       {JOBS_INFO.map(createJobDetail)}
     </div>
   );
 }
 
-export default JobDetails;
+export default WorkExperience;

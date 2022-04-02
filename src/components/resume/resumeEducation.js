@@ -16,7 +16,7 @@ function renderEducationDetails(educationDetails) {
 function Education() {
   return (
     <div>
-      <div className="text-base font-semibold">Education</div>
+      <div className="text-base font-light">Education</div>
       <ul className="list-disc list-inside text-sm leading-snug">
       {EDUCATION_INFO.map(renderEducationDetails)}
       </ul>

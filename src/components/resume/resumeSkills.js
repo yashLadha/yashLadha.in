@@ -12,7 +12,7 @@ function renderSkillLineItem([skillName, skillValues]) {
 function Skills() {
   return (
     <div>
-      <div className="text-base font-semibold">Skills</div>
+      <div className="text-base font-light">Skills</div>
       <ul className="list-disc list-inside text-sm leading-snug">
         {Object.entries(SKILLS_INFO).map(renderSkillLineItem)}
       </ul>

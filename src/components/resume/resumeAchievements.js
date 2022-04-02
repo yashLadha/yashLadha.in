@@ -10,7 +10,7 @@ function renderAchievements(achievement) {
 function Achievements() {
   return (
     <div>
-      <div className="text-base font-semibold">Achievements</div>
+      <div className="text-base font-light">Achievements</div>
       <ul className="list-disc list-inside text-sm leading-snug">
         {ACHIEVEMENTS_INFO.map(renderAchievements)}
       </ul>

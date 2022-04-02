@@ -9,10 +9,10 @@ function renderProjects(projectInfo) {
   );
 }
 
-function Projects() {
+function ResumeProjects() {
   return (
     <div>
-      <div className="text-base font-semibold">Projects</div>
+      <div className="text-base font-light">Projects</div>
       <ul className="list-disc list-inside text-sm leading-snug">
         {PROJECTS_INFO.map(renderProjects)}
       </ul>
@@ -20,4 +20,4 @@ function Projects() {
   )
 }
 
-export default Projects;
+export default ResumeProjects;
