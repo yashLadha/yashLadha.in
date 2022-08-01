@@ -1,3 +1,3 @@
 ## yashLadha.in
 
-Personal website of [mine](https://yashLadha.in)
+[Personal website](https://yashladha.in)
