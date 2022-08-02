@@ -3,7 +3,7 @@ import React from "react";
 function Footer() {
   return (
     <footer className="flex flex-col items-center mt-4">
-      <h1 className="text-lg mb-4">You can reach me out @</h1>
+      <h1 className="text-lg mb-4">Reach out to me @</h1>
       <nav>
         <ul className="flex flex-row mt-2">
           <li className="mr-5">
