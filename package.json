@@ -8,7 +8,7 @@
     "gatsby"
   ],
   "browserslist": [
-    "defaults"
+    "last 5 Chrome versions"
   ],
   "scripts": {
     "develop": "gatsby develop",
