@@ -2,12 +2,12 @@ import React from 'react';
 import NavBar from './navbar';
 import Footer from './footer';
 import ProfileImage from './profileImage';
-import SEO from './seo';
+import Seo from './seo';
 
 export default function Layout({ children }) {
   return (
     <>
-      <SEO />
+      <Seo />
       <div className="container mx-auto sm:w-1/2">
         <ProfileImage />
         <NavBar />

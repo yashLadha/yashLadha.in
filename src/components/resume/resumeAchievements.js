@@ -1,21 +1,33 @@
 import React from "react";
-import ACHIEVEMENTS_INFO from "../../../static/achievementsInfo";
+import { useStaticQuery, graphql } from "gatsby";
 
 function renderAchievements(achievement) {
-  return (
-    <li>{achievement}</li>
-  )
+  return <li>{achievement}</li>;
 }
 
 function Achievements() {
+  const { allAchievmentType } = useStaticQuery(query);
+
   return (
     <div>
       <div className="text-base font-light">Achievements</div>
       <ul className="list-disc list-inside text-sm leading-snug">
-        {ACHIEVEMENTS_INFO.map(renderAchievements)}
+        {allAchievmentType.edges[0].node.achievments.map(renderAchievements)}
       </ul>
     </div>
-  )
+  );
 }
 
 export default Achievements;
+
+const query = graphql`
+  query AchievementsInfo {
+    allAchievmentType {
+      edges {
+        node {
+          achievments
+        }
+      }
+    }
+  }
+`;

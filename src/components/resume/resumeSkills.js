@@ -1,23 +1,35 @@
 import React from "react";
-import SKILLS_INFO from "../../../static/skillsInfo";
+import { useStaticQuery, graphql } from "gatsby";
 
-function renderSkillLineItem([skillName, skillValues]) {
+function renderSkillLineItem({domain, values}) {
   return (
     <li className="capitalize">
-      <b>{skillName}</b>: {skillValues.join(', ')}
+      <b>{domain}</b>: {values.join(", ")}
     </li>
-  )
+  );
 }
 
 function Skills() {
+  const { allSkillType } = useStaticQuery(query);
   return (
     <div>
       <div className="text-base font-light">Skills</div>
       <ul className="list-disc list-inside text-sm leading-snug">
-        {Object.entries(SKILLS_INFO).map(renderSkillLineItem)}
+        {allSkillType.nodes.map(renderSkillLineItem)}
       </ul>
     </div>
-  )
+  );
 }
 
 export default Skills;
+
+const query = graphql`
+  query Skills {
+    allSkillType {
+      nodes {
+        domain
+        values
+      }
+    }
+  }
+`;

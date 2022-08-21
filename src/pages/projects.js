@@ -1,5 +1,5 @@
-import ProjectsList from "../../static/repoList";
 import React from "react";
+import { useStaticQuery, graphql } from "gatsby";
 import Layout from "../components/layout";
 
 const projectCard = (project) => {
@@ -41,10 +41,11 @@ const projectCard = (project) => {
 };
 
 function Projects() {
+  const { allPersonalProject } = useStaticQuery(query);
   return (
     <Layout>
       <div className="grid p-3 md:p-0 md:grid-cols-2 lg:grid-cols-3 grid-flow-row auto-rows-max md:grid-cols-2 gap-3">
-        {ProjectsList.map(projectCard)}
+        {allPersonalProject.nodes.map(projectCard)}
       </div>
       <div className="flex place-content-center mt-5">
         <button className="transition duration-300 ease-out hover:shadow-xl transform hover:-translate-y-0.5 hover:scale-105 bg-blue-400 p-3 text-white shadow-lg rounded-3xl">
@@ -62,3 +63,16 @@ function Projects() {
 }
 
 export default Projects;
+
+const query = graphql`
+  query PersonalProjectsList {
+    allPersonalProject {
+      nodes {
+        htmlURL
+        languages
+        name
+        description
+      }
+    }
+  }
+`;
