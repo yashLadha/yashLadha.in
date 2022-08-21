@@ -18,7 +18,6 @@
     "clean": "yarn autoclean --force && gatsby clean"
   },
   "dependencies": {
-    "@fontsource/raleway": "^4.5.5",
     "autoprefixer": "^10.4.2",
     "gatsby": "^4.8.0",
     "gatsby-plugin-image": "^2.8.1",
@@ -27,6 +26,7 @@
     "gatsby-plugin-preact": "^6.21.0",
     "gatsby-plugin-sharp": "^4.8.1",
     "gatsby-plugin-sitemap": "^5.8.0",
+    "gatsby-plugin-web-font-loader": "^1.0.4",
     "gatsby-source-filesystem": "^4.8.1",
     "gatsby-transformer-sharp": "^4.8.0",
     "postcss": "^8.4.7",
