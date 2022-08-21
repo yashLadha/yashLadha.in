@@ -8,6 +8,7 @@ module.exports = {
     twitterUsername: `yashLadha_`,
   },
   plugins: [
+    "gatsby-plugin-preact",
     "gatsby-plugin-postcss",
     "gatsby-plugin-image",
     "gatsby-plugin-sitemap",
@@ -32,7 +33,6 @@ module.exports = {
         path: "./src/images/",
       },
       __key: "images",
-    },
-    "gatsby-plugin-webpack-bundle-analyser-v2"
+    }
   ],
 };
