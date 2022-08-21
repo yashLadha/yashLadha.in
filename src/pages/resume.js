@@ -37,7 +37,7 @@ function Resume() {
       <Helmet>
         <meta name={`robots`} content={`noindex, nofollow`} />
       </Helmet>
-      <div className="container md:mx-auto w-full p-2 lg:p-0 lg:w-1/2">
+      <div className="font-raleway print:font-sans container md:mx-auto w-full p-2 lg:p-0 lg:w-1/2">
         <Header />
         <Line />
         <WorkExperience />
