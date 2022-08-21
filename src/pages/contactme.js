@@ -18,3 +18,5 @@ function Works() {
 }
 
 export default Works;
+
+export { Head } from "../components/seo";

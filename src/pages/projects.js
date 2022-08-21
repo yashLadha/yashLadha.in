@@ -10,14 +10,7 @@ const projectCard = (project) => {
       target="_blank"
       rel="noreferrer nofollow"
     >
-      <div
-        className="rounded-lg transition-shadow ease-in-out duration-500
-    transition-background
-    transition-opacity
-    hover:bg-blue-100
-    hover:bg-opactiy-75
-    h-full rounded overflow-hidden shadow-md hover:shadow-xl mb-4"
-      >
+      <div className="rounded-lg ease-in-out duration-500 transition-background transition-opacity hover:bg-blue-100 hover:bg-opactiy-75 h-full overflow-hidden shadow-md hover:shadow-xl mb-4">
         <div className="px-6 py-4">
           <div className="font-bold text-xl mb-2 inline-flex">
             {project.name}
@@ -44,7 +37,7 @@ function Projects() {
   const { allPersonalProject } = useStaticQuery(query);
   return (
     <Layout>
-      <div className="grid p-3 md:p-0 md:grid-cols-2 lg:grid-cols-3 grid-flow-row auto-rows-max md:grid-cols-2 gap-3">
+      <div className="grid p-3 md:p-0 lg:grid-cols-3 grid-flow-row auto-rows-max md:grid-cols-2 gap-3">
         {allPersonalProject.nodes.map(projectCard)}
       </div>
       <div className="flex place-content-center mt-5">
@@ -76,3 +69,5 @@ const query = graphql`
     }
   }
 `;
+
+export { Head } from "../components/seo";

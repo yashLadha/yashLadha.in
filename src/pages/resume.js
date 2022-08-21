@@ -1,6 +1,5 @@
 import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
-import { Helmet } from "react-helmet";
 import Achievements from "../components/resume/resumeAchievements";
 import WorkExperience from "../components/resume/workExperience";
 import ResumeProjects from "../components/resume/resumeProjects";
@@ -34,9 +33,6 @@ function Header() {
 function Resume() {
   return (
     <>
-      <Helmet>
-        <meta name={`robots`} content={`noindex, nofollow`} />
-      </Helmet>
       <div className="font-raleway print:font-sans container md:mx-auto w-full p-2 lg:p-0 lg:w-1/2">
         <Header />
         <Line />
@@ -55,6 +51,10 @@ function Resume() {
 }
 
 export default Resume;
+
+export function Head() {
+  return <meta name={`robots`} content={`noindex, nofollow`} />;
+}
 
 const query = graphql`
   query HeaderDetails {

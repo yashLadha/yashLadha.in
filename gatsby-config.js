@@ -2,7 +2,6 @@ module.exports = {
   siteMetadata: {
     title: `Yash Ladha`,
     url: "https://yashladha.in",
-    titleTemplate: "%s",
     image: "/icon.png",
     siteUrl: `https://yashladha.in`,
     description: `Hi there, I am a Software Engineer in day and open source developer in night.`,
@@ -11,7 +10,6 @@ module.exports = {
   plugins: [
     "gatsby-plugin-postcss",
     "gatsby-plugin-image",
-    "gatsby-plugin-react-helmet",
     "gatsby-plugin-sitemap",
     {
       resolve: "gatsby-plugin-manifest",
@@ -35,5 +33,6 @@ module.exports = {
       },
       __key: "images",
     },
+    "gatsby-plugin-webpack-bundle-analyser-v2"
   ],
 };

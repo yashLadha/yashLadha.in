@@ -2,12 +2,10 @@ import React from 'react';
 import NavBar from './navbar';
 import Footer from './footer';
 import ProfileImage from './profileImage';
-import Seo from './seo';
 
 export default function Layout({ children }) {
   return (
     <>
-      <Seo />
       <div className="container font-raleway font-medium mx-auto sm:w-1/2">
         <ProfileImage />
         <NavBar />
