@@ -8,6 +8,7 @@ function ProfileImage() {
         <StaticImage
           className="object-contain mx-auto h-40 rounded-full z-10 shadow-2xl shadow-blue-500/60"
           layout="fixed"
+          loading="eager"
           src="../images/profile.jpeg"
           placeholder="blurred"
           width={160}
