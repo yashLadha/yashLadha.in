@@ -53,7 +53,12 @@ function Resume() {
 export default Resume;
 
 export function Head() {
-  return <meta name={`robots`} content={`noindex, nofollow`} />;
+  return (
+    <>
+      <title>Resume</title>
+      <meta name={`robots`} content={`noindex, nofollow`} />
+    </>
+  );
 }
 
 const query = graphql`

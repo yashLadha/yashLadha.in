@@ -14,7 +14,7 @@ const IndexPage = () => {
           <StyledLink text="BrowserStack" href="https://www.browserstack.com/" />.
           Along with working on my day job, I am also part of the team that
           maintains the{" "}
-          <StyledLink href="https://github.com/nodejs/node" text="NodeJS" /> core
+          <StyledLink href="https://github.com/nodejs/node" text="Node.js" /> core
           project.
         </p>
         <p className="mb-4 md:relative">

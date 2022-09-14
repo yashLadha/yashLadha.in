@@ -3,8 +3,8 @@ import { useStaticQuery, graphql } from "gatsby";
 
 function renderSkillLineItem({domain, values}) {
   return (
-    <li className="capitalize">
-      <b>{domain}</b>: {values.join(", ")}
+    <li>
+      <b className="capitalize">{domain}</b>: {values.join(", ")}
     </li>
   );
 }

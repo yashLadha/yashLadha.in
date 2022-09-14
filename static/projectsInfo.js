@@ -1,8 +1,8 @@
 const PROJECTS_INFO = [
   {
-    name: 'NodeJS',
+    name: 'Node.js',
     link: 'https://github.com/nodejs/node',
-    detail: 'Working as collaborator on the nodejs project. More than 70K+ stars on Github',
+    detail: 'Working as one of the maintiner on Node.js project, solves bug and enhancements for the runtime. More than 70K+ stars on Github',
     languages: ''
   },
   {

@@ -1,22 +1,26 @@
 {
   "languages": [
     "Javascript",
+    "Java",
     "Python",
     "Ruby",
-    "Java",
     "Rust",
     "C++",
     "C",
     "SQL",
+    "Golang",
     "Bash"
   ],
   "technologies": [
-    "NodeJS",
+    "Node.js",
     "React",
     "Redux",
     "Flutter",
     "Flask",
     "Firebase",
+    "Redis",
+    "Ruby on Rails",
+    "DynamoDB",
     "Django"
   ],
   "cloud": ["AWS", "Google Cloud"]
