@@ -6,10 +6,10 @@
     "to": "Present",
     "location": "Banglore, IN",
     "details": [
-      "Working with the UPI Platform team on different intiatives",
-      "Implemnted offline services that helped in reduction of infrastructure cost for the team by 80%",
+      "Working with the UPI Platform team on different initiatives",
+      "Implemented offline services that helped in reduction of infrastructure cost for the team by 80%",
       "Working on the real time dispute resolution platform for UPI payments on AmazonPay, which helped in reducing customer connects for pending transactions and better CX.",
-      "Implemented independent intiative to ease operation load by improving the monitoring of E-E services, leading to drop in High severity tickets by 60%."
+      "Implemented independent initiative to ease operation load by improving the monitoring of E-E services, leading to drop in High severity tickets by 60%."
     ]
   },
   {
@@ -46,7 +46,7 @@
     "details": [
       "Created platform to generate and customize badges for events.",
       "Integrated Cloud functions for automating tasks like sending notification, emails.",
-      "Added badge customization features and refactored backend for modularity following SOLID principles.",
+      "Added badge customisation features and refactored backend for modularity following SOLID principles.",
       "Created Admin interface and analytics dashboard for managing the site functionality."
     ]
   }
