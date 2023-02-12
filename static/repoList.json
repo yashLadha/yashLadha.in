@@ -42,5 +42,11 @@
     "htmlURL": "https://github.com/yashLadha/clean-dependa",
     "description": "Close your dependabot PRs in lazy way",
     "languages": [ "Rust" ]
+  },
+  {
+    "name": "sqsPeek",
+    "htmlURL": "https://github.com/yashLadha/sqsPeek",
+    "description": "Peek messages in your sqs elegantly",
+    "languages": ["Go"]
   }
 ]
