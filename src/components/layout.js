@@ -11,7 +11,7 @@ export default function Layout({ children }) {
         <NavBar />
       </div>
       <div className="w-full">
-        <div className="container font-raleway rounded-md border-2 border-blue-700 border-opacity-50 mx-auto p-4 lg:w-1/2 mt-2 py-6">
+        <div className="container shadow-lg font-raleway rounded-md border-2 border-blue-700 border-opacity-50 mx-auto p-4 lg:w-1/2 mt-2 py-6">
           {children}
         </div>
       </div>

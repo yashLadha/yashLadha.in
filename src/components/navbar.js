@@ -1,20 +1,28 @@
 import React from "react";
 
+export function NavBarComponent({children}) {
+  return (
+    <div className="capitalize transition duration-300 ease-in-out hover:text-blue-500 hover:font-bold hover:rounded-lg hover:shadow-lg text-blue-700 p-2 m-0 md:m-2">
+      {children}
+    </div>
+  )
+}
+
 function NavBar() {
   return (
     <div className="mx-auto w-full justify-center flex flex-row">
-      <div className="capitalize text-blue-700 p-2 m-0 md:m-2">
+      <NavBarComponent>
         <a href="/">About</a>
-      </div>
-      <div className="capitalize text-blue-700 p-2 m-0 md:m-2">
+      </NavBarComponent>
+      <NavBarComponent>
         <a href="/projects">Projects</a>
-      </div>
-      <div className="capitalize text-blue-700 p-2 m-0 md:m-2">
+      </NavBarComponent>
+      <NavBarComponent>
         <a href="https://blog.yashladha.in/blog" target="_blank" rel="noreferrer">Blog</a>
-      </div>
-      <div className="capitalize text-blue-700 p-2 m-0 md:m-2">
+      </NavBarComponent>
+      <NavBarComponent>
         <a href="/contactme">Contact Me</a>
-      </div>
+      </NavBarComponent>
     </div>
   );
 }
