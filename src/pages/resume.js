@@ -23,7 +23,7 @@ function Header() {
   return (
     <>
       <div className="text-center text-3xl pb-1">Yash Ladha</div>
-      <div className="text-center text-sm pb-1">
+      <div className="text-center text-xs pb-1">
         {allPersonalDetailType.nodes.map(renderHeaderDetail)}
       </div>
     </>
@@ -33,7 +33,7 @@ function Header() {
 function Resume() {
   return (
     <>
-      <div className="font-raleway print:font-sans container md:mx-auto w-full p-2 lg:p-0 lg:w-1/2">
+      <div className="font-raleway print:font-sans print:text-sm container md:mx-auto w-full p-2 lg:p-0 lg:w-1/2 leading-snug">
         <Header />
         <Line />
         <WorkExperience />

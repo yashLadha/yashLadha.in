@@ -9,7 +9,7 @@ function createJobDetail(jobDetail) {
   return (
     <div className="mb-2">
       <div className="flex justify-between">
-        <div className="font-semibold text-base">
+        <div className="font-semibold text-sm">
           {" "}
           {jobDetail.name} | {jobDetail.role}
         </div>
