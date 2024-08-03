@@ -8,20 +8,18 @@ const IndexPage = () => {
     <Layout>
       <div className="px-2 md:px-0 font-regular leading-relaxed">
         <p className="mb-4 md:relative">
-          Hi there 👋. I am a Software Engineer currently working with{" "}
-          <StyledLink text="Amazon 🚀" href="https://amazon.com" />, previously
-          was part of the rocket ship{" "}
-          <StyledLink
-            text="BrowserStack"
-            href="https://www.browserstack.com/"
-          />
-          .
+          Results-driven software developer with expertise in delivering
+          high-quality applications that meet business needs. Proven track
+          record of developing robust, scalable solutions through collaborative
+          projects and open-source initiatives.
         </p>
         <p className="mb-4 md:relative">
-          I specialize in crafting scalable solutions that optimize performance
-          and exceed expectations. In addition to my professional work, I actively contribute to
-          open-source projects, leveraging my skills to support and enhance the
-          broader developer community (<StyledLink href="https://github.com/nodejs/node" text="Node.js"/>).
+          As an experienced engineer, I have a proven track record of developing
+          highly scalable solutions that optimize performance and consistently
+          meet or exceed expectations. Alongside my professional
+          responsibilities, I actively contribute to open-source projects,
+          leveraging my technical expertise to support and enrich the broader
+          developer community.
         </p>
         <p className="mb-4 md:relative">
           You can check out my{" "}
@@ -32,8 +30,8 @@ const IndexPage = () => {
       </div>
     </Layout>
   );
-}
+};
 
-export default IndexPage
+export default IndexPage;
 
-export {Head} from '../components/seo';
+export { Head } from "../components/seo";

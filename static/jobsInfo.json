@@ -6,10 +6,10 @@
     "to": "Present",
     "location": "Banglore, IN",
     "details": [
-      "Working with the UPI Platform team on different initiatives",
-      "Implemented offline services that helped in reduction of infrastructure cost for the team by 80%",
-      "Working on the real time dispute resolution platform for UPI payments on AmazonPay, which helped in reducing customer connects for pending transactions and better CX.",
-      "Implemented independent initiative to ease operation load by improving the monitoring of E-E services, leading to drop in High severity tickets by 60%."
+      "I worked with the UPI Platform team on multiple initiatives that helped drive business growth and improve operational efficiency.",
+      "Implemented offline services that significantly reduced infrastructure costs by 80%, thereby optimizing resource allocation and improving overall financial health.",
+      "As part of a separate project, I developed and successfully deployed real-time dispute resolution capabilities for UPI payments on AmazonPay, resulting in reductions in customer inquiries by 70% related to pending transactions and substantially enhancing the overall customer experience.",
+      "Identified opportunities to streamline operations by improving monitoring of E2E services, which led to a notable decrease in high-severity tickets by 60%, thereby reducing the operational load and enhancing overall service delivery."
     ]
   },
   {
@@ -19,10 +19,10 @@
     "to": "Aug 2021",
     "location": "Mumbai, IN",
     "details": [
-      "Built integration with Puppeteer and Playwright in distributed DC setup on BrowserStack from ground up.",
-      "Created in-house framework for documentation which reduced the deploy cycle from 2-4 days to 10-15 minutes.",
-      "Individual Contributor and Owner of Screenshots and Responsive Product offering.",
-      "Built systems that serves more than 50+ million requests in a day to support testing at scale."
+      "In a distributed data center setup on BrowserStack, I built integrations with Puppeteer and Playwright from scratch, enabling seamless collaboration. This was an industry first project and didn't existed in the industry at that time.",
+      "To enhance efficiency, I created an internal framework for documentation that streamlined our deploy cycle, reducing it from 2-4 days to just 10-15 minutes.",
+      "As an individual contributor and owner of the Screenshots and Responsive Product offering, I took ownership of its development and maintenance.",
+      "By designing scalable systems, I successfully supported testing at scale, handling more than 50 million requests per day"
     ]
   },
   {
@@ -32,9 +32,9 @@
     "to": "April 2019",
     "location": "Gurugram, IN",
     "details": [
-      "Worked on the team responsible for creating the first EXIM (Export Import Module) in the company.",
-      "Created and Deployed serverless function to generate excel sheets and extensible for use-case in other projects as well.",
-      "Created application for the unified shipment tracking system from ground up."
+      "I worked on creating the first EXIM (Export Import) module, that helped the company successfuly execute the pilot run with client and step foot in the larger container tracking domain.",
+      "I founded an opportunity to develop a serverless function to generate excel sheets, which was not only useful but also scalable and extensible for use in other projects within the company.",
+      "I helped in building and deploying unified shipment tracking system project from scratch, I had the opportunity to define the application requirements and develop a comprehensive solution that met the needs of our customers."
     ]
   },
   {
@@ -44,10 +44,10 @@
     "to": "Aug 2018",
     "location": "Gurugram, IN",
     "details": [
-      "Created platform to generate and customize badges for events.",
-      "Integrated Cloud functions for automating tasks like sending notification, emails.",
-      "Added badge customisation features and refactored backend for modularity following SOLID principles.",
-      "Created Admin interface and analytics dashboard for managing the site functionality."
+      "I worked on the project to create a new feature that would allow users to generate and customize badges for events.",
+      "Developed and deployed the integration with Cloud functions into the system to automate some user-facing workflows.",
+      "Developed and deployed the badge customization features and refactored the backend to make it more modular, ensuring that it adhered to SOLID principles.",
+      "Worked on creating an Admin interface and analytics dashboard for managing site functionality."
     ]
   }
 ]
