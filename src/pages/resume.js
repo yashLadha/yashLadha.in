@@ -30,21 +30,25 @@ function Header() {
   );
 }
 
+const resumeSections = [
+  <WorkExperience />,
+  <Skills />,
+  <ResumeProjects />,
+  <Achievements />,
+  <Education />,
+];
+
 function Resume() {
   return (
     <>
       <div className="font-['Gill_Sans'] print:font-['Gill_Sans'] print:text-sm container md:mx-auto w-full p-2 lg:p-0 lg:w-1/2 leading-snug">
         <Header />
-        <Line />
-        <WorkExperience />
-        <Line />
-        <Skills />
-        <Line />
-        <ResumeProjects />
-        <Line />
-        <Achievements />
-        <Line />
-        <Education />
+        {resumeSections.map((section, index) => (
+          <div key={index}>
+            <Line />
+            {section}
+          </div>
+        ))}
       </div>
     </>
   );
