@@ -4,7 +4,7 @@ module.exports = {
     url: "https://yashladha.in",
     image: "/icon.png",
     siteUrl: `https://yashladha.in`,
-    description: `Hi there, I am a Software Engineer in day and open source developer in night.`,
+    description: `Experienced Software Engineer with expertise in full-stack development, backend systems, and emerging technologies. Passionate about creating innovative, scalable, and user-centric software solutions. Proven track record of delivering high-quality projects for clients across diverse industries.`,
     twitterUsername: `yashLadha_`,
   },
   plugins: [
