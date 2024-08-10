@@ -12,7 +12,7 @@ function renderProjects(projectInfo) {
 function ResumeProjects() {
   return (
     <div>
-      <div className="text-base font-light">Projects</div>
+      <div className="text-base">Projects</div>
       <ul className="list-disc list-inside text-sm leading-snug">
         {PROJECTS_INFO.map(renderProjects)}
       </ul>

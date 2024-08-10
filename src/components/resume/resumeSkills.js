@@ -13,7 +13,7 @@ function Skills() {
   const { allSkillType } = useStaticQuery(query);
   return (
     <div>
-      <div className="text-base font-light">Skills</div>
+      <div className="text-base">Skills</div>
       <ul className="list-disc list-inside text-sm leading-snug">
         {allSkillType.nodes.map(renderSkillLineItem)}
       </ul>

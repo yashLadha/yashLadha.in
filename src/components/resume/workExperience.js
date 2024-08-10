@@ -11,7 +11,7 @@ function createJobDetail(jobDetail) {
       <div className="flex justify-between">
         <div className="font-semibold text-sm">
           {" "}
-          {jobDetail.name} | {jobDetail.role}
+          {jobDetail.name} ({jobDetail.role})
         </div>
         <div className="italic text-xs">
           {jobDetail.from} - {jobDetail.to}
@@ -30,7 +30,7 @@ function WorkExperience() {
   const { allWorkExperienceType } = useStaticQuery(query);
   return (
     <div>
-      <div className="text-base font-light"> Work Experience </div>
+      <div className="text-base"> Work Experience </div>
       {allWorkExperienceType.nodes.map(createJobDetail)}
     </div>
   );

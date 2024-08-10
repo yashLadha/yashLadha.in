@@ -10,7 +10,7 @@ function Achievements() {
 
   return (
     <div>
-      <div className="text-base font-light">Achievements</div>
+      <div className="text-base">Achievements</div>
       <ul className="list-disc list-inside text-sm leading-snug">
         {allAchievmentType.edges[0].node.achievments.map(renderAchievements)}
       </ul>

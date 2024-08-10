@@ -19,7 +19,7 @@ function Education() {
   const { allEducationType } = useStaticQuery(query);
   return (
     <div>
-      <div className="text-base font-light">Education</div>
+      <div className="text-base">Education</div>
       <ul className="list-disc list-inside text-sm leading-snug">
         {allEducationType.nodes.map(renderEducationDetails)}
       </ul>

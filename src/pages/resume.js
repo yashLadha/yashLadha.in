@@ -33,7 +33,7 @@ function Header() {
 function Resume() {
   return (
     <>
-      <div className="font-raleway print:font-sans print:text-sm container md:mx-auto w-full p-2 lg:p-0 lg:w-1/2 leading-snug">
+      <div className="font-['Gill_Sans'] print:font-['Gill_Sans'] print:text-sm container md:mx-auto w-full p-2 lg:p-0 lg:w-1/2 leading-snug">
         <Header />
         <Line />
         <WorkExperience />
