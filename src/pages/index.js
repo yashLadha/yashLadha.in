@@ -2,7 +2,6 @@ import * as React from "react";
 import Layout from "../components/layout";
 import StyledLink from "../components/link";
 
-// markup
 const IndexPage = () => {
   return (
     <Layout>

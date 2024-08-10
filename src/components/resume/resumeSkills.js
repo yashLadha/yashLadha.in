@@ -1,10 +1,11 @@
 import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
+import BasicListSection from "../basic-list-section";
 
-function renderSkillLineItem({domain, values}) {
+function renderSkillLineItem({ domain, values }) {
   return (
     <li>
-      <b className="capitalize">{domain}</b>: {values.join(", ")}
+      <span className="capitalize font-semibold">{domain}</span> - {values.join(", ")}
     </li>
   );
 }
@@ -12,12 +13,9 @@ function renderSkillLineItem({domain, values}) {
 function Skills() {
   const { allSkillType } = useStaticQuery(query);
   return (
-    <div>
-      <div className="text-base">Skills</div>
-      <ul className="list-disc list-inside text-sm leading-snug">
-        {allSkillType.nodes.map(renderSkillLineItem)}
-      </ul>
-    </div>
+    <BasicListSection name="Skills">
+      {allSkillType.nodes.map(renderSkillLineItem)}
+    </BasicListSection>
   );
 }
 

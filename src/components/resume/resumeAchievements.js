@@ -1,5 +1,6 @@
 import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
+import BasicListSection from "../basic-list-section";
 
 function renderAchievements(achievement) {
   return <li>{achievement}</li>;
@@ -9,12 +10,9 @@ function Achievements() {
   const { allAchievmentType } = useStaticQuery(query);
 
   return (
-    <div>
-      <div className="text-base">Achievements</div>
-      <ul className="list-disc list-inside text-sm leading-snug">
-        {allAchievmentType.edges[0].node.achievments.map(renderAchievements)}
-      </ul>
-    </div>
+    <BasicListSection name="Achievements">
+      {allAchievmentType.edges[0].node.achievments.map(renderAchievements)}
+    </BasicListSection>
   );
 }
 

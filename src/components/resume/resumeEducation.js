@@ -1,5 +1,6 @@
 import React from "react";
 import { useStaticQuery, graphql } from "gatsby";
+import BasicListSection from "../basic-list-section";
 
 function renderEducationDetails(educationDetails) {
   return (
@@ -18,12 +19,9 @@ function renderEducationDetails(educationDetails) {
 function Education() {
   const { allEducationType } = useStaticQuery(query);
   return (
-    <div>
-      <div className="text-base">Education</div>
-      <ul className="list-disc list-inside text-sm leading-snug">
-        {allEducationType.nodes.map(renderEducationDetails)}
-      </ul>
-    </div>
+    <BasicListSection name="Education">
+      {allEducationType.nodes.map(renderEducationDetails)}
+    </BasicListSection>
   );
 }
 
