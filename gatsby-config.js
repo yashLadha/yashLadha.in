@@ -38,7 +38,7 @@ module.exports = {
       resolve: 'gatsby-plugin-web-font-loader',
       options: {
         google: {
-          families: ['Raleway:500,700']
+          families: ['Gill Sans:100,700']
         }
       }
     }
