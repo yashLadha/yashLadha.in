@@ -2,7 +2,7 @@ import React from "react";
 
 export function NavBarComponent({children}) {
   return (
-    <div className="capitalize transition duration-300 ease-in-out hover:text-blue-500 hover:font-bold text-blue-700 p-2 m-0 md:m-2">
+    <div className="capitalize transition duration-300 ease-in-out hover:text-blue-800 text-blue-500 p-2 m-0 md:m-2">
       {children}
     </div>
   )
