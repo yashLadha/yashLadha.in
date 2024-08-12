@@ -40,7 +40,7 @@ export default WorkExperience;
 
 const query = graphql`
   query WorkExperience {
-    allWorkExperienceType(sort: {fields: startValue, order: DESC}) {
+    allWorkExperienceType(sort: { startValue: DESC }) {
       nodes {
         id
         details
