@@ -1,0 +1,16 @@
+---
+import {Image} from "astro:assets";
+import profileImage from '../assets/profile.jpeg';
+---
+<div class="py-10">
+  <div class="md:p-4 relative z-0">
+    <Image
+      class="object-contain mx-auto h-40 rounded-full z-10 shadow-xl"
+      loading="eager"
+      src={profileImage}
+      width={160}
+      height={160}
+      alt="me"
+    />
+  </div>
+</div>

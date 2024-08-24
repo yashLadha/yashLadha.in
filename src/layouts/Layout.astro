@@ -1,0 +1,33 @@
+---
+import NavBar from "../components/NavBar.astro";
+import ProfileImage from "../components/ProfileImage.astro";
+import "@fontsource-variable/outfit";
+import Seo from "../components/Seo.astro";
+import siteMetadata from "../static/siteMetadata.json";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <Seo seo={siteMetadata} />
+  </head>
+  <body>
+    <div class="container font-medium mx-auto sm:w-1/2">
+      <ProfileImage />
+      <NavBar />
+    </div>
+    <div class="p-2 md:w-full">
+      <div
+        class="container shadow-lg rounded-md border-2 border-blue-700 border-opacity-50 md:mx-auto p-4 md:w-full xl:w-1/2 mt-2 py-6"
+      >
+        <slot />
+      </div>
+    </div>
+  </body>
+</html>
+
+<style is:global>
+  body {
+    font-family: "Outfit Variable", sans-serif;
+  }
+</style>

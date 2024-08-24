@@ -1,0 +1,13 @@
+---
+import ProjectCard from "../components/ProjectCard.astro";
+import Layout from "../layouts/Layout.astro";
+import ProjectInfo from "../static/repoList.json";
+---
+
+<Layout>
+  <main>
+      <div class="grid p-3 md:p-0 lg:grid-cols-3 grid-flow-row auto-rows-max md:grid-cols-2 gap-3">
+        {ProjectInfo.map(project => <ProjectCard project={project} />)}
+      </div>
+  </main>
+</Layout>

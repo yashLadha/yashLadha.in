@@ -1,0 +1,21 @@
+---
+interface Props {
+  href: string;
+  text: string;
+  isBlank?: boolean;
+}
+
+const { href, text, isBlank = false } = Astro.props;
+---
+
+{
+  isBlank ? (
+    <a href={href} target="_blank" rel="noreferrer" class="text-sky-800">
+      {text}
+    </a>
+  ) : (
+    <a href={href} class="text-sky-800">
+      {text}
+    </a>
+  )
+}

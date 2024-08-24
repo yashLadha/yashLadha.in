@@ -1,0 +1,36 @@
+---
+interface Props {
+  project: {
+    htmlURL: string;
+    name: string;
+    description: string;
+    languages: string[];
+  };
+}
+
+const { project } = Astro.props;
+---
+
+<a class="bg-gray-50" href={project.htmlURL} target="_blank" rel="noreferrer nofollow">
+  <div
+    class="rounded-lg transition ease-in-out duration-300 transition-background hover:bg-blue-200 hover:bg-opactiy-90 h-full overflow-hidden shadow-sm hover:shadow-lg mb-4"
+  >
+    <div class="px-6 py-4">
+      <div class="font-bold text-xl mb-2 inline-flex">
+        {project.name}
+      </div>
+      <p class="text-gray-700 font-light text-base">
+        {project.description}
+      </p>
+    </div>
+    <div class="px-6 pt-4 pb-2">
+      {
+        project.languages.map((lang) => (
+          <span class="inline-block bg-gray-200 rounded-full px-3 py-1 text-sm font-normal text-gray-700 mr-2 mb-2">
+            {lang}
+          </span>
+        ))
+      }
+    </div>
+  </div>
+</a>
