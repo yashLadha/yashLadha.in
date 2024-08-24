@@ -1,0 +1,30 @@
+---
+interface Props {
+  jobInfo: {
+    name: string;
+    role: string;
+    from: string;
+    to: string;
+    details: string[];
+  };
+}
+
+const { jobInfo } = Astro.props;
+---
+
+<div class="mb-2">
+  <div class="flex justify-between">
+    <div class="font-semibold text-sm">
+      {" "}
+      {jobInfo.name} ({jobInfo.role})
+    </div>
+    <div class="italic text-xs">
+      {jobInfo.from} - {jobInfo.to}
+    </div>
+  </div>
+  <div class="p-1">
+    <ul class="list-disc list-inside text-sm leading-tight">
+      {jobInfo.details.map((detail) => <li>{detail}</li>)}
+    </ul>
+  </div>
+</div>

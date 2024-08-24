@@ -1,0 +1,79 @@
+---
+import HeaderDetailInfo from "../components/resume/HeaderDetailInfo.astro";
+import JobInfo from "../components/resume/JobInfo.astro";
+import Line from "../components/resume/Line.astro";
+import ResumeListSection from "../components/resume/ResumeListSection.astro";
+import HeaderDetails from "../static/headerDetails.json";
+import JobsDetails from "../static/jobsInfo.json";
+import SkillDetails from "../static/skillsInfo.json";
+import ProjectsInfo from "../static/projectsInfo.json";
+import AchievementsInfo from "../static/achievmentsInfo.json";
+import EducationInfo from "../static/education.json";
+---
+
+<div class="print:text-sm container md:mx-auto w-full p-2 lg:p-0 lg:w-1/2 leading-snug">
+  <!-- Header Section -->
+  <div class="text-center text-3xl pb-1">Yash Ladha</div>
+  <div class="text-center text-xs pb-1">
+    {HeaderDetails.map((headerDetail) => <HeaderDetailInfo headerInfo={headerDetail} />)}
+  </div>
+
+  <Line />
+  <!-- Jobs Section  -->
+  <div>
+    <div class="text-base">Work Experience</div>
+    {JobsDetails.map((job) => <JobInfo jobInfo={job} />)}
+  </div>
+
+  <Line />
+  <!-- Skills Section -->
+  <ResumeListSection name="Skills">
+    {
+      Object.entries(SkillDetails).map(([key, value]) => (
+        <li>
+          {" "}
+          <span class="capitalize font-semibold">{key}</span> - {value.join(", ")}
+        </li>
+      ))
+    }
+  </ResumeListSection>
+
+  <Line />
+  <!-- Projects Section -->
+  <ResumeListSection name="Projects">
+    {
+      ProjectsInfo.map((project) => (
+        <li>
+          <a href={project.link} target="_blank" rel="noreferrer" class="font-semibold">
+            {project.name}
+          </a>{" "}
+          - {project.detail}
+        </li>
+      ))
+    }
+  </ResumeListSection>
+
+  <Line />
+  <!-- Achievements Section -->
+  <ResumeListSection name="Achievements">
+    {AchievementsInfo.map((info) => <li>{info}</li>)}
+  </ResumeListSection>
+
+  <Line />
+  <!-- Education Section -->
+  <ResumeListSection name="Education">
+    {
+      EducationInfo.map((education) => (
+        <div>
+          <div class="flex justify-between">
+            <div class="font-semibold text-base">
+              {education.name}, {education.course}
+            </div>
+            <div class="italic text-xs">CGPA: {education.grade}</div>
+          </div>
+          <div>{education.location}</div>
+        </div>
+      ))
+    }
+  </ResumeListSection>
+</div>

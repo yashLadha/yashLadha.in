@@ -1,0 +1,14 @@
+---
+interface Props {
+  name: string;
+}
+
+const { props } = Astro;
+---
+
+<div>
+  <div class="text-base">{props.name}</div>
+  <ul class="list-disc list-inside text-sm leading-snug">
+    <slot />
+  </ul>
+</div>
