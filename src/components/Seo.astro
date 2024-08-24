@@ -20,6 +20,7 @@ const { seo } = Astro.props;
 <title>{seo.title}</title>
 <meta name="description" content={seo.description} />
 <meta name="image" content={seo.image} />
+<link rel="icon" type="image/x-icon" href="/icon.png">
 
 {seo.url && <meta property="og:url" content={seo.url} />}
 
