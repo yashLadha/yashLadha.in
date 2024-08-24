@@ -11,6 +11,8 @@ interface Props {
 const { seo } = Astro.props;
 ---
 
+<!-- Sitemap generated file from @astrojs/sitemap -->
+<link rel="sitemap" href="/sitemap-index.xml" />
 <meta charset="utf-8" />
 <meta http-equiv="x-ua-compatible" content="ie=edge" /><meta
   name="viewport"
@@ -20,7 +22,7 @@ const { seo } = Astro.props;
 <title>{seo.title}</title>
 <meta name="description" content={seo.description} />
 <meta name="image" content={seo.image} />
-<link rel="icon" type="image/x-icon" href="/icon.png">
+<link rel="icon" type="image/x-icon" href="/icon.png" />
 
 {seo.url && <meta property="og:url" content={seo.url} />}
 
