@@ -2,11 +2,11 @@
 const defaultTheme = require("tailwindcss/defaultTheme");
 
 export default {
-    content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
-    theme: {
-        extend: {
-            sans: ["Outfit Variable", ...defaultTheme.fontFamily.sans],
-        },
+  content: ["./src/**/*.{astro,html,js,jsx,md,mdx,svelte,ts,tsx,vue}"],
+  theme: {
+    fontFamily: {
+      sans: ["Outfit Variable", ...defaultTheme.fontFamily.sans],
     },
-    plugins: [],
+  },
+  plugins: [],
 };
