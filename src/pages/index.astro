@@ -1,28 +1,30 @@
 ---
+import Seo from "../components/Seo.astro";
 import StyledLink from "../components/StyledLink.astro";
+import siteMetadata from "../static/siteMetadata.json";
 import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout>
-  <main>
-    <p class="mb-4 md:relative">
-      Results-driven software developer with expertise in delivering
-      high-quality applications that meet business needs. Proven track record of
-      developing robust, scalable solutions through collaborative projects and
-      open-source initiatives.
-    </p>
-    <p class="mb-4 md:relative">
-      As an experienced engineer, I have a proven track record of developing
-      highly scalable solutions that optimize performance and consistently meet
-      or exceed expectations. Alongside my professional responsibilities, I
-      actively contribute to open-source projects, leveraging my technical
-      expertise to support and enrich the broader developer community.
-    </p>
-    <p class="mb-4 md:relative">
-      You can check out my{" "}
-      <StyledLink isBlank={false} href="/projects" text="projects" /> and other open
-      source work on Github{" "}
-      <StyledLink href="https://github.com/yashLadha" text="@yashLadha" />.
-    </p>
-  </main>
+  <Seo slot="header" seo={siteMetadata} />
+  <div>
+    <main>
+      <p class="mb-4 md:relative">
+        Results-driven software developer with expertise in delivering high-quality applications that meet business
+        needs. Proven track record of developing robust, scalable solutions through collaborative projects and
+        open-source initiatives.
+      </p>
+      <p class="mb-4 md:relative">
+        As an experienced engineer, I have a proven track record of developing highly scalable solutions that optimize
+        performance and consistently meet or exceed expectations. Alongside my professional responsibilities, I actively
+        contribute to open-source projects, leveraging my technical expertise to support and enrich the broader
+        developer community.
+      </p>
+      <p class="mb-4 md:relative">
+        You can check out my{" "}
+        <StyledLink isBlank={false} href="/projects" text="projects" /> and other open source work on Github{" "}
+        <StyledLink href="https://github.com/yashLadha" text="@yashLadha" />.
+      </p>
+    </main>
+  </div>
 </Layout>

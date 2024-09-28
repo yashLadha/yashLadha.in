@@ -1,13 +1,16 @@
 ---
 import ProjectCard from "../components/ProjectCard.astro";
+import Seo from "../components/Seo.astro";
 import Layout from "../layouts/Layout.astro";
 import ProjectInfo from "../static/repoList.json";
+import siteMetadata from "../static/siteMetadata.json";
 ---
 
 <Layout>
+  <Seo slot="header" seo={siteMetadata} />
   <main>
-      <div class="grid p-3 md:p-0 lg:grid-cols-3 grid-flow-row auto-rows-max md:grid-cols-2 gap-3">
-        {ProjectInfo.map(project => <ProjectCard project={project} />)}
-      </div>
+    <div class="grid p-3 md:p-0 lg:grid-cols-3 grid-flow-row auto-rows-max md:grid-cols-2 gap-3">
+      {ProjectInfo.map((project) => <ProjectCard project={project} />)}
+    </div>
   </main>
 </Layout>

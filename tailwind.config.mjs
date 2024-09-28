@@ -1,4 +1,3 @@
-/** @type {import('tailwindcss').Config} */
 const defaultTheme = require("tailwindcss/defaultTheme");
 
 export default {
@@ -6,6 +5,7 @@ export default {
   theme: {
     fontFamily: {
       sans: ["Assistant Variable", ...defaultTheme.fontFamily.sans],
+      source: defaultTheme.fontFamily.mono,
     },
   },
   plugins: [],

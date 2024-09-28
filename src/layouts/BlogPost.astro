@@ -1,0 +1,74 @@
+---
+import Seo from "../components/Seo.astro";
+import { type Post, type PostIndex } from "../types/Post";
+import { getNextAndPrevBlogs } from "../utils/blogPosts";
+import NextLinks from "../components/NextLinks.astro";
+import Layout from "./Layout.astro";
+
+export interface Props {
+  content: Post;
+}
+
+const {
+  content: { title, description, pubDate, updatedDate, heroImage, disableNextBlogLinks = false },
+} = Astro.props as Props;
+
+let nextPost: PostIndex;
+let prevPost: PostIndex;
+
+if (!disableNextBlogLinks) {
+  const posts = (await Astro.glob("../pages/blog/*.{md,mdx}"))
+    .sort((a, b) => new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf())
+    .map(({ frontmatter: { title, pubDate, updatedDate, heroImage }, url }) => ({
+      title,
+      pubDate,
+      updatedDate,
+      heroImage,
+      url,
+    }));
+
+  const nextAndPrevBlogs = getNextAndPrevBlogs(posts, title);
+  nextPost = nextAndPrevBlogs.nextPost;
+  prevPost = nextAndPrevBlogs.prevPost;
+}
+---
+
+<Layout>
+  <Seo
+    slot="header"
+    seo={{
+      title,
+      description,
+      url: "demo",
+    }}
+  />
+  <div>
+    <article class="p-4">
+      {heroImage && <img class="bg-clip-border rounded-lg" width={720} height={360} src={heroImage} alt="" />}
+      <h1 class="title">{title}</h1>
+      {pubDate && <time>{pubDate}</time>}
+      {
+        updatedDate && (
+          <div>
+            Last updated on <time>{updatedDate}</time>
+          </div>
+        )
+      }
+      <hr />
+      <slot />
+    </article>
+    <div class="my-4 flex">
+      <NextLinks post={prevPost && { ...prevPost, direction: "left" }} />
+      <div class="flex-auto"></div>
+      <NextLinks post={nextPost && { ...nextPost, direction: "right" }} />
+    </div>
+    <script is:inline>
+      var talkyardServerUrl = "https://site-5bc3jqwjp6.talkyard.net";
+    </script>
+    <script is:inline async defer src="https://c1.ty-cdn.net/-/talkyard-comments.min.js"></script>
+    <!-- You can specify a per page discussion id on the next line, if your URLs might change. -->
+    <div class="talkyard-comments" data-discussion-id={title} style="margin-top: 45px;">
+      <noscript>Please enable Javascript to view comments.</noscript>
+    </div>
+  </div>
+</Layout>

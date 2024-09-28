@@ -1,0 +1,40 @@
+---
+import Seo from "../components/Seo.astro";
+import Layout from "../layouts/Layout.astro";
+
+// Use Astro.glob() to fetch all posts, and then sort them by date.
+const posts = (await Astro.glob("./blog/*.{md,mdx}")).sort(
+  (a, b) => new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf()
+);
+---
+
+<Layout>
+  <Seo
+    slot="header"
+    seo={{
+      title: "blog",
+      description: "blog description",
+      url: "as",
+    }}
+  />
+  <div>
+    <content class="mx-auto">
+      <ul>
+        {
+          posts.map((post, idx) => (
+            <div class="transition ease-in-out delay-300 duration-800 group">
+              <li class="my-2 transition-shadow hover:shadow-md p-4 hover:rounded-lg">
+                <div>
+                  <a href={post.url} class="text-blue-400 group-hover:text-blue-800">
+                    <h3>{post.frontmatter.title}</h3>
+                    <p class="text-gray-800 group-hover:text-black">{post.frontmatter.description}</p>
+                  </a>
+                </div>
+              </li>
+            </div>
+          ))
+        }
+      </ul>
+    </content>
+  </div>
+</Layout>

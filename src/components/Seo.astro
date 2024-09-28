@@ -3,7 +3,7 @@ interface Props {
   seo: {
     title: string;
     description: string;
-    image: string;
+    image?: string;
     url: string;
   };
 }
@@ -21,7 +21,7 @@ const { seo } = Astro.props;
 <meta name="theme-color" content="#000000" />
 <title>{seo.title}</title>
 <meta name="description" content={seo.description} />
-<meta name="image" content={seo.image} />
+{seo.image && <meta name="image" content={seo.image} />}
 <link rel="icon" type="image/x-icon" href="/icon.png" />
 
 {seo.url && <meta property="og:url" content={seo.url} />}
