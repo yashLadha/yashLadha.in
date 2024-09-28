@@ -26,18 +26,6 @@
     ]
   },
   {
-    "name": "Shipsy",
-    "role": "Software Developer Intern",
-    "from": "Jan 2019",
-    "to": "April 2019",
-    "location": "Gurugram, IN",
-    "details": [
-      "I worked on creating the first EXIM (Export Import) module, that helped the company successfuly execute the pilot run with client and step foot in the larger container tracking domain.",
-      "I founded an opportunity to develop a serverless function to generate excel sheets, which was not only useful but also scalable and extensible for use in other projects within the company.",
-      "I helped in building and deploying unified shipment tracking system project from scratch, I had the opportunity to define the application requirements and develop a comprehensive solution that met the needs of our customers."
-    ]
-  },
-  {
     "name": "Google",
     "role": "Google Summer of Code",
     "from": "May 2018",

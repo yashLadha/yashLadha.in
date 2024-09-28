@@ -7,8 +7,8 @@ const { props } = Astro;
 ---
 
 <div>
-  <div class="text-base">{props.name}</div>
-  <ul class="list-disc list-inside text-sm leading-snug">
+  <div class="text-xl font-bold">{props.name}</div>
+  <ul class="list-disc list-inside text-sm leading-tight">
     <slot />
   </ul>
 </div>

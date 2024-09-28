@@ -13,6 +13,7 @@
     "@astrojs/check": "^0.9.3",
     "@astrojs/sitemap": "^3.1.6",
     "@astrojs/tailwind": "^5.1.1",
+    "@fontsource-variable/assistant": "^5.1.0",
     "astro": "^4.15.8",
     "prettier": "^3.3.3",
     "prettier-plugin-astro": "^0.14.1",
