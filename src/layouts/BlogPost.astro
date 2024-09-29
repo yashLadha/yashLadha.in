@@ -13,8 +13,8 @@ const {
   content: { title, description, pubDate, updatedDate, heroImage, disableNextBlogLinks = false },
 } = Astro.props as Props;
 
-let nextPost: PostIndex;
-let prevPost: PostIndex;
+let nextPost: PostIndex | undefined;
+let prevPost: PostIndex | undefined;
 
 if (!disableNextBlogLinks) {
   const posts = (await Astro.glob("../pages/blog/*.{md,mdx}"))

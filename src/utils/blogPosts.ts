@@ -1,14 +1,14 @@
-import { PostIndex } from "../types/Post";
+import { type PostIndex } from "../types/Post";
 
 export function getNextAndPrevBlogs(posts: Array<PostIndex>, title: String) {
-  let prevPost: PostIndex;
-  let nextPost: PostIndex;
-  for (let idx = 0; idx < posts.length; ++idx) {
-    prevPost = posts[idx + 1];
-    if (posts[idx].title === title) {
-      break;
+    let prevPost: PostIndex | undefined;
+    let nextPost: PostIndex | undefined;
+    for (let idx = 0; idx < posts.length; ++idx) {
+        prevPost = posts[idx + 1];
+        if (posts[idx].title === title) {
+            break;
+        }
+        nextPost = posts[idx];
     }
-    nextPost = posts[idx];
-  }
-  return { nextPost, prevPost };
+    return { nextPost, prevPost };
 }
