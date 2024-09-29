@@ -8,6 +8,9 @@ export default defineConfig({
   site: "https://yashladha.in",
   prefetch: true,
   trailingSlash: "never",
+  build: {
+    format: "file", // Fix trailing slash never in production builds
+  },
   integrations: [
     tailwind(),
     sitemap({
