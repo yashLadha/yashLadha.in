@@ -10,6 +10,6 @@ const defaultLinkStyle =
 const linkStyle = cssStyles || defaultLinkStyle;
 ---
 
-<a href={link} class={linkStyle}>
+<a href={link} data-astro-prefetch class={linkStyle}>
   <slot />
 </a>
