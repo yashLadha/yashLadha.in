@@ -6,7 +6,7 @@ interface Props {
 
 const { link, cssStyles } = Astro.props;
 const defaultLinkStyle =
-  "capitalize transition font-bold duration-300 p-2 ease-in-out hover:bg-gray-200 flex self-center hover:underline rounded-md text-black";
+  "capitalize transition font-bold duration-300 p-2 ease-in-out hover:bg-gray-200 hidden md:block self-center hover:underline rounded-md text-black";
 const linkStyle = cssStyles || defaultLinkStyle;
 ---
 

@@ -1,13 +1,45 @@
 ---
 import NavBarComponent from "./NavBarComponent.astro";
+
+const hiddenNavBarStyle = "text-black hover:underline hover:bg-gray-200 font-bold p-2 rounded-md";
 ---
 
-<div class="mx-auto w-full justify-center flex flex-row items-stretch gap-4 my-1">
-  <NavBarComponent link="/" cssStyles="font-bold self-center text-xl flex text-black p-2 capitalize hover:underline">
-    Yash Ladha
-  </NavBarComponent>
-  <div class="flex-1"></div>
-  <NavBarComponent link="/projects"> Projects </NavBarComponent>
-  <NavBarComponent link="/blog"> Blog </NavBarComponent>
-  <NavBarComponent link="/contactme">Collaborate</NavBarComponent>
+<div class="relative w-full">
+  <div class="mx-auto w-full justify-center flex flex-row items-stretch gap-4 my-1">
+    <NavBarComponent link="/" cssStyles="font-bold self-center text-xl flex text-black p-2 capitalize hover:underline">
+      Yash Ladha
+    </NavBarComponent>
+    <div class="flex-1"></div>
+    <button class="block md:hidden hover:bg-gray-200 p-2 rounded-md" data-navbar-button>
+      <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"></path>
+      </svg>
+    </button>
+    <NavBarComponent link="/projects"> Projects </NavBarComponent>
+    <NavBarComponent link="/blog"> Blog </NavBarComponent>
+    <NavBarComponent link="/contactme">Collaborate</NavBarComponent>
+  </div>
+
+  <div
+    class="md:hidden absolute left-0 right-0 shadow-md bg-white flex flex-col items-stretch gap-y-2 p-2 transition-all ease-in-out"
+    data-hidden-navbar
+  >
+    <NavBarComponent link="/projects" cssStyles={hiddenNavBarStyle}> Projects </NavBarComponent>
+    <NavBarComponent link="/blog" cssStyles={hiddenNavBarStyle}> Blog </NavBarComponent>
+    <NavBarComponent link="/contactme" cssStyles={hiddenNavBarStyle}>Collaborate</NavBarComponent>
+  </div>
 </div>
+<script>
+  const button = document.querySelector("[data-navbar-button]");
+  const hiddenNavBar = document.querySelector("[data-hidden-navbar]")!!;
+
+  hiddenNavBar.classList.add("hidden");
+
+  button?.addEventListener("click", () => {
+    if (hiddenNavBar.classList.contains("hidden")) {
+      hiddenNavBar.classList.remove("hidden");
+    } else {
+      hiddenNavBar.classList.add("hidden");
+    }
+  });
+</script>
