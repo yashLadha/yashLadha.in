@@ -17,20 +17,16 @@ const posts = (await Astro.glob("./blog/*.{md,mdx}")).sort(
       url: "as",
     }}
   />
-  <div>
-    <content class="mx-auto">
+  <div class="p-2">
+    <content>
       <ul>
         {
           posts.map((post, idx) => (
-            <div class="transition ease-in-out delay-300 duration-800 group">
-              <li class="my-2 transition-shadow hover:shadow-md p-4 hover:rounded-lg">
-                <div>
-                  <a href={post.url} class="text-blue-400 group-hover:text-blue-800">
-                    <h3>{post.frontmatter.title}</h3>
-                    <p class="text-gray-800 group-hover:text-black">{post.frontmatter.description}</p>
-                  </a>
-                </div>
-              </li>
+            <div>
+              <a href={post.url} class="transition group p-2 hover:rounded-lg text-blue-400 hover:text-blue-800">
+                <h3 class="group-hover:underline">{post.frontmatter.title}</h3>
+                <p class="text-gray-800 group-hover:text-black">{post.frontmatter.description}</p>
+              </a>
             </div>
           ))
         }

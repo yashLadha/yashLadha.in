@@ -2,17 +2,12 @@
 import NavBarComponent from "./NavBarComponent.astro";
 ---
 
-<div class="mx-auto w-full justify-center flex flex-row">
-  <NavBarComponent>
-    <a href="/">About</a>
+<div class="mx-auto w-full justify-center flex flex-row items-stretch gap-4 my-1">
+  <NavBarComponent link="/" cssStyles="font-bold self-center text-xl flex text-black p-2 capitalize hover:underline">
+    Yash Ladha
   </NavBarComponent>
-  <NavBarComponent>
-    <a href="/projects">Projects</a>
-  </NavBarComponent>
-  <NavBarComponent>
-    <a href="/blog">Blog</a>
-  </NavBarComponent>
-  <NavBarComponent>
-    <a href="/contactme">Contact Me</a>
-  </NavBarComponent>
+  <div class="flex-1"></div>
+  <NavBarComponent link="/projects"> Projects </NavBarComponent>
+  <NavBarComponent link="/blog"> Blog </NavBarComponent>
+  <NavBarComponent link="/contactme">Collaborate</NavBarComponent>
 </div>

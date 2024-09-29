@@ -1,5 +1,15 @@
-<div
-  class="capitalize transition duration-300 ease-in-out hover:text-blue-800 hover:bg-gray-300 hover:underline rounded-md text-blue-500 p-2 m-0 md:m-2"
->
+---
+interface Props {
+  link: string;
+  cssStyles?: string;
+}
+
+const { link, cssStyles } = Astro.props;
+const defaultLinkStyle =
+  "capitalize transition font-bold duration-300 p-2 ease-in-out hover:bg-gray-200 flex self-center hover:underline rounded-md text-black";
+const linkStyle = cssStyles || defaultLinkStyle;
+---
+
+<a href={link} class={linkStyle}>
   <slot />
-</div>
+</a>
