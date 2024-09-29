@@ -7,6 +7,7 @@ import sitemap from "@astrojs/sitemap";
 export default defineConfig({
   site: "https://yashladha.in",
   prefetch: true,
+  trailingSlash: "never",
   integrations: [
     tailwind(),
     sitemap({
