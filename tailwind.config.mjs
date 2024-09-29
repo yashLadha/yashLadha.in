@@ -5,7 +5,7 @@ export default {
   theme: {
     fontFamily: {
       sans: ["Assistant Variable", ...defaultTheme.fontFamily.sans],
-      source: defaultTheme.fontFamily.mono,
+      source: ["Source Code Pro Variable", ...defaultTheme.fontFamily.mono],
     },
   },
   plugins: [],
