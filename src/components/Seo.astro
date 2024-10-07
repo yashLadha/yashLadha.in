@@ -11,6 +11,11 @@ interface Props {
 const { seo } = Astro.props;
 ---
 
+<link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+<link rel="manifest" href="/site.webmanifest" />
+
 <!-- Sitemap generated file from @astrojs/sitemap -->
 <link rel="sitemap" href="/sitemap-index.xml" />
 <meta charset="utf-8" />
@@ -22,7 +27,6 @@ const { seo } = Astro.props;
 <title>{seo.title}</title>
 <meta name="description" content={seo.description} />
 {seo.image && <meta name="image" content={seo.image} />}
-<link rel="icon" type="image/x-icon" href="/icon.png" />
 
 {seo.url && <meta property="og:url" content={seo.url} />}
 
