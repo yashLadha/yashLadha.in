@@ -1,7 +1,7 @@
 ---
 layout: "../../layouts/BlogPost.astro"
-title: "Personal Dev Environment using Docker and Neovim"
-description: "Achieve idempotent and flexible dev environment using docker and neovim"
+title: "Personal Development Environment using Docker and Neovim"
+description: "Discover how to set up a consistent and efficient personal development environment using Docker and Neovim. Learn to overcome environment issues and leverage containerization and a preferred code editor for a seamless coding experience."
 pubDate: "Sep 09 2022"
 ---
 
