@@ -61,13 +61,5 @@ if (!disableNextBlogLinks) {
       <div class="flex-auto"></div>
       <NextLinks post={nextPost && { ...nextPost, direction: "right" }} />
     </div>
-    <script is:inline>
-      var talkyardServerUrl = "https://site-5bc3jqwjp6.talkyard.net";
-    </script>
-    <script is:inline async defer src="https://c1.ty-cdn.net/-/talkyard-comments.min.js"></script>
-    <!-- You can specify a per page discussion id on the next line, if your URLs might change. -->
-    <div class="talkyard-comments" data-discussion-id={title} style="margin-top: 45px;">
-      <noscript>Please enable Javascript to view comments.</noscript>
-    </div>
   </div>
 </Layout>

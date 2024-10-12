@@ -5,9 +5,10 @@ description: "Discover how to set up a consistent and efficient personal develop
 pubDate: "Sep 09 2022"
 ---
 
-On Mac, I ran into an issue with `bits/stdc++.h` not being natively available. To fix it, I'd have to use awkward workarounds like copying or symlinking the file - it got the job done, but wasn't ideal.
+It is not very uncommon that we move to a new development environment and do not see the necessary build tools and config present
+for our needs. One such case is when I got handed over a Mac and when I tried to compile my competitive programming template, I ran into an issue with `bits/stdc++.h` not being available. To fix it, I'd have to use awkward workarounds like copying or symlinking the file. Though it got the job done, but it wasn't an ideal solution.
 
-I've noticed many inconsistencies when developing on an environment that isn't consistent. To work around this, I started using VSCode's Remote Docker extension, which lets me access and edit files in any Docker container from within the editor. It's really convenient! As someone who prefers Neovim for daily use, I thought it would be awesome to bring a similar experience to my go-to editor.
+I've noticed many inconsistencies when developing on an environment that isn't consistent. To work around this, I started using VSCode's Remote Docker extension, which allow access to edit files in any Docker container from within the comfort of your editor. It's really convenient!!! As someone who prefers Neovim for daily use, I thought it would be awesome to bring a similar experience to my go-to editor **Neovim**.
 
 > ### How to achieve this?
 >
@@ -15,20 +16,22 @@ I've noticed many inconsistencies when developing on an environment that isn't c
 
 <img class="bg-clip-border rounded-lg" width="720" height="360" src="/blog-assets/neovim-blog-pde/container-explanation.png" />
 
-### Step 1: Select Appropriate Image for use
+### Step 1: Select Appropriate Docker Image for Usage
 
-First, pick an image for your dev container - popular options are standard Linux choices like Ubuntu or Alpine. We'll stick with Ubuntu here since it includes everything needed for a competitive coding setup.
+First, select an image for the Docker container - popular options are standard Linux choices like Ubuntu or Alpine. We'll stick with Ubuntu because it includes everything needed for a normal competitive programming setup.
 
-After we have selected the image, let's create a `Dockerfile` in preferred directory of your choice. Update the contents of `Dockerfile` with following content.
+After we have selected the image, let's create a `Dockerfile`. Update the contents of `Dockerfile` with following content.
+
 ```docker
 # Dockerfile
 FROM ubuntu:18.04
 ```
 
 
-### Step 2: Install necessary dependencies
+### Step 2: Install the necessary dependencies
 
-At this point, the container only contains the image. For competitive coding, we require to install some other necessary dependencies like compiler (clang), LSP for sweet auto-completion and neovim for editing.
+At this point, the Docker container only has default depepndencies that came built-in with the Docker image.
+For competitive programming, we need some additional dependencies to install like compiler (clang), LSP server (for sweet auto-completion) and neovim (editor of choice).
 
 Append the following commands in the `Dockerfile`.
 
@@ -72,7 +75,9 @@ RUN apt-get update && apt-get install -y \
 RUN apt-get update && apt-get install -y python3.6 git locales
 ```
 
-Now you can build the `Dockerfile` using the following command. You can execute this in terminal of your choice.
+Now let's build the `Dockerfile` using the following command. You can execute execute the following on command line. It will build
+a docker image with tag `competitive`, extending the base image of `Ubuntu`. Once this command get's completed, we can use this image
+to create Docker containers.
 
 ```bash
 # Make sure to be in the same directory as the `Dockerfile`.
@@ -82,11 +87,11 @@ docker build -t competitive .
 
 ### Step 3: Mount the directories
 
-Your environment is ready for usage, only thing remaining now is to mount the file system to container so that we can share the output file generated inside the container to the host machine.
+Now the Docker image is ready for usage. It's time to run the container and mount the needed directories. This is needed so that output of program inside the Docker container can be used outside the Docker container a.k.a host machine.
 
 To perform this, we can use [`volumes`](https://docs.docker.com/storage/volumes/) to attach directories from the host system to the Docker container.
 
-This can be done via the following command, which will run the container from `competitive` image.
+This can be done via the following command, which will run a Docker container from `competitive` image.
 
 ```bash
 docker run \
@@ -101,8 +106,10 @@ operating system to the Docker container.
 
 ### Step 4: Ready
 
-Now that the setup is almost done, you can `exec` into the container and start working on the files. You will get the exact
-libs for work which you require from the comfort of the different host operating system.
+Now that our container is also running, we can `exec` into the container and start working on the files.
+
+Since this `competitive` image extends the `Ubuntu` Docker image, we will essentially get all the libraries that are present in a
+fresh Ubuntu box installation.
 
 ```bash
 docker exec -it competitive bash
@@ -110,14 +117,13 @@ docker exec -it competitive bash
 
 ### Gotcha
 
-When you restart the system, Docker containers will be stopped. You need to explicitly start the container
-using container id next time.
+When we restart the system, Docker containers will be stopped. If we need to use the container again, then we need to explicitly start the container using container id next time.
 
-To solve this repetitive action, I created a small script to find the container with the name `competitive` and
-start the container if ti is not already present.
+To solve this repetitive action, We can use the following small script to find the container with the name `competitive` and
+start the container if it is not already present.
 
 ```bash
-#!/bin/sh
+#!/bin/bash
 
 containerId=`docker ps -a -f 'name=competitive' --format "{{.ID}}"`
 if [ ! -z "$containerId" ]; then
@@ -136,7 +142,6 @@ echo "Starting container"
 docker exec -it competitive bash
 ```
 
-In the above snippet, we are first checking if there is any container with the name _competitive_. If there is, then it fetches the
-container ID and starts it, else it creates a new container and `exec` into it.
+In the above snippet, we are first checking if there is any Docker container with the name `competitive`. If we found one, then it fetches the container ID and starts the Docker container, else it creates a new Docker container and `exec` into it.
 
-I had a great time exploring [`docker`](https://www.docker.com/) and what we can achieve via some simple scripts.
+I had a great time exploring [`docker`](https://www.docker.com/) and what we can achieve with it, to improve the Developer Experience.
