@@ -1,7 +1,11 @@
 {
   "name": "personal-website",
   "type": "module",
-  "version": "0.0.1",
+  "author": {
+    "name": "Yash Ladha",
+    "email": "admin@yashladha.in"
+  },
+  "version": "1.0.0",
   "scripts": {
     "dev": "astro dev",
     "start": "astro dev",
