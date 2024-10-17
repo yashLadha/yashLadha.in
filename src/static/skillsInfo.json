@@ -1,7 +1,15 @@
 {
   "languages": ["Python", "Golang", "Java", "Typescript", "Javascript", "Ruby"],
-  "backend technologies": ["Flask", "Django", "Golang", "Spring Boot", "Express.js", "Ruby on Rails"],
+  "backend technologies": [
+    "Flask",
+    "Django",
+    "Golang",
+    "Spring Boot",
+    "Express.js",
+    "Ruby on Rails"
+  ],
   "frontend technologies": ["React", "Redux", "Astro", "Remix"],
   "databases": ["MySQL", "Postgresql", "DynamoDB", "Redis"],
-  "cloud": ["AWS", "Google Cloud"]
+  "cloud": ["AWS", "Google Cloud"],
+  "domains": ["Distributed Systems", "MicroServices", "SOA", "REST"]
 }
