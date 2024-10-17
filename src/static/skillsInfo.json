@@ -1,27 +1,7 @@
 {
-  "languages": [
-    "Javascript",
-    "Java",
-    "Python",
-    "Ruby",
-    "Rust",
-    "C++",
-    "C",
-    "SQL",
-    "Golang",
-    "Bash"
-  ],
-  "technologies": [
-    "Node.js",
-    "React",
-    "Redux",
-    "Flutter",
-    "Flask",
-    "Firebase",
-    "Redis",
-    "Ruby on Rails",
-    "DynamoDB",
-    "Django"
-  ],
+  "languages": ["Python", "Golang", "Java", "Typescript", "Javascript", "Ruby"],
+  "backend technologies": ["Flask", "Django", "Golang", "Spring Boot", "Express.js", "Ruby on Rails"],
+  "frontend technologies": ["React", "Redux", "Astro", "Remix"],
+  "databases": ["MySQL", "Postgresql", "DynamoDB", "Redis"],
   "cloud": ["AWS", "Google Cloud"]
 }

@@ -6,10 +6,10 @@
     "to": "Present",
     "location": "Banglore, IN",
     "details": [
-      "I worked with the UPI Platform team on multiple initiatives that helped drive business growth and improve operational efficiency.",
-      "Implemented offline services that significantly reduced infrastructure costs by 80%, thereby optimizing resource allocation and improving overall financial health.",
-      "As part of a separate project, I developed and successfully deployed real-time dispute resolution capabilities for UPI payments on AmazonPay, resulting in reductions in customer inquiries by 70% related to pending transactions and substantially enhancing the overall customer experience.",
-      "Identified opportunities to streamline operations by improving monitoring of E2E services, which led to a notable decrease in high-severity tickets by 60%, thereby reducing the operational load and enhancing overall service delivery."
+      "I am working with UPI Platform team on multiple initiatives that are helping drive business growth and improve operational efficiency.",
+      "Implemented offline services that significantly reduced infrastructure costs by 80%, thereby optimizing resource allocation and improving overall cost.",
+      "Developed and deployed a real-time dispute resolution capabilities for UPI payments on AmazonPay, resulting in reductions in customer inquiries by 70% related to pending transactions.",
+      "Identified opportunities to streamline operational excellence by improving monitoring of E2E services, which led to a notable decrease in high-severity tickets by 60%."
     ]
   },
   {
@@ -19,10 +19,10 @@
     "to": "Aug 2021",
     "location": "Mumbai, IN",
     "details": [
-      "In a distributed data center setup on BrowserStack, I built integrations with Puppeteer and Playwright from scratch, enabling seamless collaboration. This was an industry first project and didn't existed in the industry at that time.",
-      "To enhance efficiency, I created an internal framework for documentation that streamlined our deploy cycle, reducing it from 2-4 days to just 10-15 minutes.",
-      "As an individual contributor and owner of the Screenshots and Responsive Product offering, I took ownership of its development and maintenance.",
-      "By designing scalable systems, I successfully supported testing at scale, handling more than 50 million requests per day"
+      "I built industry first integrations with Puppeteer and Playwright on Grid setup.",
+      "To enhance efficiency of product managers, I created an internal framework for documentation that reduced the time to ship from 2 days to just 15 minutes.",
+      "Acted as an individual contributor and owner of the Screenshots and Responsive Product offering, was handling the development and maintenance for offering.",
+      "Designed and deployed scalable system that were handling more than 50 million requests per day."
     ]
   },
   {

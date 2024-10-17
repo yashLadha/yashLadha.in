@@ -22,9 +22,15 @@ const { jobInfo } = Astro.props;
       {jobInfo.from} - {jobInfo.to}
     </div>
   </div>
-  <div class="p-1">
-    <ul class="list-disc list-inside text-sm leading-tight">
-      {jobInfo.details.map((detail) => <li>{detail}</li>)}
+  <div>
+    <ul class="list-none text-sm leading-tight">
+      {
+        jobInfo.details.map((detail) => (
+          <li>
+            <span>{detail}</span>
+          </li>
+        ))
+      }
     </ul>
   </div>
 </div>

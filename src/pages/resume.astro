@@ -19,7 +19,7 @@ import "@fontsource-variable/assistant";
     <meta name="robots" content="noindex" />
   </head>
   <body>
-    <div class="print:text-sm md:mx-auto w-full lg:w-1/2">
+    <div class="print:text-sm lg:mx-auto w-full lg:w-1/2">
       <!-- Header Section -->
       <div class="text-center text-3xl pb-1">Yash Ladha</div>
       <div class="text-center text-xs pb-1">
@@ -27,8 +27,8 @@ import "@fontsource-variable/assistant";
       </div>
 
       <Line />
-      <div class="grid gap-x-10 grid-cols-4">
-        <div>
+      <div class="grid gap-x-4 grid-cols-8">
+        <div class="col-span-2">
           <!-- Education Section -->
           <ResumeListSection name="Education">
             {
@@ -59,11 +59,17 @@ import "@fontsource-variable/assistant";
           <br />
           <!-- Achievements Section -->
           <ResumeListSection name="Achievements">
-            {AchievementsInfo.map((info) => <li class="text-sm">{info}</li>)}
+            {
+              AchievementsInfo.map((info) => (
+                <li class="text-sm">
+                  <span>{info}</span>
+                </li>
+              ))
+            }
           </ResumeListSection>
         </div>
 
-        <div class="col-span-3">
+        <div class="col-span-6">
           <!-- Jobs Section  -->
           <ResumeListSection name="Work Experience">
             {JobsDetails.map((job) => <JobInfo jobInfo={job} />)}
@@ -73,10 +79,12 @@ import "@fontsource-variable/assistant";
             {
               ProjectsInfo.map((project) => (
                 <li>
-                  <a href={project.link} target="_blank" rel="noreferrer" class="font-semibold">
-                    {project.name}
-                  </a>{" "}
-                  - {project.detail}
+                  <span>
+                    <a href={project.link} target="_blank" rel="noreferrer" class="font-semibold">
+                      {project.name}
+                    </a>{" "}
+                    - {project.detail}
+                  </span>
                 </li>
               ))
             }
@@ -86,3 +94,10 @@ import "@fontsource-variable/assistant";
     </div>
   </body>
 </html>
+
+<style is:global>
+  li::before {
+    content: "🞄";
+    margin-left: -0.35rem;
+  }
+</style>
