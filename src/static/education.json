@@ -1,8 +1,10 @@
 [
   {
     "name": "IIIT Vadodara",
-    "course": "B.Tech, Computer Science Engineering",
-    "location": "Gandhinagar, Gujarat",
-    "grade": "8.77/10"
+    "course": "B.Tech (Computer Science Engineering)",
+    "period": {
+      "from": 2015,
+      "to": 2019
+    }
   }
 ]

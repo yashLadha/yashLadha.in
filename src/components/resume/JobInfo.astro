@@ -4,7 +4,7 @@ interface Props {
     name: string;
     role: string;
     from: string;
-    to: string;
+    to?: string;
     details: string[];
   };
 }
@@ -18,8 +18,9 @@ const { jobInfo } = Astro.props;
       {" "}
       {jobInfo.name} ({jobInfo.role})
     </div>
-    <div class="italic text-xs">
-      {jobInfo.from} - {jobInfo.to}
+    <div class="font-bold text-xs">
+      <span>{jobInfo.from}</span>
+      {jobInfo.to && <span>- {jobInfo.to}</span>}
     </div>
   </div>
   <div>

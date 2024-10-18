@@ -34,13 +34,16 @@ import "@fontsource-variable/commissioner";
             {
               EducationInfo.map((education) => (
                 <div>
-                  <div class="flex justify-between">
-                    <div class="font-semibold text-sm">
-                      {education.name}, {education.course}
+                  <div class="flex flex-col justify-between">
+                    <div>
+                      <span class="font-semibold text-sm">{education.course}</span>
+                      <span>, {education.name}</span>
                     </div>
-                    <div class="italic text-xs">CGPA: {education.grade}</div>
+                    <div class="font-bold">
+                      <span>{education.period.from}</span>
+                      <span>- {education.period.to}</span>
+                    </div>
                   </div>
-                  <div>{education.location}</div>
                 </div>
               ))
             }

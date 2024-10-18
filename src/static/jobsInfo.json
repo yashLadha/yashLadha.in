@@ -2,9 +2,9 @@
   {
     "name": "Amazon",
     "role": "SDE 2",
-    "from": "Sep 2021",
+    "from": "2021",
     "to": "Present",
-    "location": "Banglore, IN",
+    "location": "Gurugram, IN",
     "details": [
       "I am working with UPI Platform team on multiple initiatives that are helping drive business growth and improve operational efficiency.",
       "Implemented offline services that significantly reduced infrastructure costs by 80%, thereby optimizing resource allocation and improving overall cost.",
@@ -15,22 +15,31 @@
   {
     "name": "BrowserStack",
     "role": "Senior Software Engineer",
-    "from": "May 2019",
-    "to": "Aug 2021",
+    "from": "2020",
+    "to": "2021",
     "location": "Mumbai, IN",
     "details": [
       "I built industry first integrations with Puppeteer and Playwright on Grid setup.",
-      "To enhance efficiency of product managers, I created an internal framework for documentation that reduced the time to ship from 2 days to just 15 minutes.",
       "Acted as an individual contributor and owner of the Screenshots and Responsive Product offering, was handling the development and maintenance for offering.",
+      "Designed and deployed scalable system that were handling more than 50 million requests per day."
+    ]
+  },
+  {
+    "name": "BrowserStack",
+    "role": "Software Engineer",
+    "from": "2019",
+    "to": "2020",
+    "location": "Mumbai, IN",
+    "details": [
+      "To enhance efficiency of product managers, I created an internal framework for documentation that reduced the time to ship from 2 days to just 15 minutes.",
       "Designed and deployed scalable system that were handling more than 50 million requests per day."
     ]
   },
   {
     "name": "Google",
     "role": "Google Summer of Code",
-    "from": "May 2018",
-    "to": "Aug 2018",
-    "location": "Gurugram, IN",
+    "from": "2018 Summer",
+    "location": "Remote",
     "details": [
       "I worked on the project to create a new feature that would allow users to generate and customize badges for events.",
       "Developed and deployed the integration with Cloud functions into the system to automate some user-facing workflows.",
