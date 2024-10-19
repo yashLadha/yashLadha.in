@@ -54,7 +54,9 @@ import "@fontsource-variable/commissioner";
             {
               Object.entries(SkillDetails).map(([key, value]) => (
                 <li class="text-sm">
-                  <span class="capitalize font-semibold">{key}</span> - {value.join(", ")}
+                  <span>
+                    <span class="capitalize font-semibold">{key}</span> - {value.join(", ")}
+                  </span>
                 </li>
               ))
             }
@@ -83,7 +85,7 @@ import "@fontsource-variable/commissioner";
               ProjectsInfo.map((project) => (
                 <li>
                   <span>
-                    <a href={project.link} target="_blank" rel="noreferrer" class="font-semibold">
+                    <a href={project.link} target="_blank" rel="noreferrer">
                       {project.name}
                     </a>{" "}
                     - {project.detail}
@@ -99,8 +101,13 @@ import "@fontsource-variable/commissioner";
 </html>
 
 <style is:global>
+  li {
+    display: flex;
+  }
+
   li::before {
     content: "🞄";
     margin-left: -0.35rem;
+    float: left;
   }
 </style>
