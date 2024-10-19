@@ -53,11 +53,11 @@ import "@fontsource-variable/commissioner";
           <ResumeListSection name="Skills">
             {
               Object.entries(SkillDetails).map(([key, value]) => (
-                <li class="text-sm">
+                <div class="text-sm">
                   <span>
                     <span class="capitalize font-semibold">{key}</span> - {value.join(", ")}
                   </span>
-                </li>
+                </div>
               ))
             }
           </ResumeListSection>
