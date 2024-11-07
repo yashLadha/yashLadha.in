@@ -21,13 +21,13 @@ const posts = (await Astro.glob("./blog/*.{md,mdx}")).sort(
       <ul>
         {
           posts.map((post) => (
-            <div>
+            <div class="max-w-prose mx-auto">
               <a
                 href={post.url.replace(".html", "")}
                 data-astro-prefetch
                 class="transition-all text-blue-700 group p-2"
               >
-                <h3 class="group-hover:underline">{post.frontmatter.title}</h3>
+                <h3 class="underline">{post.frontmatter.title}</h3>
                 <p class="text-gray-800 group-hover:text-black">{post.frontmatter.description}</p>
               </a>
             </div>
