@@ -1,19 +1,24 @@
 [
   {
-    "name": "yash@yashladha.in | ",
+    "name": "yash@yashladha.in",
     "isEmail": true
   },
   {
-    "name": "+91 (773)-765-3345 | "
+    "name": "+91 (773)-765-3345"
   },
   {
-    "name": "Github: yashLadha | ",
+    "name": "Github",
     "link": "https://github.com/yashLadha",
     "isLink": true
   },
   {
-    "name": "LinkedIN: yashLadha",
+    "name": "LinkedIn",
     "link": "https://www.linkedin.com/in/yashladha/",
+    "isLink": true
+  },
+  {
+    "name": "yashladha.in",
+    "link": "https://yashladha.in",
     "isLink": true
   }
 ]

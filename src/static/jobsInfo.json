@@ -2,7 +2,7 @@
   {
     "name": "Amazon",
     "role": "SDE 2",
-    "from": "2021",
+    "from": "Sep 2021",
     "to": "Present",
     "location": "Gurugram, IN",
     "details": [
@@ -15,8 +15,8 @@
   {
     "name": "BrowserStack",
     "role": "Senior Software Engineer",
-    "from": "2020",
-    "to": "2021",
+    "from": "Sep 2020",
+    "to": "Sep 2021",
     "location": "Mumbai, IN",
     "details": [
       "Developed industry first integration of Puppeteer and Playwright on Grid setup. Built a web-socket service in high availability mode.",
@@ -26,8 +26,8 @@
   {
     "name": "BrowserStack",
     "role": "Software Engineer",
-    "from": "2019",
-    "to": "2020",
+    "from": "May 2019",
+    "to": "Sep 2020",
     "location": "Mumbai, IN",
     "details": [
       "To enhance efficiency of product managers, built an internal framework for documentation that reduced the time to ship from 2 days to just 15 minutes.",
@@ -38,7 +38,8 @@
   {
     "name": "Google",
     "role": "Google Summer of Code",
-    "from": "2018 Summer",
+    "from": "May 2018",
+    "to": "August 2018",
     "location": "Remote",
     "details": [
       "I worked on the project to create a new feature that would allow users to generate and customize badges for events.",
