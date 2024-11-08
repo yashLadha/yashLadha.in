@@ -27,75 +27,74 @@ import "@fontsource-variable/commissioner";
       </div>
 
       <Line />
-      <div class="grid gap-x-4 grid-cols-8">
-        <div class="col-span-2">
-          <!-- Education Section -->
-          <ResumeListSection name="Education">
-            {
-              EducationInfo.map((education) => (
+      <!-- Jobs Section  -->
+      <ResumeListSection name="Work Experience">
+        {JobsDetails.map((job) => <JobInfo jobInfo={job} />)}
+      </ResumeListSection>
+
+      <Line />
+      <ResumeListSection name="Projects">
+        {
+          ProjectsInfo.map((project) => (
+            <li>
+              <span>
+                <a href={project.link} target="_blank" rel="noreferrer">
+                  {project.name}
+                </a>
+                : {project.detail}
+              </span>
+            </li>
+          ))
+        }
+      </ResumeListSection>
+
+      <Line />
+
+      <!-- Skills Section -->
+      <ResumeListSection name="Skills">
+        {
+          Object.entries(SkillDetails).map(([key, value]) => (
+            <div class="text-sm">
+              <span>
+                <span class="capitalize font-semibold">{key}</span>: {value.join(", ")}
+              </span>
+            </div>
+          ))
+        }
+      </ResumeListSection>
+
+      <Line />
+      <!-- Education Section -->
+      <ResumeListSection name="Education">
+        {
+          EducationInfo.map((education) => (
+            <div>
+              <div class="flex justify-between">
                 <div>
-                  <div class="flex flex-col justify-between">
-                    <div>
-                      <span class="font-semibold text-sm">{education.course}</span>
-                      <span>, {education.name}</span>
-                    </div>
-                    <div class="font-bold">
-                      <span>{education.period.from}</span>
-                      <span>- {education.period.to}</span>
-                    </div>
-                  </div>
+                  <span class="font-semibold text-sm">{education.course}</span>
+                  <span>, {education.name}</span>
                 </div>
-              ))
-            }
-          </ResumeListSection>
-          <br />
-          <!-- Skills Section -->
-          <ResumeListSection name="Skills">
-            {
-              Object.entries(SkillDetails).map(([key, value]) => (
-                <div class="text-sm">
-                  <span>
-                    <span class="capitalize font-semibold">{key}</span>: {value.join(", ")}
-                  </span>
+                <div class="font-bold">
+                  <span>{education.period.from}</span>
+                  <span>- {education.period.to}</span>
                 </div>
-              ))
-            }
-          </ResumeListSection>
-          <br />
-          <!-- Achievements Section -->
-          <ResumeListSection name="Achievements">
-            {
-              AchievementsInfo.map((info) => (
-                <li class="text-sm">
-                  <span>{info}</span>
-                </li>
-              ))
-            }
-          </ResumeListSection>
-        </div>
+              </div>
+            </div>
+          ))
+        }
+      </ResumeListSection>
 
-        <div class="col-span-6">
-          <!-- Jobs Section  -->
-          <ResumeListSection name="Work Experience">
-            {JobsDetails.map((job) => <JobInfo jobInfo={job} />)}
-          </ResumeListSection>
-
-          <ResumeListSection name="Projects">
-            {
-              ProjectsInfo.map((project) => (
-                <li>
-                  <span>
-                    <a href={project.link} target="_blank" rel="noreferrer">
-                      {project.name}
-                    </a>
-                    : {project.detail}
-                  </span>
-                </li>
-              ))
-            }
-          </ResumeListSection>
-        </div>
-      </div>
+      <Line />
+      <!-- Achievements Section -->
+      <ResumeListSection name="Achievements">
+        {
+          AchievementsInfo.map((info) => (
+            <li class="text-sm">
+              <span>{info}</span>
+            </li>
+          ))
+        }
+      </ResumeListSection>
     </div>
   </body>
 </html>
