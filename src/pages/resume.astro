@@ -1,7 +1,6 @@
 ---
 import HeaderDetailInfo from "../components/resume/HeaderDetailInfo.astro";
 import JobInfo from "../components/resume/JobInfo.astro";
-import Line from "../components/resume/Line.astro";
 import ResumeListSection from "../components/resume/ResumeListSection.astro";
 import HeaderDetails from "../static/headerDetails.json";
 import JobsDetails from "../static/jobsInfo.json";
@@ -19,26 +18,24 @@ import "@fontsource-variable/commissioner";
     <meta name="robots" content="noindex" />
   </head>
   <body>
-    <div class="print:text-sm lg:mx-auto w-full lg:w-1/2">
+    <div class="print:text-sm font-[Georgia] lg:mx-auto w-full lg:w-1/2">
       <!-- Header Section -->
-      <div class="text-center text-3xl pb-1">Yash Ladha</div>
-      <div class="text-center text-xs pb-1 comma-separator">
+      <div class="text-center text-xl pb-1">Yash Ladha</div>
+      <div class="text-center text-sm pb-1 comma-separator">
         {HeaderDetails.map((headerDetail) => <HeaderDetailInfo headerInfo={headerDetail} />)}
       </div>
 
-      <Line />
       <!-- Jobs Section  -->
       <ResumeListSection name="Work Experience">
         {JobsDetails.map((job) => <JobInfo jobInfo={job} />)}
       </ResumeListSection>
 
-      <Line />
       <ResumeListSection name="Projects">
         {
           ProjectsInfo.map((project) => (
             <li>
-              <span>
-                <a href={project.link} class="underline" target="_blank" rel="noreferrer">
+              <span class="text-sm">
+                <a href={project.link} class="font-medium" target="_blank" rel="noreferrer">
                   {project.name}
                 </a>
                 : {project.detail}
@@ -48,22 +45,19 @@ import "@fontsource-variable/commissioner";
         }
       </ResumeListSection>
 
-      <Line />
-
       <!-- Skills Section -->
       <ResumeListSection name="Skills">
         {
           Object.entries(SkillDetails).map(([key, value]) => (
             <div class="text-sm">
               <span>
-                <span class="capitalize font-semibold">{key}</span>: {value.join(", ")}
+                <span class="capitalize text-sm font-semibold">{key}</span>: {value.join(", ")}
               </span>
             </div>
           ))
         }
       </ResumeListSection>
 
-      <Line />
       <!-- Education Section -->
       <ResumeListSection name="Education">
         {
@@ -74,7 +68,7 @@ import "@fontsource-variable/commissioner";
                   <span class="font-semibold text-sm">{education.course}</span>
                   <span>, {education.name}</span>
                 </div>
-                <div class="font-bold">
+                <div class="font-bold text-sm">
                   <span>{education.period.from}</span>
                   <span>- {education.period.to}</span>
                 </div>
@@ -84,9 +78,8 @@ import "@fontsource-variable/commissioner";
         }
       </ResumeListSection>
 
-      <Line />
       <!-- Achievements Section -->
-      <ResumeListSection name="Achievements">
+      <ResumeListSection hidden={true} name="Achievements">
         {
           AchievementsInfo.map((info) => (
             <li class="text-sm">
@@ -110,11 +103,35 @@ import "@fontsource-variable/commissioner";
     float: left;
   }
 
-  .comma-separator > span::after {
-    content: ",";
+  @font-face {
+    font-family: "Georgia";
+    font-style: normal;
+    font-weight: normal;
+    src:
+      url("/fonts/georgia.woff") format("woff");
   }
 
-  .comma-separator > :last-child::after {
-    display: none;
+  @font-face {
+    font-family: "Georgia";
+    font-style: italic;
+    font-weight: normal;
+    src:
+      url("/fonts/georgiai.woff") format("woff");
+  }
+
+  @font-face {
+    font-family: "Georgia";
+    font-style: normal;
+    font-weight: 700;
+    src:
+      url("/fonts/georgiab.woff") format("woff");
+  }
+
+  @font-face {
+    font-family: "Georgia";
+    font-style: italic;
+    font-weight: 800;
+    src:
+      url("/fonts/georgiaz.woff") format("woff");
   }
 </style>

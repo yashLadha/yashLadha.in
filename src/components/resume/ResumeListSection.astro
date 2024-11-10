@@ -1,14 +1,23 @@
 ---
 interface Props {
   name: string;
+  hidden?: boolean;
 }
 
 const { props } = Astro;
 ---
 
-<div>
-  <div class="text-xl font-bold">{props.name}</div>
-  <ul class="list-none text-sm leading-tight">
-    <slot />
-  </ul>
-</div>
+{
+  props.hidden ? (
+    ""
+  ) : (
+    <div class="mb-2">
+      <div class="font-bold text-blue-800 border-b border-b-blue-800 flex">
+        <p class="flex-grow">{props.name}</p>
+      </div>
+      <ul class="list-none text-sm leading-tight">
+        <slot />
+      </ul>
+    </div>
+  )
+}
