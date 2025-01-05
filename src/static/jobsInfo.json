@@ -19,8 +19,9 @@
     "to": "Sep 2021",
     "location": "Mumbai, IN",
     "details": [
-      "Developed industry first integration of Puppeteer and Playwright on Grid setup. Built a web-socket service in high availability mode.",
-      "Designed and deployed scalable system that were handling more than 50 million requests per day."
+      "Designed and Developed industry first integration of Puppeteer and Playwright on Grid setup from ground up.",
+      "Built a highly-available websocket reverse proxy to maintain the customer session with backend servers in Nodejs and deployed it in production.",
+      "Built the service to build real time interaction with test device with the help of leveraging WebRTC stack."
     ]
   },
   {
@@ -30,9 +31,22 @@
     "to": "Sep 2020",
     "location": "Mumbai, IN",
     "details": [
-      "To enhance efficiency of product managers, built an internal framework for documentation that reduced the time to ship from 2 days to just 15 minutes.",
-      "Acted as an individual contributor and owner of the Screenshots and Responsive Product offering, was handling the development and maintenance for offering.",
+      "Built an internal framework for documentation that reduced the time to ship from 2 days to just 15 minutes and enhanced the productivity of Product Managers.",
+      "Acted as an Individual contributor and owner of the Screenshots and Responsive product offering, was handling the customer tickets and development for the product.",
       "Designed and deployed scalable system that were handling more than 50 million requests per day."
+    ]
+  },
+  {
+    "name": "Shipsy",
+    "role": "Software Engineer Intern",
+    "from": "Jan 2019",
+    "to": "April 2019",
+    "location": "Gurugram, IN",
+    "details": [
+      "Designed and Built Serverless function for a custom document builder service in Excel format for reports in AWS.",
+      "Built the internal service availability dashboard and deployed it in production.",
+      "Designed and built unified container tracking system, which helped in securing the pilot run with Reliance corporation.",
+      "Built backend for a new product offering using typescript and Nestjs"
     ]
   },
   {

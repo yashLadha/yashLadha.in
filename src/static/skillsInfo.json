@@ -7,7 +7,7 @@
     "Express.js",
     "Ruby on Rails"
   ],
-  "frontend technologies": ["React", "Redux", "Astro", "Remix"],
+  "frontend technologies": ["React", "JQuery", "Redux"],
   "others": [
     "Distributed Systems",
     "Relational and Non-Relational Databases",
