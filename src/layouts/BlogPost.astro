@@ -42,13 +42,13 @@ if (!disableNextBlogLinks) {
     }}
   />
   <div>
-    <article class="p-2 max-w-prose mx-auto">
+    <article class="p-2 max-w-prose">
       {heroImage && <img class="bg-clip-border rounded-lg" width={720} height={360} src={heroImage} alt="" />}
       <h1 class="title">{title}</h1>
-      {pubDate && <time>{pubDate}</time>}
+      {pubDate && <time class="text-sm">{pubDate}</time>}
       {
         updatedDate && (
-          <div>
+          <div class="text-sm">
             Last updated on <time>{updatedDate}</time>
           </div>
         )

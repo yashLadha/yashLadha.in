@@ -3,89 +3,135 @@
 @tailwind utilities;
 
 @font-face {
-    font-family: 'Source Code Pro Variable';
+    font-family: "Source Code Pro Variable";
     font-style: normal;
     font-display: swap;
     font-weight: 200 900;
-    src: url(https://cdn.jsdelivr.net/fontsource/fonts/source-code-pro:vf@latest/latin-wght-normal.woff2) format('woff2-variations');
-    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+    src: url(https://cdn.jsdelivr.net/fontsource/fonts/source-code-pro:vf@latest/latin-wght-normal.woff2)
+        format("woff2-variations");
+    unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA,
+        U+02DC, U+0304, U+0308, U+0329, U+2000-206F, U+2074, U+20AC, U+2122,
+        U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
 }
+
 @layer base {
-  h1 {
-    @apply text-3xl;
-    @apply font-bold;
-    @apply my-3;
-  }
-  h2 {
-    @apply text-2xl;
-    @apply font-bold;
-    @apply my-3;
-  }
-  h3 {
-    @apply text-xl;
-    @apply font-bold;
-    @apply my-3;
-  }
-  h4 {
-    @apply text-lg;
-    @apply font-bold;
-    @apply my-3;
-  }
+    h1 {
+        @apply text-2xl;
+        @apply font-bold;
+        @apply my-3;
+    }
+    h2 {
+        @apply text-xl;
+        @apply font-bold;
+        @apply my-3;
+    }
+    h3 {
+        @apply text-lg;
+        @apply font-bold;
+        @apply my-3;
+    }
+    h4 {
+        @apply text-base;
+        @apply font-bold;
+        @apply my-3;
+    }
 
-  hr {
-    @apply my-4;
-    @apply border-slate-300;
-  }
+    hr {
+        @apply my-4;
+        @apply border-slate-300;
+    }
 
-  code {
-    @apply p-0.5;
-    @apply bg-clip-border;
-    @apply rounded;
-    @apply bg-slate-300;
-    @apply font-source;
-    @apply text-sm;
-  }
+    code {
+        @apply px-0.5;
+        @apply bg-clip-border;
+        @apply rounded;
+        @apply bg-slate-200;
+        @apply font-source;
+        @apply text-sm;
+    }
 
-  pre {
-    @apply p-4;
-    @apply my-2;
-    @apply rounded;
-    @apply font-source;
-    @apply leading-normal;
-    @apply text-sm;
-  }
+    pre {
+        @apply p-2;
+        @apply my-2;
+        @apply rounded;
+        @apply font-source;
+        @apply leading-normal;
+        @apply text-sm;
+    }
 
-  pre > code {
-    all: unset;
-  }
+    pre > code {
+        all: unset;
+    }
 
-  blockquote {
-    @apply border-solid;
-    @apply border-[1px];
-    @apply border-slate-300;
-    @apply rounded;
-    @apply p-3;
-    @apply my-4;
-    @apply text-slate-700;
-  }
+    blockquote {
+        @apply border-solid;
+        @apply border-[1px];
+        @apply border-slate-300;
+        @apply rounded;
+        @apply p-3;
+        @apply my-4;
+        @apply text-slate-700;
+    }
 
-  em {
-      @apply not-italic;
-  }
+    em {
+        @apply not-italic;
+    }
 
-  a {
-    @apply text-blue-600;
-  }
+    a {
+        @apply text-blue-600;
+    }
 
-  nav a {
-    @apply text-black;
-  }
+    nav a {
+        @apply text-black;
+    }
 
-  main {
-    @apply mt-2;
-  }
+    main {
+        @apply mt-2;
+    }
 
-  p {
-    @apply mt-2;
-}
+    p {
+        @apply mt-2;
+        @apply text-sm;
+    }
+
+    table {
+        @apply w-max;
+        @apply text-sm;
+    }
+
+    thead {
+        @apply border;
+        @apply border-black;
+    }
+
+    th {
+        @apply font-medium;
+        @apply bg-black;
+        @apply text-white;
+    }
+
+    th, td {
+        @apply p-1;
+        @apply border;
+        @apply border-gray-300;
+    }
+
+    .table-scroll-container {
+        @apply overflow-auto;
+    }
+
+    summary {
+        @apply text-sm;
+        @apply text-slate-500;
+    }
+
+    ol {
+        @apply list-decimal;
+        @apply list-inside;
+    }
+
+    li {
+        @apply text-sm;
+        @apply py-1;
+    }
 }

@@ -16,8 +16,8 @@ const { post } = Astro.props as Props;
       id="post"
       class="flex-1/2 transition-shadow duration-300 ease-in-out md:p-4 p-2 mx-1 text-left hover:font-bold rounded-l-full rounded-r-full"
     >
-      <a class="font-bold" href={post.url}>
-        {post.direction === "left" ? `Prev:` : `Next:`} {post.title}
+      <a class="font-medium" href={post.url}>
+        {post.direction === "left" ? `Prev: ` : `Next: `} {post.title}
       </a>
     </div>
   )
