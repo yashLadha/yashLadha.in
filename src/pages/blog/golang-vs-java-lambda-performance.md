@@ -25,7 +25,7 @@ environment configured with the runtime which is declared by user, with all the 
 
 All of this provisioning is called as [`INIT`](https://docs.aws.amazon.com/lambda/latest/dg/lambda-runtime-environment.html) phase of the lambda function.
 
-The duration of the `INIT` phase is is commonly referred to as the cold start time for the function.
+The duration of the `INIT` phase is commonly referred to as the cold start time for the function.
 
 ### Execution Time
 
@@ -38,8 +38,7 @@ The amount of memory which will be used by the function during the invocation.
 
 ## Test Bench
 
-We will use the following infrastructure for benchmarking the performance of Lambda. I have kept the code to as close to
-normal day to day examples.
+We will use the following infrastructure for benchmarking the performance of Lambda.  have kept the code as close as possible to typical day-to-day examples.
 
 <img class="bg-clip-border rounded-lg" width="720" height="360" src="/blog-assets/lambda-benchmark/lambda-benchmark.png" alt="Lambda Benchmark Test Bench" />
 
@@ -53,7 +52,7 @@ normal day to day examples.
 
 ## Performance Comparison: Golang vs Java
 
-I used the following script to generate load on the API endpoint. It is using `k6` to gradually rampup up the connections
+I used the following script to generate load on the API endpoint. It is using [`k6`](https://k6.io/) to gradually rampup up the connections
 and number of virtual users to the endpoint.
 
 ```javascript
@@ -407,7 +406,7 @@ public class App {
 #### Insights around Memory Consumption
 
 1. **Java has much higher memory usage**, with a noticeable increase in memory usage as memory provisioned increases. This is expected as there is JVM's inherent overhead.
-1. **Golang uses significantly less memory** than it is allocated. It is more or less uses the same amount of memory across varied memory settings.
+1. **Golang uses significantly less memory** than it is allocated. It more or less uses the same amount of memory across varied memory settings.
 1. **Java average memory usage increases linearly** as the amount of memory provisioned increases.
 
 ### Billed Duration
@@ -438,7 +437,7 @@ public class App {
 
 1. **Golang billed durations are much lower** as compared to Java's across all the memory configurations.
 1. **Memory scaling affects Java's performance** more significantly than Golang's. Java's billed durations decrease with higher memory allocations.
-1. **Max billed duration in Java is very high** compared to Golang, which is expected due to overhead of JVM initialization, garbage collection, or other internal processes
+1. **Max billed duration in Java is very high** compared to Golang, which is expected due to overhead of JVM initialization, garbage collection, and other internal processes.
 
 ### Cost
 
@@ -467,10 +466,10 @@ public class App {
 #### Insights around Cost
 
 1. **Golang incurs much lower cost as compared to Java**, while maintaining greater throughput as compared to Java.
-1. **Java cost decreases with increasing memeory**, which is expected as more resources are available to JVM for optimal usage and performance.
+1. **Java cost decreases with increasing memory**, which is expected as more resources are available to JVM for optimal usage and performance.
 
 ## Conclusion
 
 Benchmarking shows that **Golang** offers a **better performance-to-cost** ratio than Java for AWS Lambda functions, with faster execution, lower memory usage, and more consistent performance.
 
-However, the JVM ecosystem has introduced improvements like GraalVM’s AOT Compilation and SnapStart, which address Java's cold start issues. I plan to explore these advancements further to evaluate their impact on Java’s performance and competitiveness with Golang in serverless environments.
+However, the JVM ecosystem has introduced improvements like GraalVM’s AOT Compilation and SnapStart, which address Java's cold start issues. I plan to explore these advancements further to evaluate their impact on Java's performance and competitiveness with Golang in serverless environments.
