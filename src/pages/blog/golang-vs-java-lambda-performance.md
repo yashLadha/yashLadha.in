@@ -2,7 +2,7 @@
 layout: "../../layouts/BlogPost.astro"
 title: "Lambda Performance Comparison Golang vs Java"
 description: "Compare performance of AWS Lambda written in Golang vs Java."
-pubDate: "Jan 07 2025"
+pubDate: "Jan 12 2025"
 ---
 
 ## Introduction
