@@ -16,7 +16,7 @@ In this blog post, we’ll compare **Golang and Java** for building AWS Lambda f
 
 ## Key Performance Metrics
 
-We will mainly focus on the following key metrics in evaluatin lambda performance.
+We will mainly focus on the following key metrics in evaluating lambda performance.
 
 ### Cold Start Time
 
