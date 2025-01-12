@@ -130,7 +130,7 @@
         @apply list-inside;
     }
 
-    li {
+    ol li {
         @apply text-sm;
         @apply py-1;
     }
