@@ -38,7 +38,7 @@ The amount of memory which will be used by the function during the invocation.
 
 ## Test Bench
 
-We will use the following infrastructure for benchmarking the performance of Lambda.  have kept the code as close as possible to typical day-to-day examples.
+We will use the following infrastructure for benchmarking the performance of Lambda. I have kept the code as close as possible to typical day-to-day examples.
 
 <img class="bg-clip-border rounded-lg" width="720" height="360" src="/blog-assets/lambda-benchmark/lambda-benchmark.png" alt="Lambda Benchmark Test Bench" />
 
@@ -47,6 +47,13 @@ We will use the following infrastructure for benchmarking the performance of Lam
 
 > INFO: Java functions have increased execution timeout of 60 seconds, as 3 seconds was not working on test bench.
 > To have parity `Golang` functions were executed once with 3 seconds timeout and 60 seconds timeout.
+
+</details>
+
+<details>
+<summary>Benchmarking Note #2</summary>
+
+> INFO: All the lambda functions will be executed on ARM architecture.
 
 </details>
 
@@ -60,7 +67,6 @@ import http from "k6/http";
 import { sleep } from "k6";
 
 export const options = {
-    vus: 2,
     stages: [
         { duration: "30s", target: 20 },
         { duration: "1m30s", target: 10 },
