@@ -77,6 +77,277 @@ export default function () {
 }
 ```
 
+<details>
+<summary>Golang code</summary>
+
+```go
+package main
+
+import (
+	"bytes"
+	"context"
+	"crypto/rand"
+	"encoding/hex"
+	"fmt"
+	"io"
+	"log"
+	"os"
+
+	"github.com/aws/aws-lambda-go/lambda"
+	"github.com/aws/aws-sdk-go-v2/config"
+	"github.com/aws/aws-sdk-go-v2/service/kms"
+	"github.com/aws/aws-sdk-go-v2/service/s3"
+)
+
+var (
+	s3Client  *s3.Client
+	kmsClient *kms.Client
+)
+
+func init() {
+	// Initialize the S3 client outside of the handler, during the init phase
+	cfg, err := config.LoadDefaultConfig(context.TODO())
+	if err != nil {
+		log.Fatalf("unable to load SDK config, %v", err)
+	}
+
+	s3Client = s3.NewFromConfig(cfg)
+	kmsClient = kms.NewFromConfig(cfg)
+}
+
+func uploadReceiptToS3(ctx context.Context, bucketName string, key string, content []byte) error {
+	_, err := s3Client.PutObject(ctx, &s3.PutObjectInput{
+		Bucket: &bucketName,
+		Key:    &key,
+		Body:   bytes.NewReader(content),
+	})
+	if err != nil {
+		log.Printf("Failed to upload receipt to S3: %v", err)
+		return err
+	}
+	return nil
+}
+
+func getRandomId() (string, error) {
+	randBytes := make([]byte, 16)
+	_, err := rand.Read(randBytes)
+	if err != nil {
+		log.Printf("Error while creating random bits %v\n", err)
+		return "", err
+	}
+
+	randomId := hex.EncodeToString(randBytes)
+	return randomId, nil
+}
+
+func getFile(ctx context.Context, bucketName string, key string) ([]byte, error) {
+	result, err := s3Client.GetObject(ctx, &s3.GetObjectInput{
+		Bucket: &bucketName,
+		Key:    &key,
+	})
+	if err != nil {
+		log.Printf("Received error while get object %v", err)
+		return nil, err
+	}
+	defer result.Body.Close()
+	body, err := io.ReadAll(result.Body)
+	if err != nil {
+		log.Printf("Error while reading bytes from output %v\n", err)
+		return nil, err
+	}
+
+	return body, nil
+}
+
+func encryptContent(ctx context.Context, keyId string, content []byte) ([]byte, error) {
+	encOut, err := kmsClient.Encrypt(ctx, &kms.EncryptInput{
+		KeyId:     &keyId,
+		Plaintext: content,
+	})
+	if err != nil {
+		log.Printf("Unable to encrypt the object from kms %v\n", err)
+		return nil, err
+	}
+
+	return encOut.CiphertextBlob, nil
+}
+
+type Response struct {
+	Body string `json:"body"`
+}
+
+func handleRequest(ctx context.Context) (*Response, error) {
+	fileLocationBucket := os.Getenv("FILE_LOCATION_BUCKET")
+	if fileLocationBucket == "" {
+		log.Printf("FILE_LOCATION_BUCKET environment variable is not set")
+		return &Response{}, fmt.Errorf(
+			"missing required environment variable FILE_LOCATION_BUCKET",
+		)
+	}
+
+	fileName := os.Getenv("FILE_NAME")
+	if fileName == "" {
+		log.Printf("FILE_NAME environment variable is not set")
+		return &Response{}, fmt.Errorf("missing required environment variable FILE_NAME")
+	}
+
+	keyId := os.Getenv("KEY_ID")
+	if keyId == "" {
+		log.Printf("KEY_ID environment variable is not set")
+		return &Response{}, fmt.Errorf("missing required environment variable KEY_ID")
+	}
+
+	uploadBucket := os.Getenv("UPLOAD_BUCKET")
+	if uploadBucket == "" {
+		log.Printf("UPLOAD_BUCKET environment variable is not set")
+		return &Response{}, fmt.Errorf("missing required environment variable UPLOAD_BUCKET")
+	}
+
+	fileData, err := getFile(ctx, fileLocationBucket, fileName)
+	if err != nil {
+		return &Response{}, fmt.Errorf("Unable to fetch file from S3")
+	}
+
+	encText, err := encryptContent(ctx, keyId, fileData)
+	if err != nil {
+		return &Response{}, fmt.Errorf("Unable to encrypt the content using KMS")
+	}
+
+	randomId, err := getRandomId()
+	if err != nil {
+		return &Response{}, fmt.Errorf("Unable to generate the random id")
+	}
+
+	err = uploadReceiptToS3(
+		ctx,
+		uploadBucket,
+		randomId,
+		encText,
+	)
+	if err != nil {
+		return &Response{}, fmt.Errorf("Unable to upload the encrypted file to S3")
+	}
+
+	response := Response{Body: randomId}
+	log.Printf("Response returned %v\n", response)
+	return &response, nil
+}
+
+func main() {
+	lambda.Start(handleRequest)
+}
+```
+</details>
+
+
+<details>
+<summary>Java Code</summary>
+
+```java
+package org.example;
+
+import java.io.IOException;
+import java.security.SecureRandom;
+
+import com.amazonaws.services.lambda.runtime.Context;
+
+import software.amazon.awssdk.core.ResponseInputStream;
+import software.amazon.awssdk.core.SdkBytes;
+import software.amazon.awssdk.core.sync.RequestBody;
+import software.amazon.awssdk.http.SdkHttpClient;
+import software.amazon.awssdk.http.urlconnection.UrlConnectionHttpClient;
+import software.amazon.awssdk.regions.Region;
+import software.amazon.awssdk.services.kms.KmsClient;
+import software.amazon.awssdk.services.kms.model.EncryptRequest;
+import software.amazon.awssdk.services.kms.model.EncryptResponse;
+import software.amazon.awssdk.services.s3.S3Client;
+import software.amazon.awssdk.services.s3.model.GetObjectRequest;
+import software.amazon.awssdk.services.s3.model.GetObjectResponse;
+import software.amazon.awssdk.services.s3.model.PutObjectRequest;
+
+public class App {
+    private static S3Client s3Client;
+    private static KmsClient kmsClient;
+    private static SdkHttpClient httpClient = UrlConnectionHttpClient.create();
+    private static Region deployRegion = Region.AP_SOUTH_1;
+
+    static {
+        s3Client = S3Client.builder()
+                .region(deployRegion)
+                .httpClient(httpClient)
+                .build();
+
+        kmsClient = KmsClient.builder()
+                .region(deployRegion)
+                .httpClient(httpClient)
+                .build();
+    }
+
+    private static byte[] fetchFileFromS3(String fileLocationBucket, String fileName) throws IOException {
+        ResponseInputStream<GetObjectResponse> respObject = s3Client.getObject(GetObjectRequest.builder()
+                .bucket(fileLocationBucket)
+                .key(fileName)
+                .build());
+        return respObject.readAllBytes();
+    }
+
+    private static byte[] encryptFile(String keyId, byte[] content) {
+        EncryptResponse response = kmsClient.encrypt(EncryptRequest.builder()
+                .keyId(keyId)
+                .plaintext(SdkBytes.fromByteArray(content))
+                .build());
+        return response.ciphertextBlob().asByteArray();
+    }
+
+    private static String getRandomId() {
+        // Generate 16 random bytes
+        byte[] randBytes = new byte[16];
+        SecureRandom secureRandom = new SecureRandom();
+        secureRandom.nextBytes(randBytes);
+
+        // Convert to hex string
+        StringBuilder hexString = new StringBuilder();
+        for (byte b : randBytes) {
+            hexString.append(String.format("%02x", b));
+        }
+
+        return hexString.toString();
+    }
+
+    private static void uploadEncryptedFile(String uploadBucket, String fileId, byte[] content) {
+        s3Client.putObject(PutObjectRequest.builder()
+                .bucket(uploadBucket)
+                .key(fileId)
+                .build(), RequestBody.fromBytes(content));
+    }
+
+    public String handleRequest(Context context) {
+        String fileLocationBucket = System.getenv("FILE_LOCATION_BUCKET");
+        String fileName = System.getenv("FILE_NAME");
+        String keyId = System.getenv("KEY_ID");
+        String uploadBucket = System.getenv("UPLOAD_BUCKET");
+
+        try {
+            // Fetch the file from s3 bucket.
+            byte[] fileByte = fetchFileFromS3(fileLocationBucket, fileName);
+            // Encrypt the file from keyId
+            byte[] encryptedFile = encryptFile(keyId, fileByte);
+            // Random id for every upload
+            String randomId = getRandomId();
+            // Upload the encrypted file to upload bucket.
+            uploadEncryptedFile(uploadBucket, randomId, encryptedFile);
+            return randomId;
+        } catch (IOException e) {
+            e.printStackTrace();
+            throw new RuntimeException("Failure while executing lambda");
+        }
+    }
+}
+```
+</details>
+
+
+
 ### Cold Start Time Values
 
 <div class="table-scroll-container">
