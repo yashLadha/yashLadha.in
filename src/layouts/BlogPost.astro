@@ -43,7 +43,7 @@ if (!disableNextBlogLinks) {
     }}
   />
   <div>
-    <article class="p-2 max-w-prose">
+    <article class="p-2 max-w-prose mb-4">
       {heroImage && <img class="bg-clip-border rounded-lg" width={720} height={360} src={heroImage} alt="" />}
       <h1 class="title">{title}</h1>
       {pubDate && <time class="text-sm">{pubDate}</time>}
@@ -57,10 +57,5 @@ if (!disableNextBlogLinks) {
       <hr />
       <slot />
     </article>
-    <div class="my-4 flex">
-      <NextLinks post={prevPost && { ...prevPost, direction: "left" }} />
-      <div class="flex-auto"></div>
-      <NextLinks post={nextPost && { ...nextPost, direction: "right" }} />
-    </div>
   </div>
 </Layout>
