@@ -19,7 +19,6 @@ export function ModernNavBar() {
   return (
     <nav className="sticky top-0 z-50 w-full border-b bg-background/95 backdrop-blur supports-[backdrop-filter]:bg-background/60">
       <div className="container flex h-16 items-center justify-between">
-        {/* Logo */}
         <a 
           href="/" 
           className="flex items-center space-x-2 text-xl font-bold hover:opacity-80 transition-opacity"
@@ -27,7 +26,6 @@ export function ModernNavBar() {
           Yash Ladha
         </a>
 
-        {/* Desktop Navigation */}
         <div className="hidden md:flex items-center space-x-6">
           {navItems.map((item) => (
             <a
@@ -40,7 +38,6 @@ export function ModernNavBar() {
           ))}
         </div>
 
-        {/* Mobile Menu Button */}
         <Button
           variant="ghost"
           size="sm"
@@ -51,7 +48,6 @@ export function ModernNavBar() {
         </Button>
       </div>
 
-      {/* Mobile Navigation */}
       {isOpen && (
         <div className="md:hidden border-t bg-background">
           <div className="container py-4 space-y-2">

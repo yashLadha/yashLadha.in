@@ -46,8 +46,8 @@ if (!disableNextBlogLinks) {
   />
   
   <div class="max-w-4xl mx-auto">
-    <Card class="mb-8">
-      <CardHeader class="text-center space-y-4">
+    <Card className="mb-8">
+      <CardHeader className="text-center space-y-4">
         {heroImage && (
           <div class="w-full max-w-2xl mx-auto">
             <img 
@@ -82,20 +82,20 @@ if (!disableNextBlogLinks) {
     </Card>
 
     <article class="prose prose-slate prose-xl max-w-none">
-      <CardContent class="px-0">
+      <CardContent className="px-0">
         <slot />
       </CardContent>
     </article>
 
     {!disableNextBlogLinks && (nextPost || prevPost) && (
       <>
-        <Separator class="my-8" />
+        <Separator className="my-8" />
         <div class="grid md:grid-cols-2 gap-4 mt-12">
           {prevPost && (
-            <Card class="hover:shadow-lg transition-shadow">
-              <CardContent class="p-6">
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardContent className="p-6">
                 <div class="text-sm text-muted-foreground mb-2">← Previous Post</div>
-                <Button asChild variant="ghost" class="h-auto p-0 justify-start">
+                <Button asChild variant="ghost" className="h-auto p-0 justify-start">
                   <a href={prevPost.url?.replace(".html", "")} class="text-left">
                     <h3 class="font-semibold text-base">{prevPost.title}</h3>
                   </a>
@@ -105,10 +105,10 @@ if (!disableNextBlogLinks) {
           )}
           
           {nextPost && (
-            <Card class="hover:shadow-lg transition-shadow">
-              <CardContent class="p-6">
+            <Card className="hover:shadow-lg transition-shadow">
+              <CardContent className="p-6">
                 <div class="text-sm text-muted-foreground mb-2 text-right">Next Post →</div>
-                <Button asChild variant="ghost" class="h-auto p-0 justify-end">
+                <Button asChild variant="ghost" className="h-auto p-0 justify-end">
                   <a href={nextPost.url?.replace(".html", "")} class="text-right">
                     <h3 class="font-semibold text-base">{nextPost.title}</h3>
                   </a>
@@ -123,7 +123,6 @@ if (!disableNextBlogLinks) {
 </Layout>
 
 <style>
-  /* Enhanced prose styles for blog content */
   .prose {
     @apply text-foreground;
   }
@@ -208,7 +207,6 @@ if (!disableNextBlogLinks) {
     @apply italic;
   }
   
-  /* Improve spacing between elements */
   .prose > * + * {
     @apply mt-6;
   }
