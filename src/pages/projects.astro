@@ -1,5 +1,5 @@
 ---
-import ProjectCard from "../components/ProjectCard.astro";
+import { ModernProjectCard } from "../components/ModernProjectCard";
 import Seo from "../components/Seo.astro";
 import Layout from "../layouts/Layout.astro";
 import ProjectInfo from "../static/repoList.json";
@@ -8,9 +8,24 @@ import siteMetadata from "../static/siteMetadata.json";
 
 <Layout>
   <Seo slot="header" seo={siteMetadata} />
-  <main>
-    <div class="grid p-3 md:p-0 lg:grid-cols-3 grid-flow-row auto-rows-max md:grid-cols-2 gap-3">
-      {ProjectInfo.map((project) => <ProjectCard project={project} />)}
+  <div class="max-w-6xl mx-auto space-y-8">
+    <section class="text-center space-y-4">
+      <h1 class="text-4xl font-bold tracking-tight">My Projects</h1>
+      <p class="text-xl text-muted-foreground max-w-2xl mx-auto">
+        A collection of open-source projects and contributions I've worked on
+      </p>
+    </section>
+
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+      {ProjectInfo.map((project) => (
+        <ModernProjectCard
+          client:load
+          title={project.name}
+          description={project.description}
+          technologies={project.languages}
+          githubUrl={project.htmlURL}
+        />
+      ))}
     </div>
-  </main>
+  </div>
 </Layout>

@@ -2,53 +2,137 @@
 import Seo from "../components/Seo.astro";
 import siteMetadata from "../static/siteMetadata.json";
 import Layout from "../layouts/Layout.astro";
+import { Button } from "../components/ui/button";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../components/ui/card";
 ---
 
 <Layout>
   <Seo slot="header" seo={siteMetadata} />
-  <main class="p-2">
-    <div class="font-bold text-4xl py-4 text-center">Hey, I am Yash</div>
-    <div class="italic text-red-600 font-semibold text-center">Software Tinkerer, Innovator, and Leader</div>
-    <p class="mb-4 md:relative max-w-prose mx-auto">
-      I am a software engineer and an engineering leader passionate about System architecture, Language internals,
-      Framework internals and Advanced Algorithms. I have also worked as an ex-collaborator on the <a
-        href="https://github.com/nodejs/node"
-        target="_blank"
-        class="underline"
-        rel="noreferrer nofollow">Node.js</a
-      > project, where I helped improve the runtime and fix bugs.
+  <div class="max-w-4xl mx-auto space-y-12">
+    <!-- Hero Section -->
+    <section class="text-center space-y-6 py-12">
+      <h1 class="text-4xl md:text-6xl font-bold tracking-tight">
+        Hey, I am <span class="text-primary">Yash</span>
+      </h1>
+      <p class="text-xl text-muted-foreground max-w-2xl mx-auto">
+        Software Tinkerer, Innovator, and Leader
+      </p>
+      <div class="flex gap-4 justify-center">
+        <Button asChild size="lg" className="hero-button-primary">
+          <a href="/projects">View My Work</a>
+        </Button>
+        <Button asChild variant="outline" size="lg" className="hero-button-secondary hover:bg-primary hover:text-primary-foreground">
+          <a href="/contactme">Let's Collaborate</a>
+        </Button>
+      </div>
+    </section>
 
-      <br /><br />
+    <!-- About Section -->
+    <section class="space-y-6">
+      <Card>
+        <CardHeader>
+          <CardTitle>About Me</CardTitle>
+          <CardDescription>Passionate about building impactful software solutions</CardDescription>
+        </CardHeader>
+        <CardContent className="prose prose-slate max-w-none">
+          <p>
+            I am a software engineer and an engineering leader passionate about System architecture, Language internals,
+            Framework internals and Advanced Algorithms. I have also worked as an ex-collaborator on the 
+            <a href="https://github.com/nodejs/node" target="_blank" class="text-primary hover:underline" rel="noreferrer nofollow">
+              Node.js
+            </a> project, where I helped improve the runtime and fix bugs.
+          </p>
 
-      I have over 5 years of experience in building valuable software solutions. I've worked across the full stack -
-      frontend, backend, and mobile development - leaving no area untouched. I've had the privilege of working with
-      great companies like <a
-        href="https://www.browserstack.com/"
-        class="underline"
-        target="_blank"
-        rel="noreferrer nofollow">BrowserStack</a
-      > and <a href="https://shipsy.io/" target="_blank" class="underline" rel="noreferrer nofollow">Shipsy</a>, helping
-      them build impactful products for their customers.
+          <p>
+            I have over 5 years of experience in building valuable software solutions. I've worked across the full stack -
+            frontend, backend, and mobile development - leaving no area untouched. I've had the privilege of working with
+            great companies like 
+            <a href="https://www.browserstack.com/" class="text-primary hover:underline" target="_blank" rel="noreferrer nofollow">
+              BrowserStack
+            </a> and 
+            <a href="https://shipsy.io/" target="_blank" class="text-primary hover:underline" rel="noreferrer nofollow">
+              Shipsy
+            </a>, helping them build impactful products for their customers.
+          </p>
 
-      <br /><br />
+          <p>
+            I'm an avid open-source 
+            <a href="https://github.com/yashLadha" target="_blank" class="text-primary hover:underline" rel="noreferrer nofollow">
+              contributor
+            </a> and whenever I get the chance, I enjoy giving back to the community. I was a Google Summer of Code fellow with FOSSASIA,
+            and I've also contributed to several popular open-source projects like 
+            <a href="https://github.com/nodejs/node" class="text-primary hover:underline" target="_blank" rel="noreferrer nofollow">
+              Node.js
+            </a>, 
+            <a href="https://github.com/fossasia/badgeyay" class="text-primary hover:underline" rel="noreferrer nofollow">
+              BadgeYay
+            </a> and 
+            <a href="https://github.com/sukeesh/Jarvis" class="text-primary hover:underline" target="_blank" rel="noreferrer nofollow">
+              Jarvis
+            </a> - all of which have over 10,000 stars on their repositories.
+          </p>
+        </CardContent>
+      </Card>
+    </section>
 
-      I'm an avid open-source <a
-        href="https://github.com/yashLadha"
-        target="_blank"
-        class="underline"
-        rel="noreferrer nofollow">contributor</a
-      > and whenever I get the chance, I enjoy giving back to the community. I was a Google Summer of Code fellow with FOSSASIA,
-      and I've also contributed to several popular open-source projects like <a
-        href="https://github.com/nodejs/node"
-        class="underline"
-        target="_blank"
-        rel="noreferrer nofollow">Node.js</a
-      >, <a href="https://github.com/fossasia/badgeyay" class="underline" rel="noreferrer nofollow">BadgeYay</a> and <a
-        href="https://github.com/sukeesh/Jarvis"
-        class="underline"
-        target="_blank"
-        rel="noreferrer nofollow">Jarvis</a
-      > - all of which have over 10,000 stars on their repositories.
-    </p>
-  </main>
+    <!-- Quick Links -->
+    <section class="grid md:grid-cols-3 gap-6">
+      <a href="/projects" class="block">
+        <Card className="hover:shadow-lg transition-shadow cursor-pointer h-full">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <span>🚀</span>
+              Projects
+            </CardTitle>
+            <CardDescription>
+              Explore my latest work and side projects
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <Button asChild variant="outline" className="w-full">
+              <span>View Projects</span>
+            </Button>
+          </CardContent>
+        </Card>
+      </a>
+
+      <a href="/blog" class="block">
+        <Card className="hover:shadow-lg transition-shadow cursor-pointer h-full">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <span>📝</span>
+              Blog
+            </CardTitle>
+            <CardDescription>
+              Read my thoughts on technology and development
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <Button asChild variant="outline" className="w-full">
+              <span>Read Blog</span>
+            </Button>
+          </CardContent>
+        </Card>
+      </a>
+
+      <a href="/contactme" class="block">
+        <Card className="hover:shadow-lg transition-shadow cursor-pointer h-full">
+          <CardHeader>
+            <CardTitle className="flex items-center gap-2">
+              <span>🤝</span>
+              Collaborate
+            </CardTitle>
+            <CardDescription>
+              Let's work together on something amazing
+            </CardDescription>
+          </CardHeader>
+          <CardContent>
+            <Button asChild variant="outline" className="w-full">
+              <span>Get In Touch</span>
+            </Button>
+          </CardContent>
+        </Card>
+      </a>
+    </section>
+  </div>
 </Layout>

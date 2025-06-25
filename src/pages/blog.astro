@@ -1,10 +1,12 @@
 ---
 import Seo from "../components/Seo.astro";
 import Layout from "../layouts/Layout.astro";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../components/ui/card";
+import { Badge } from "../components/ui/badge";
 
 // Use Astro.glob() to fetch all posts, and then sort them by date.
 const posts = (await Astro.glob("./blog/*.{md,mdx}")).sort(
-  (a, b) => new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf()
+  (a, b) => new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf(),
 );
 ---
 
@@ -12,28 +14,197 @@ const posts = (await Astro.glob("./blog/*.{md,mdx}")).sort(
   <Seo
     slot="header"
     seo={{
-      title: "Yash Ladha",
-      description: "Hub to share interesting bits about software engineering.",
+      title: "Blog - Yash Ladha",
+      description:
+        "Hub to share interesting bits about software engineering, system architecture, and technology insights.",
     }}
   />
-  <div class="p-2">
-    <content>
-      <ul>
-        {
-          posts.map((post) => (
-            <div class="max-w-prose mx-auto">
-              <a
-                href={post.url.replace(".html", "")}
-                data-astro-prefetch
-                class="transition-all text-blue-700 group p-2"
-              >
-                <h3 class="underline">{post.frontmatter.title}</h3>
-                <p class="text-gray-800 group-hover:text-black">{post.frontmatter.description}</p>
-              </a>
+
+  <div class="max-w-4xl mx-auto space-y-8">
+    <section class="text-center space-y-4">
+      <h1 class="text-4xl font-bold tracking-tight">Blog</h1>
+      <p class="text-xl text-muted-foreground max-w-2xl mx-auto">
+        Sharing insights about software engineering, system architecture, and technology
+      </p>
+    </section>
+
+    {
+      posts.length > 0 ? (
+        <div class="grid gap-6">
+          {posts.map((post) => (
+            <article class="group">
+              <Card class="hover:shadow-xl transition-all duration-500 ease-out hover:-translate-y-2 hover:scale-[1.02] border-2 hover:border-primary/20">
+                <a href={post.url?.replace(".html", "")} data-astro-prefetch class="block">
+                  <div class="flex flex-col md:flex-row overflow-hidden">
+                    {post.frontmatter.heroImage && (
+                      <div class="md:w-1/3 overflow-hidden">
+                        <img
+                          src={post.frontmatter.heroImage}
+                          alt={post.frontmatter.title}
+                          class="w-full h-48 md:h-full object-cover transition-transform duration-500 group-hover:scale-110 rounded-t-lg md:rounded-l-lg md:rounded-t-none"
+                          loading="lazy"
+                        />
+                      </div>
+                    )}
+
+                    <div
+                      class={`flex-1 ${post.frontmatter.heroImage ? "md:w-2/3" : "w-full"} transition-all duration-300 group-hover:px-8 group-hover:py-2`}
+                    >
+                      <CardHeader class="transition-all duration-300 group-hover:pb-4">
+                        <div class="flex items-start justify-between gap-4">
+                          <div class="flex-1">
+                            <CardTitle class="text-xl mb-2 transition-all duration-300 group-hover:text-primary group-hover:text-2xl">
+                              {post.frontmatter.title}
+                            </CardTitle>
+                            <CardDescription class="text-base transition-all duration-300 group-hover:text-foreground/80">
+                              {post.frontmatter.description}
+                            </CardDescription>
+                          </div>
+                        </div>
+                      </CardHeader>
+
+                      <CardContent class="transition-all duration-300 group-hover:pb-8">
+                        <div class="flex items-center justify-between">
+                          <div class="flex items-center gap-4 text-sm text-muted-foreground transition-all duration-300 group-hover:gap-6">
+                            {post.frontmatter.pubDate && (
+                              <time class="flex items-center gap-1 transition-all duration-300 group-hover:gap-2">
+                                <span class="transition-transform duration-300 group-hover:scale-110">📅</span>
+                                {post.frontmatter.pubDate}
+                              </time>
+                            )}
+                            {post.frontmatter.updatedDate && (
+                              <time class="flex items-center gap-1 transition-all duration-300 group-hover:gap-2">
+                                <span class="transition-transform duration-300 group-hover:scale-110">🔄</span>
+                                Updated {post.frontmatter.updatedDate}
+                              </time>
+                            )}
+                          </div>
+
+                          <Badge
+                            variant="outline"
+                            class="transition-all duration-300 group-hover:bg-primary group-hover:text-primary-foreground group-hover:scale-105"
+                          >
+                            <span class="transition-transform duration-300 group-hover:translate-x-1">Read More →</span>
+                          </Badge>
+                        </div>
+                      </CardContent>
+                    </div>
+                  </div>
+                </a>
+              </Card>
+            </article>
+          ))}
+        </div>
+      ) : (
+        <Card className="text-center py-12">
+          <CardContent>
+            <div class="space-y-4">
+              <div class="text-6xl">📝</div>
+              <h2 class="text-2xl font-semibold">No blog posts yet</h2>
+              <p class="text-muted-foreground">
+                Check back soon for insights about software engineering and technology!
+              </p>
             </div>
-          ))
-        }
-      </ul>
-    </content>
+          </CardContent>
+        </Card>
+      )
+    }
   </div>
 </Layout>
+
+<style>
+  /* Enhanced hover animations for blog cards */
+  .group:hover {
+    transform-origin: center;
+  }
+  
+  /* Smooth glow effect on hover */
+  .group:hover .border-2 {
+    box-shadow: 
+      0 25px 50px -12px rgba(0, 0, 0, 0.25),
+      0 0 0 1px rgba(var(--primary), 0.1),
+      0 0 20px rgba(var(--primary), 0.1);
+  }
+  
+  /* Subtle background color change on hover */
+  .group:hover .border-2 {
+    background: linear-gradient(135deg, 
+      hsl(var(--card)) 0%, 
+      hsl(var(--card)) 50%, 
+      hsl(var(--muted)) 100%);
+  }
+  
+  /* Enhanced content padding animation */
+  .group:hover .flex-1 {
+    padding-left: 2rem !important;
+    padding-right: 2rem !important;
+    padding-top: 1rem !important;
+    padding-bottom: 1rem !important;
+  }
+  
+  /* Animate the badge with a pulse effect */
+  .group:hover .group-hover\\:bg-primary {
+    animation: pulse-glow 2s infinite;
+  }
+  
+  @keyframes pulse-glow {
+    0%, 100% {
+      box-shadow: 0 0 5px rgba(var(--primary), 0.5);
+    }
+    50% {
+      box-shadow: 0 0 20px rgba(var(--primary), 0.8);
+    }
+  }
+  
+  /* Add a subtle shimmer effect */
+  .group .border-2 {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .group .border-2::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(
+      90deg,
+      transparent,
+      rgba(var(--primary), 0.1),
+      transparent
+    );
+    transition: left 0.5s ease-in-out;
+    z-index: 1;
+  }
+  
+  .group:hover .border-2::before {
+    left: 100%;
+  }
+  
+  /* Ensure content stays above the shimmer effect */
+  .group .border-2 > * {
+    position: relative;
+    z-index: 2;
+  }
+  
+  /* Additional hover effects for better visual feedback */
+  .group:hover .text-xl {
+    letter-spacing: 0.025em;
+  }
+  
+  .group:hover .text-base {
+    line-height: 1.75;
+  }
+  
+  /* Smooth transition for all elements */
+  .group * {
+    transition: all 0.3s ease-out;
+  }
+  
+  /* Add a subtle border radius animation */
+  .group:hover .border-2 {
+    border-radius: 1rem;
+  }
+</style>

@@ -15,16 +15,28 @@
   },
   "dependencies": {
     "@astrojs/check": "^0.9.3",
+    "@astrojs/react": "^4.3.0",
     "@astrojs/sitemap": "^3.1.6",
     "@astrojs/tailwind": "^5.1.1",
     "@fontsource-variable/commissioner": "^5.1.0",
+    "@radix-ui/react-navigation-menu": "^1.2.13",
+    "@radix-ui/react-separator": "^1.1.7",
+    "@radix-ui/react-slot": "^1.2.3",
     "astro": "^4.15.8",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "lucide-react": "^0.523.0",
     "prettier": "^3.3.3",
     "prettier-plugin-astro": "^0.14.1",
+    "react": "^19.1.0",
+    "react-dom": "^19.1.0",
+    "tailwind-merge": "^3.3.1",
     "tailwindcss": "^3.4.10",
     "typescript": "^5.5.4"
   },
   "devDependencies": {
-    "@tailwindcss/typography": "^0.5.14"
+    "@tailwindcss/typography": "^0.5.16",
+    "shadcn": "^2.7.0",
+    "tailwindcss-animate": "^1.0.7"
   }
 }

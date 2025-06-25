@@ -1,0 +1,9 @@
+---
+export interface Props {
+  class?: string;
+}
+
+const { class: className = "" } = Astro.props;
+---
+
+<div class={`shrink-0 bg-border h-[1px] w-full ${className}`}></div>

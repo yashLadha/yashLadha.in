@@ -1,5 +1,6 @@
 import { defineConfig } from "astro/config";
 import tailwind from "@astrojs/tailwind";
+import react from "@astrojs/react";
 
 import sitemap from "@astrojs/sitemap";
 
@@ -19,7 +20,10 @@ export default defineConfig({
     format: "file", // Fix trailing slash never in production builds
   },
   integrations: [
-    tailwind(),
+    tailwind({
+      applyBaseStyles: false, // Let shadcn handle base styles
+    }),
+    react(),
     sitemap(),
   ],
 });

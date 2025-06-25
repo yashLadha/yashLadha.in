@@ -2,30 +2,102 @@
 import Seo from "../components/Seo.astro";
 import Layout from "../layouts/Layout.astro";
 import siteMetadata from "../static/siteMetadata.json";
+import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../components/ui/card";
+import { Button } from "../components/ui/button";
+import { Badge } from "../components/ui/badge";
+import { Separator } from "../components/ui/separator";
 ---
 
 <Layout>
   <Seo slot="header" seo={siteMetadata} />
-  <main class="max-w-prose sm:p-0 text-sm">
-    I'm always excited to work on new and interesting projects. Do you have an idea that you think I could contribute
-    to? I'd love to hear from you!
+  <div class="max-w-4xl mx-auto space-y-8">
+    <section class="text-center space-y-4">
+      <h1 class="text-4xl font-bold tracking-tight">Let's Collaborate</h1>
+      <p class="text-xl text-muted-foreground max-w-2xl mx-auto">
+        I'm always excited to work on new and interesting projects. Have an idea? Let's bring it to life!
+      </p>
+    </section>
 
-    <br /><br />
-    Areas of Expertise
+    <div class="grid md:grid-cols-2 gap-8">
+      <!-- Contact Info -->
+      <Card>
+        <CardHeader>
+          <CardTitle>Get In Touch</CardTitle>
+          <CardDescription>
+            Ready to start a conversation? Reach out through any of these channels.
+          </CardDescription>
+        </CardHeader>
+        <CardContent className="space-y-4">
+          <div class="space-y-3">
+            <Button asChild className="w-full justify-start" variant="outline">
+              <a href="mailto:admin@yashladha.in" class="flex items-center gap-2">
+                <span>📧</span>
+                admin@yashladha.in
+              </a>
+            </Button>
+            
+            <Button asChild className="w-full justify-start" variant="outline">
+              <a href="https://www.linkedin.com/in/yashladha/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2">
+                <span>💼</span>
+                LinkedIn
+              </a>
+            </Button>
+            
+            <Button asChild className="w-full justify-start" variant="outline">
+              <a href="https://github.com/yashLadha" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2">
+                <span>🐙</span>
+                GitHub
+              </a>
+            </Button>
+            
+            <Button asChild className="w-full justify-start" variant="outline">
+              <a href="https://twitter.com/yashladha_" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2">
+                <span>🐦</span>
+                Twitter
+              </a>
+            </Button>
+          </div>
+        </CardContent>
+      </Card>
 
-    <br /><br />
-    My skills span a range of technical areas, including:
-    <ul class="list-disc list-inside">
-      <li>Distributed Systems</li>
-      <li>Scalability</li>
-      <li>Advanced Algorithms</li>
-      <li>Generative AI</li>
-      <li>SOLID principles</li>
-      <li>Software Craftsmanship</li>
-    </ul>
-    <br />
+      <!-- Areas of Expertise -->
+      <Card>
+        <CardHeader>
+          <CardTitle>Areas of Expertise</CardTitle>
+          <CardDescription>
+            My skills span a range of technical areas that I'm passionate about leveraging for innovative solutions.
+          </CardDescription>
+        </CardHeader>
+        <CardContent>
+          <div class="flex flex-wrap gap-2">
+            <Badge variant="secondary">Distributed Systems</Badge>
+            <Badge variant="secondary">Scalability</Badge>
+            <Badge variant="secondary">Advanced Algorithms</Badge>
+            <Badge variant="secondary">Generative AI</Badge>
+            <Badge variant="secondary">SOLID Principles</Badge>
+            <Badge variant="secondary">Software Craftsmanship</Badge>
+            <Badge variant="secondary">System Architecture</Badge>
+            <Badge variant="secondary">Language Internals</Badge>
+            <Badge variant="secondary">Framework Internals</Badge>
+          </div>
+        </CardContent>
+      </Card>
+    </div>
 
-    I'm passionate about leveraging these skills to bring innovative solutions to life.
-    Let's explore the possibilities together and create something amazing!
-  </main>
+    <Separator />
+
+    <!-- Call to Action -->
+    <Card className="text-center">
+      <CardContent className="pt-6">
+        <h3 class="text-2xl font-semibold mb-4">Ready to Build Something Amazing?</h3>
+        <p class="text-muted-foreground mb-6 max-w-2xl mx-auto">
+          Whether you have a specific project in mind or just want to explore possibilities, 
+          I'd love to hear from you. Let's create something impactful together!
+        </p>
+        <Button asChild size="lg">
+          <a href="mailto:admin@yashladha.in">Start the Conversation</a>
+        </Button>
+      </CardContent>
+    </Card>
+  </div>
 </Layout>

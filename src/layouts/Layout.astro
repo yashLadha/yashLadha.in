@@ -1,6 +1,7 @@
 ---
-import NavBar from "../components/NavBar.astro";
+import { ModernNavBar } from "../components/ModernNavBar";
 import "../styles/base.css";
+import "../styles/globals.css";
 import "@fontsource-variable/commissioner";
 ---
 
@@ -10,14 +11,10 @@ import "@fontsource-variable/commissioner";
     <link rel="sitemap" href="/sitemap-index.xml" />
     <slot name="header" />
   </head>
-  <body class="w-full max-w-prose sm:w-2/3 m-0 sm:mx-auto">
-    <div class="container font-medium">
-      <NavBar />
-    </div>
-    <div class="m-0 sm:mx-auto">
-      <div class="container">
-        <slot />
-      </div>
-    </div>
+  <body class="min-h-screen bg-background font-sans antialiased">
+    <ModernNavBar client:load />
+    <main class="container mx-auto px-4 py-8">
+      <slot />
+    </main>
   </body>
 </html>

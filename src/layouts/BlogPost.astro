@@ -2,8 +2,10 @@
 import Seo from "../components/Seo.astro";
 import { type Post, type PostIndex } from "../types/Post";
 import { getNextAndPrevBlogs } from "../utils/blogPosts";
-import NextLinks from "../components/NextLinks.astro";
 import Layout from "./Layout.astro";
+import { Button } from "../components/ui/button";
+import { Card, CardContent, CardHeader } from "../components/ui/card";
+import { Separator } from "../components/ui/separator";
 
 export interface Props {
   content: Post;
@@ -42,20 +44,179 @@ if (!disableNextBlogLinks) {
       image: heroImage,
     }}
   />
-  <div>
-    <article class="p-2 max-w-prose mb-4">
-      {heroImage && <img class="bg-clip-border rounded-lg" width={720} height={360} src={heroImage} alt="" />}
-      <h1 class="title">{title}</h1>
-      {pubDate && <time class="text-sm">{pubDate}</time>}
-      {
-        updatedDate && (
-          <div class="text-sm">
-            Last updated on <time>{updatedDate}</time>
+  
+  <div class="max-w-4xl mx-auto">
+    <Card class="mb-8">
+      <CardHeader class="text-center space-y-4">
+        {heroImage && (
+          <div class="w-full max-w-2xl mx-auto">
+            <img 
+              class="w-full h-auto rounded-lg shadow-lg" 
+              src={heroImage} 
+              alt={title}
+              loading="lazy"
+            />
           </div>
-        )
-      }
-      <hr />
-      <slot />
+        )}
+        <div class="space-y-2">
+          <h1 class="text-3xl md:text-4xl font-bold tracking-tight">{title}</h1>
+          <div class="flex flex-col sm:flex-row items-center justify-center gap-2 text-sm text-muted-foreground">
+            {pubDate && (
+              <time class="flex items-center gap-1">
+                <span>📅</span>
+                {pubDate}
+              </time>
+            )}
+            {updatedDate && (
+              <>
+                {pubDate && <span class="hidden sm:inline">•</span>}
+                <time class="flex items-center gap-1">
+                  <span>🔄</span>
+                  Updated {updatedDate}
+                </time>
+              </>
+            )}
+          </div>
+        </div>
+      </CardHeader>
+    </Card>
+
+    <article class="prose prose-slate prose-xl max-w-none">
+      <CardContent class="px-0">
+        <slot />
+      </CardContent>
     </article>
+
+    {!disableNextBlogLinks && (nextPost || prevPost) && (
+      <>
+        <Separator class="my-8" />
+        <div class="grid md:grid-cols-2 gap-4 mt-12">
+          {prevPost && (
+            <Card class="hover:shadow-lg transition-shadow">
+              <CardContent class="p-6">
+                <div class="text-sm text-muted-foreground mb-2">← Previous Post</div>
+                <Button asChild variant="ghost" class="h-auto p-0 justify-start">
+                  <a href={prevPost.url?.replace(".html", "")} class="text-left">
+                    <h3 class="font-semibold text-base">{prevPost.title}</h3>
+                  </a>
+                </Button>
+              </CardContent>
+            </Card>
+          )}
+          
+          {nextPost && (
+            <Card class="hover:shadow-lg transition-shadow">
+              <CardContent class="p-6">
+                <div class="text-sm text-muted-foreground mb-2 text-right">Next Post →</div>
+                <Button asChild variant="ghost" class="h-auto p-0 justify-end">
+                  <a href={nextPost.url?.replace(".html", "")} class="text-right">
+                    <h3 class="font-semibold text-base">{nextPost.title}</h3>
+                  </a>
+                </Button>
+              </CardContent>
+            </Card>
+          )}
+        </div>
+      </>
+    )}
   </div>
 </Layout>
+
+<style>
+  /* Enhanced prose styles for blog content */
+  .prose {
+    @apply text-foreground;
+  }
+  
+  .prose h1 {
+    @apply text-4xl font-bold mt-10 mb-6 text-foreground;
+  }
+  
+  .prose h2 {
+    @apply text-3xl font-bold mt-8 mb-4 text-foreground;
+  }
+  
+  .prose h3 {
+    @apply text-2xl font-bold mt-6 mb-4 text-foreground;
+  }
+  
+  .prose h4 {
+    @apply text-xl font-semibold mt-5 mb-3 text-foreground;
+  }
+  
+  .prose p {
+    @apply text-lg leading-8 mb-6 text-foreground;
+  }
+  
+  .prose a {
+    @apply text-primary hover:underline;
+  }
+  
+  .prose code {
+    @apply bg-muted px-2 py-1 rounded text-base font-source;
+  }
+  
+  .prose pre {
+    @apply bg-muted p-6 rounded-lg overflow-x-auto my-6;
+  }
+  
+  .prose pre code {
+    @apply bg-transparent p-0 text-sm font-source;
+  }
+  
+  .prose blockquote {
+    @apply border-l-4 border-primary pl-6 italic my-6 text-muted-foreground text-lg;
+  }
+  
+  .prose ul {
+    @apply list-disc list-inside mb-6 space-y-2;
+  }
+  
+  .prose ol {
+    @apply list-decimal list-inside mb-6 space-y-2;
+  }
+  
+  .prose li {
+    @apply text-lg leading-8;
+  }
+  
+  .prose table {
+    @apply w-full border-collapse border border-border my-6;
+  }
+  
+  .prose th {
+    @apply bg-muted font-semibold p-3 border border-border text-left text-base;
+  }
+  
+  .prose td {
+    @apply p-3 border border-border text-base;
+  }
+  
+  .prose hr {
+    @apply border-border my-8;
+  }
+  
+  .prose img {
+    @apply rounded-lg shadow-sm my-6;
+  }
+  
+  .prose strong {
+    @apply font-semibold text-foreground;
+  }
+  
+  .prose em {
+    @apply italic;
+  }
+  
+  /* Improve spacing between elements */
+  .prose > * + * {
+    @apply mt-6;
+  }
+  
+  .prose > h1 + *,
+  .prose > h2 + *,
+  .prose > h3 + *,
+  .prose > h4 + * {
+    @apply mt-4;
+  }
+</style>
