@@ -27,7 +27,6 @@ After we have selected the image, let's create a `Dockerfile` . Update the conte
 FROM ubuntu:18.04
 ```
 
-
 ### Step 2: Install the necessary dependencies
 
 At this point, the Docker container only has default depepndencies that came built-in with the Docker image.

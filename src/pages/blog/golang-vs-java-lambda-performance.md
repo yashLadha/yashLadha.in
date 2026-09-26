@@ -243,8 +243,8 @@ func main() {
 	lambda.Start(handleRequest)
 }
 ```
-</details>
 
+</details>
 
 <details>
 <summary>Java Code</summary>
@@ -350,9 +350,8 @@ public class App {
     }
 }
 ```
+
 </details>
-
-
 
 ### Cold Start Time Values
 
