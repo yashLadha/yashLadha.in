@@ -7,6 +7,8 @@ import { normalizePath } from "../lib/utils";
 import "../styles/globals.css";
 import "@fontsource-variable/geist";
 import "@fontsource-variable/source-code-pro";
+import geistLatin from "@fontsource-variable/geist/files/geist-latin-wght-normal.woff2?url";
+import sourceCodeProLatin from "@fontsource-variable/source-code-pro/files/source-code-pro-latin-wght-normal.woff2?url";
 
 const posts = await loadPosts();
 ---
@@ -15,6 +17,9 @@ const posts = await loadPosts();
 <html lang="en">
   <head>
     <link rel="sitemap" href="/sitemap-index.xml" />
+    <!-- Both faces are used above the fold, and the stylesheet alone would only reveal them after it downloads. -->
+    <link rel="preload" href={geistLatin} as="font" type="font/woff2" crossorigin />
+    <link rel="preload" href={sourceCodeProLatin} as="font" type="font/woff2" crossorigin />
     <script is:inline>
       // Runs before first paint so the page never flashes the wrong theme.
       let stored = null;
@@ -51,7 +56,7 @@ const posts = await loadPosts();
         </span>
       </div>
     </footer>
-    <CommandPalette client:load posts={posts} />
+    <CommandPalette client:idle posts={posts} />
     <script>
       import { isApplePlatform } from "../lib/platform";
 
