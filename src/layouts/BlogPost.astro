@@ -109,7 +109,7 @@ const neighbours = disableNextBlogLinks
     class="group fixed right-4 bottom-4 z-40 flex translate-y-2 items-center rounded-full border bg-card/90 p-1 opacity-0 shadow-panel backdrop-blur transition duration-200 data-[visible]:translate-y-0 data-[visible]:opacity-100 sm:right-6 sm:bottom-6"
   >
     <!-- Collapsed to the trigger until hovered, focused, or tapped open on touch screens. -->
-    <div class="grid grid-cols-[0fr] transition-[grid-template-columns] duration-200 group-focus-within:grid-cols-[1fr] group-hover:grid-cols-[1fr] group-data-[open]:grid-cols-[1fr]">
+    <div class="grid grid-cols-[0fr] transition-[grid-template-columns] duration-200 group-not-data-[dismissed]:group-focus-within:grid-cols-[1fr] group-not-data-[dismissed]:group-hover:grid-cols-[1fr] group-not-data-[dismissed]:group-data-[open]:grid-cols-[1fr]">
       <div class="overflow-hidden">
         <ShareLinks title={title} url={shareUrl} caption={false} class="pr-0.5 pl-0.5" />
       </div>
@@ -148,6 +148,25 @@ const neighbours = disableNextBlogLinks
     document.addEventListener("click", (event) => {
       if (!float.contains(event.target as Node)) setOpen(false);
     });
+
+    // Scrolling collapses the bar even while it is hovered or focused; touching or focusing it again re-arms it.
+    const dismissAfter = 24;
+    let expandedAt = 0;
+    const arm = () => {
+      expandedAt = window.scrollY;
+      float.removeAttribute("data-dismissed");
+    };
+    for (const type of ["pointerenter", "pointerdown", "focusin"]) float.addEventListener(type, arm);
+    window.addEventListener(
+      "scroll",
+      () => {
+        const expanded = float.matches(":is(:hover, :focus-within, [data-open]):not([data-dismissed])");
+        if (!expanded || Math.abs(window.scrollY - expandedAt) < dismissAfter) return;
+        setOpen(false);
+        float.toggleAttribute("data-dismissed", true);
+      },
+      { passive: true },
+    );
 
     const onScreen = new Set<Element>();
     let pastHeader = false;
