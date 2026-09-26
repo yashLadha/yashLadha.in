@@ -8,7 +8,7 @@ import ProjectRow from "../components/ProjectRow.astro";
 import SectionHeader from "../components/SectionHeader.astro";
 import SocialList from "../components/SocialList.astro";
 import { CareerTrace } from "../components/CareerTrace";
-import { EventLoop } from "../components/EventLoop";
+import { FailureDrill } from "../components/FailureDrill";
 import { buttonVariants } from "../components/ui/button";
 import { Kbd } from "../components/ui/kbd";
 import { career } from "../data/career";
@@ -80,14 +80,16 @@ const interests = [
     <div class="animate-enter min-w-0" style="--i: 2">
       <div class="mb-3 flex items-end justify-between gap-4 px-1">
         <p class="text-sm text-muted-foreground">
-          <span class="font-medium text-foreground">What prints first?</span> A small trip through the Node.js event
-          loop.
+          <span class="font-medium text-foreground">What happens when a dependency goes down?</span> Break it, then add
+          guards until requests stop hanging.
         </p>
         <span class="hidden shrink-0 items-center gap-1.5 font-mono text-2xs text-muted-foreground sm:flex">
-          <Kbd>space</Kbd> run <Kbd>→</Kbd> step
+          <Kbd>b</Kbd> break <Kbd>1</Kbd>
+          <Kbd>2</Kbd>
+          <Kbd>3</Kbd> guards
         </span>
       </div>
-      <EventLoop client:visible />
+      <FailureDrill client:visible />
     </div>
   </section>
 
@@ -165,7 +167,7 @@ const interests = [
             <Mail />
             {EMAIL}
           </a>
-          <CopyButton text={EMAIL} />
+          <CopyButton text={EMAIL} toast="Email copied" />
         </div>
       </div>
       <SocialList class="bg-background" />

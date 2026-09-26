@@ -316,6 +316,11 @@
     animation: pop 260ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
   }
 
+  /* Moves a full-width track from --from to --to so a child at left: 0 lands on those points. */
+  .travel {
+    animation: travel linear both;
+  }
+
   .palette-panel {
     animation: rise 180ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
   }
@@ -357,6 +362,16 @@
   from {
     opacity: 0;
     transform: translateY(-6px) scale(0.985);
+  }
+}
+
+@keyframes travel {
+  from {
+    transform: translateX(var(--from));
+  }
+  to {
+    transform: translateX(var(--to));
+    opacity: 0;
   }
 }
 
