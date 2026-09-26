@@ -1,0 +1,114 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Java vs Rust Kafka clients: chasing down a 16x gap, one default at a time, on both clients</title>
+  <desc id="desc">Producer throughput of the Java Kafka client and rust-rdkafka as batch.size grows from 16 KB to 1 MB. Java peaks at 128 KB with 1.04M msg/s and Rust at 1 MB with 1.01M msg/s: each client peaks at a different batch.size.</desc>
+  <defs>
+    <style>
+      .sans { font-family: "Geist", system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; }
+      .mono { font-family: "Source Code Pro", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+      .axis { font-size: 18px; font-weight: 500; fill: #4a463f; }
+      .halo { paint-order: stroke; stroke: #faf9f6; stroke-width: 7px; stroke-linejoin: round; }
+    </style>
+  </defs>
+
+  <rect width="1200" height="630" fill="#faf9f6"/>
+
+  <g class="sans">
+    <text x="56" y="80" font-size="58" font-weight="800" fill="#1c1a17"><tspan fill="#e76f00">Java</tspan> vs <tspan fill="#1f3a4d">Rust</tspan> Kafka clients</text>
+    <text x="58" y="122" font-size="25" fill="#6b665f">Chasing down a 16x gap, one default at a time, on both clients</text>
+    <text x="110" y="172" font-size="22" font-weight="700" fill="#1c1a17">Each client peaks at a different batch.size</text>
+  </g>
+
+  <g>
+    <line x1="110" x2="1042" y1="438.0" y2="438.0" stroke="#e4e0d8" stroke-width="1.5"/>
+    <text x="102" y="444.0" text-anchor="end" class="sans axis">250k</text>
+    <line x1="110" x2="1042" y1="376.0" y2="376.0" stroke="#e4e0d8" stroke-width="1.5"/>
+    <text x="102" y="382.0" text-anchor="end" class="sans axis">500k</text>
+    <line x1="110" x2="1042" y1="314.0" y2="314.0" stroke="#e4e0d8" stroke-width="1.5"/>
+    <text x="102" y="320.0" text-anchor="end" class="sans axis">750k</text>
+    <line x1="110" x2="1042" y1="252.0" y2="252.0" stroke="#e4e0d8" stroke-width="1.5"/>
+    <text x="102" y="258.0" text-anchor="end" class="sans axis">1M</text>
+    <line x1="110" x2="1042" y1="500" y2="500" stroke="#c9c3b8" stroke-width="2"/>
+    <text x="118.0" y="530" text-anchor="middle" class="sans axis">16 KB</text>
+    <text x="270.0" y="530" text-anchor="middle" class="sans axis">32 KB</text>
+    <text x="422.0" y="530" text-anchor="middle" class="sans axis">64 KB</text>
+    <text x="574.0" y="530" text-anchor="middle" class="sans axis">128 KB</text>
+    <text x="726.0" y="530" text-anchor="middle" class="sans axis">256 KB</text>
+    <text x="878.0" y="530" text-anchor="middle" class="sans axis">512 KB</text>
+    <text x="1030.0" y="530" text-anchor="middle" class="sans axis">1 MB</text>
+  </g>
+
+  <g>
+    <path d="M118.0 441.9 L270.0 403.5 L422.0 355.1 L574.0 308.4 L726.0 272.1 L878.0 257.6 L1030.0 249.2" fill="none" stroke="#faf9f6" stroke-width="14" stroke-linejoin="round" stroke-linecap="round"/>
+    <path d="M118.0 441.9 L270.0 403.5 L422.0 355.1 L574.0 308.4 L726.0 272.1 L878.0 257.6 L1030.0 249.2" fill="none" stroke="#1f3a4d" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+    <circle cx="118.0" cy="441.9" r="6.5" fill="#1f3a4d" stroke="#faf9f6" stroke-width="3"/>
+    <circle cx="270.0" cy="403.5" r="6.5" fill="#1f3a4d" stroke="#faf9f6" stroke-width="3"/>
+    <circle cx="422.0" cy="355.1" r="6.5" fill="#1f3a4d" stroke="#faf9f6" stroke-width="3"/>
+    <circle cx="574.0" cy="308.4" r="6.5" fill="#1f3a4d" stroke="#faf9f6" stroke-width="3"/>
+    <circle cx="726.0" cy="272.1" r="6.5" fill="#1f3a4d" stroke="#faf9f6" stroke-width="3"/>
+    <circle cx="878.0" cy="257.6" r="6.5" fill="#1f3a4d" stroke="#faf9f6" stroke-width="3"/>
+    <circle cx="1030.0" cy="249.2" r="6.5" fill="#1f3a4d" stroke="#faf9f6" stroke-width="3"/>
+    <path d="M118.0 362.0 L270.0 310.7 L422.0 258.7 L574.0 241.9 L726.0 253.6 L878.0 285.1 L1030.0 342.9" fill="none" stroke="#faf9f6" stroke-width="14" stroke-linejoin="round" stroke-linecap="round"/>
+    <path d="M118.0 362.0 L270.0 310.7 L422.0 258.7 L574.0 241.9 L726.0 253.6 L878.0 285.1 L1030.0 342.9" fill="none" stroke="#e76f00" stroke-width="6" stroke-linejoin="round" stroke-linecap="round"/>
+    <circle cx="118.0" cy="362.0" r="6.5" fill="#e76f00" stroke="#faf9f6" stroke-width="3"/>
+    <circle cx="270.0" cy="310.7" r="6.5" fill="#e76f00" stroke="#faf9f6" stroke-width="3"/>
+    <circle cx="422.0" cy="258.7" r="6.5" fill="#e76f00" stroke="#faf9f6" stroke-width="3"/>
+    <circle cx="574.0" cy="241.9" r="6.5" fill="#e76f00" stroke="#faf9f6" stroke-width="3"/>
+    <circle cx="726.0" cy="253.6" r="6.5" fill="#e76f00" stroke="#faf9f6" stroke-width="3"/>
+    <circle cx="878.0" cy="285.1" r="6.5" fill="#e76f00" stroke="#faf9f6" stroke-width="3"/>
+    <circle cx="1030.0" cy="342.9" r="6.5" fill="#e76f00" stroke="#faf9f6" stroke-width="3"/>
+    <circle cx="574.0" cy="241.9" r="13" fill="none" stroke="#e76f00" stroke-width="2.5"/>
+    <text x="574.0" y="195.9" text-anchor="middle" class="sans halo" font-size="21" font-weight="700" fill="#e76f00">Java peak: 128 KB</text>
+    <text x="574.0" y="218.9" text-anchor="middle" class="sans halo" font-size="18" font-weight="600" fill="#4a463f">1.04M msg/s</text>
+    <circle cx="1030.0" cy="249.2" r="13" fill="none" stroke="#1f3a4d" stroke-width="2.5"/>
+    <text x="1044.0" y="203.2" text-anchor="end" class="sans halo" font-size="21" font-weight="700" fill="#1f3a4d">Rust peak: 1 MB</text>
+    <text x="1044.0" y="226.2" text-anchor="end" class="sans halo" font-size="18" font-weight="600" fill="#4a463f">1.01M msg/s</text>
+    <text x="1052.0" y="257.2" class="sans halo" font-size="23" font-weight="700" fill="#1f3a4d">Rust</text>
+    <text x="1052.0" y="350.9" class="sans halo" font-size="23" font-weight="700" fill="#e76f00">Java</text>
+  </g>
+
+  <g>
+    <rect x="12" y="548" width="34" height="10" rx="3" fill="#e4e0d8" fill-opacity="0.90"/>
+    <rect x="52" y="548" width="22" height="10" rx="3" fill="#e76f00" fill-opacity="0.35"/>
+    <rect x="80" y="548" width="90" height="10" rx="3" fill="#e76f00" fill-opacity="0.35"/>
+    <rect x="176" y="548" width="48" height="10" rx="3" fill="#e4e0d8" fill-opacity="0.90"/>
+    <rect x="230" y="548" width="22" height="10" rx="3" fill="#e4e0d8" fill-opacity="0.90"/>
+    <rect x="258" y="548" width="34" height="10" rx="3" fill="#e76f00" fill-opacity="0.35"/>
+    <rect x="298" y="548" width="22" height="10" rx="3" fill="#e4e0d8" fill-opacity="0.90"/>
+    <rect x="326" y="548" width="64" height="10" rx="3" fill="#e76f00" fill-opacity="0.35"/>
+    <rect x="396" y="548" width="34" height="10" rx="3" fill="#e76f00" fill-opacity="0.35"/>
+    <rect x="436" y="548" width="90" height="10" rx="3" fill="#e4e0d8" fill-opacity="0.90"/>
+    <rect x="532" y="548" width="22" height="10" rx="3" fill="#e4e0d8" fill-opacity="0.90"/>
+    <rect x="560" y="548" width="22" height="10" rx="3" fill="#1f3a4d" fill-opacity="0.35"/>
+    <rect x="588" y="548" width="90" height="10" rx="3" fill="#e76f00" fill-opacity="0.35"/>
+    <rect x="684" y="548" width="90" height="10" rx="3" fill="#e4e0d8" fill-opacity="0.90"/>
+    <rect x="780" y="548" width="64" height="10" rx="3" fill="#e76f00" fill-opacity="0.35"/>
+    <rect x="850" y="548" width="34" height="10" rx="3" fill="#e76f00" fill-opacity="0.35"/>
+    <rect x="890" y="548" width="90" height="10" rx="3" fill="#1f3a4d" fill-opacity="0.35"/>
+    <rect x="986" y="548" width="48" height="10" rx="3" fill="#e4e0d8" fill-opacity="0.90"/>
+    <rect x="1040" y="548" width="34" height="10" rx="3" fill="#e4e0d8" fill-opacity="0.90"/>
+    <rect x="1080" y="548" width="22" height="10" rx="3" fill="#e4e0d8" fill-opacity="0.90"/>
+    <rect x="1108" y="548" width="48" height="10" rx="3" fill="#e4e0d8" fill-opacity="0.90"/>
+    <rect x="1162" y="548" width="34" height="10" rx="3" fill="#e76f00" fill-opacity="0.35"/>
+    <rect x="26" y="562" width="90" height="10" rx="3" fill="#1f3a4d" fill-opacity="0.35"/>
+    <rect x="122" y="562" width="48" height="10" rx="3" fill="#e76f00" fill-opacity="0.35"/>
+    <rect x="176" y="562" width="90" height="10" rx="3" fill="#e76f00" fill-opacity="0.35"/>
+    <rect x="272" y="562" width="90" height="10" rx="3" fill="#e76f00" fill-opacity="0.35"/>
+    <rect x="368" y="562" width="90" height="10" rx="3" fill="#1f3a4d" fill-opacity="0.35"/>
+    <rect x="464" y="562" width="64" height="10" rx="3" fill="#e4e0d8" fill-opacity="0.90"/>
+    <rect x="534" y="562" width="64" height="10" rx="3" fill="#3f9aa8" fill-opacity="0.35"/>
+    <rect x="604" y="562" width="64" height="10" rx="3" fill="#e4e0d8" fill-opacity="0.90"/>
+    <rect x="674" y="562" width="64" height="10" rx="3" fill="#3f9aa8" fill-opacity="0.35"/>
+    <rect x="744" y="562" width="48" height="10" rx="3" fill="#1f3a4d" fill-opacity="0.35"/>
+    <rect x="798" y="562" width="34" height="10" rx="3" fill="#1f3a4d" fill-opacity="0.35"/>
+    <rect x="838" y="562" width="22" height="10" rx="3" fill="#e4e0d8" fill-opacity="0.90"/>
+    <rect x="866" y="562" width="48" height="10" rx="3" fill="#e4e0d8" fill-opacity="0.90"/>
+    <rect x="920" y="562" width="64" height="10" rx="3" fill="#3f9aa8" fill-opacity="0.35"/>
+    <rect x="990" y="562" width="64" height="10" rx="3" fill="#3f9aa8" fill-opacity="0.35"/>
+    <rect x="1060" y="562" width="90" height="10" rx="3" fill="#e76f00" fill-opacity="0.35"/>
+    <rect x="1156" y="562" width="22" height="10" rx="3" fill="#e4e0d8" fill-opacity="0.90"/>
+    <rect x="1184" y="562" width="64" height="10" rx="3" fill="#1f3a4d" fill-opacity="0.35"/>
+  </g>
+
+  <text x="56" y="608" class="mono" font-size="16" fill="#4a463f">kafka-clients 4.3.1 vs rdkafka 0.39 / librdkafka 2.12.1</text>
+  <text x="1144" y="608" text-anchor="end" class="sans" font-size="17" fill="#4a463f">producer msg/s, 1 KB messages, 6 partitions</text>
+</svg>
