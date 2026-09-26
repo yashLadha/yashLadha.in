@@ -3,8 +3,8 @@
   <desc id="desc">A host machine mounts a project directory and Neovim dotfiles into a Docker container, where Neovim edits a C++ file with the full Linux toolchain available.</desc>
   <defs>
     <style>
-      .sans { font-family: "Commissioner Variable", "Commissioner", system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; }
-      .mono { font-family: "Source Code Pro Variable", "Source Code Pro", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+      .sans { font-family: "Geist", system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; }
+      .mono { font-family: "Source Code Pro", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
       .label { font-size: 14px; fill: #6b665f; }
       .code { font-size: 16px; fill: #e8e4dc; }
       .ln { fill: #6b665f; }

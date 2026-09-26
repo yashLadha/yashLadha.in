@@ -3,8 +3,8 @@
   <desc id="desc">A cold start trace at 128 MB. The Go function finishes its INIT phase in 140 ms, while the Java function takes 1651 ms, so Go is ready about 1.5 seconds sooner.</desc>
   <defs>
     <style>
-      .sans { font-family: "Commissioner Variable", "Commissioner", system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; }
-      .mono { font-family: "Source Code Pro Variable", "Source Code Pro", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+      .sans { font-family: "Geist", system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; }
+      .mono { font-family: "Source Code Pro", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
       .tick { font-size: 14px; fill: #6e7681; }
       .lane { font-size: 15px; fill: #8b949e; }
     </style>

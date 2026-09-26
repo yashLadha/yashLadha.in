@@ -2,7 +2,7 @@
 import { ArrowLeft, ArrowRight, Share2 } from "lucide-react";
 import Seo from "../components/Seo.astro";
 import ShareLinks from "../components/ShareLinks.astro";
-import { loadPosts } from "../lib/posts";
+import { loadPosts, ogImage } from "../lib/posts";
 import { normalizePath } from "../lib/utils";
 import type { Post } from "../types/Post";
 import Layout from "./Layout.astro";
@@ -37,7 +37,7 @@ const neighbours = disableNextBlogLinks
 ---
 
 <Layout>
-  <Seo slot="header" seo={{ title, description, image: heroImage }} />
+  <Seo slot="header" seo={{ title, description, image: ogImage(post) }} />
 
   <div class="mx-auto max-w-[42rem]">
     <header class="animate-enter pb-10 pt-6 md:pt-12">

@@ -16,6 +16,10 @@ export type PostSummary = {
 
 const WORDS_PER_MINUTE = 225;
 
+/** Social preview image: a raster hero as is, otherwise the card rendered by pages/og/[slug].png.ts. */
+export const ogImage = (post: PostSummary) =>
+  post.heroImage && !post.heroImage.endsWith(".svg") ? post.heroImage : `/og/${post.url.split("/").pop()}.png`;
+
 // Frontmatter dates like "Jan 12 2025" carry no timezone. Parse and format them in UTC so the
 // build machine's timezone cannot shift them by a day.
 function parsePubDate(post: MarkdownInstance<Post>): Date {

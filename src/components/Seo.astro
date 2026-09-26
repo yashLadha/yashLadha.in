@@ -15,8 +15,8 @@ interface Props {
 const { seo } = Astro.props;
 const title = seo.title === SITE_NAME ? SITE_NAME : `${seo.title} | ${SITE_NAME}`;
 const canonical = new URL(normalizePath(Astro.url.pathname), Astro.site).href;
-// Crawlers need an absolute URL, and X and LinkedIn cannot render SVG, so each SVG hero ships with a PNG render beside it.
-const image = seo.image && new URL(seo.image.replace(/\.svg$/, ".png"), Astro.site).href;
+// Crawlers need an absolute URL.
+const image = seo.image && new URL(seo.image, Astro.site).href;
 ---
 
 <link rel="manifest" href="/manifest.json" />
