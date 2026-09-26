@@ -11,7 +11,7 @@ import { CareerTrace } from "../components/CareerTrace";
 import { FailureDrill } from "../components/FailureDrill";
 import { buttonVariants } from "../components/ui/button";
 import { Kbd } from "../components/ui/kbd";
-import { career, ym } from "../data/career";
+import { career, yearsOfExperience } from "../data/career";
 import { upstream } from "../data/projects";
 import { EMAIL, github } from "../data/site";
 import { loadPosts } from "../lib/posts";
@@ -22,8 +22,6 @@ const LATEST_POST_COUNT = 4;
 const posts = (await loadPosts()).slice(0, LATEST_POST_COUNT);
 const buildDate = new Date();
 const now = { year: buildDate.getUTCFullYear(), month: buildDate.getUTCMonth() + 1 };
-// Counted from Google Summer of Code in May 2018.
-const yearsOfExperience = Math.floor(ym(now.year, now.month) - ym(2018, 5));
 
 const interests = [
   "system architecture",
@@ -57,7 +55,7 @@ const interests = [
         I make large systems faster, cheaper, <span class="text-muted-foreground">and harder to break.</span>
       </h1>
       <p class="mt-6 max-w-xl text-lead leading-relaxed text-foreground/80">
-        {yearsOfExperience}+ years of system architecture, runtime internals, and distributed systems. Right now I work on UPI payments at
+        <span data-experience>{yearsOfExperience(buildDate)}</span>+ years of system architecture, runtime internals, and distributed systems. Right now I work on UPI payments at
         Amazon: making them cheaper to run, easier to see into, and harder to knock over.
       </p>
       <div class="mt-9 flex flex-wrap items-center gap-3">
@@ -178,7 +176,12 @@ const interests = [
 </Layout>
 
 <script>
+  import { yearsOfExperience } from "../data/career";
   import { openCommandPalette } from "../lib/commandPalette";
 
   document.querySelector("[data-open-palette]")?.addEventListener("click", openCommandPalette);
+
+  // The page is static, so refresh the count in case it was built before the latest anniversary.
+  const experience = document.querySelector("[data-experience]");
+  if (experience) experience.textContent = String(yearsOfExperience(new Date()));
 </script>

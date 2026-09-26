@@ -2,6 +2,10 @@ export type YearMonth = { year: number; month: number };
 
 export const ym = (year: number, month: number) => year + (month - 1) / 12;
 
+// Whole years since Google Summer of Code in May 2018.
+export const yearsOfExperience = (date: Date) =>
+  Math.floor(ym(date.getFullYear(), date.getMonth() + 1) - ym(2018, 5));
+
 export type Segment = { from: number; to?: number };
 
 export type CareerSpan = {
