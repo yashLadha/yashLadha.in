@@ -1,0 +1,74 @@
+---
+import type { HTMLAttributes } from "astro/types";
+import { Ellipsis, Link } from "lucide-react";
+import { Linkedin, Twitter } from "../lib/brandIcons";
+import { cn } from "../lib/utils";
+
+interface Props extends HTMLAttributes<"div"> {
+  title: string;
+  url: string;
+  /** Shows the "share" caption before the icons. */
+  caption?: boolean;
+}
+
+const { title, url, caption = true, class: className, ...attrs } = Astro.props;
+
+const targets = [
+  {
+    label: "Share on X",
+    icon: Twitter,
+    href: `https://twitter.com/intent/tweet?${new URLSearchParams({ text: title, url, via: "yashladha_" })}`,
+  },
+  {
+    label: "Share on LinkedIn",
+    icon: Linkedin,
+    href: `https://www.linkedin.com/sharing/share-offsite/?${new URLSearchParams({ url })}`,
+  },
+];
+
+const iconButton =
+  "inline-flex h-8 w-8 items-center justify-center rounded-md text-muted-foreground transition hover:bg-accent hover:text-foreground";
+---
+
+<div
+  {...attrs}
+  class={cn("flex items-center gap-0.5", className)}
+  data-share
+  data-share-title={title}
+  data-share-url={url}
+>
+  {caption && <span class="mr-1.5 font-mono text-xs text-muted-foreground">share</span>}
+  {targets.map(({ label, icon: Icon, href }) => (
+    <a href={href} target="_blank" rel="noopener noreferrer" aria-label={label} title={label} class={iconButton}>
+      <Icon className="h-4 w-4" />
+    </a>
+  ))}
+  <button type="button" data-share-copy aria-label="Copy link" title="Copy link" class={iconButton}>
+    <Link className="h-4 w-4" />
+  </button>
+  <!-- Hidden until the script confirms the Web Share API exists, which is mostly on mobile. -->
+  <button type="button" data-share-native hidden aria-label="More sharing options" title="More" class={iconButton}>
+    <Ellipsis className="h-4 w-4" />
+  </button>
+</div>
+
+<script>
+  import { showToast } from "../lib/commandPalette";
+  import { copyToClipboard } from "../lib/platform";
+
+  document.querySelectorAll<HTMLElement>("[data-share]").forEach((root) => {
+    const { shareTitle: title = "", shareUrl: url = "" } = root.dataset;
+
+    root.querySelector("[data-share-copy]")?.addEventListener("click", async () => {
+      showToast((await copyToClipboard(url)) ? "Link copied" : "Could not copy link");
+    });
+
+    const native = root.querySelector<HTMLButtonElement>("[data-share-native]");
+    if (!native || !navigator.share) return;
+    native.hidden = false;
+    native.addEventListener("click", () => {
+      // Rejects when the user dismisses the sheet, which needs no feedback.
+      navigator.share({ title, url }).catch(() => {});
+    });
+  });
+</script>

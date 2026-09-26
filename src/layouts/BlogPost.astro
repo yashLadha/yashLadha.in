@@ -1,6 +1,7 @@
 ---
-import { ArrowLeft, ArrowRight } from "lucide-react";
+import { ArrowLeft, ArrowRight, Share2 } from "lucide-react";
 import Seo from "../components/Seo.astro";
+import ShareLinks from "../components/ShareLinks.astro";
 import { loadPosts } from "../lib/posts";
 import { normalizePath } from "../lib/utils";
 import type { Post } from "../types/Post";
@@ -24,6 +25,7 @@ const posts = await loadPosts();
 const index = posts.findIndex((p) => p.url === pathname);
 if (index === -1) throw new Error(`No post found for ${pathname}`);
 const post = posts[index];
+const shareUrl = new URL(pathname, Astro.site).href;
 
 // Posts are newest first, so the older post sits after this one.
 const neighbours = disableNextBlogLinks
@@ -48,17 +50,20 @@ const neighbours = disableNextBlogLinks
       </p>
       <h1 class="mt-6 text-[2rem] font-semibold leading-[1.08] tracking-display sm:text-4xl md:text-5xl">{title}</h1>
       <p class="mt-5 text-lead leading-relaxed text-foreground/75">{description}</p>
-      <p class="mt-6 flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-xs tabular-nums text-muted-foreground">
-        <time datetime={post.isoDate}>{post.date}</time>
-        <span aria-hidden="true">/</span>
-        <span>{post.minutes} min read</span>
-        {updatedDate && (
-          <>
-            <span aria-hidden="true">/</span>
-            <span>updated {updatedDate}</span>
-          </>
-        )}
-      </p>
+      <div class="mt-6 flex flex-wrap items-center justify-between gap-x-6 gap-y-3">
+        <p class="flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-xs tabular-nums text-muted-foreground">
+          <time datetime={post.isoDate}>{post.date}</time>
+          <span aria-hidden="true">/</span>
+          <span>{post.minutes} min read</span>
+          {updatedDate && (
+            <>
+              <span aria-hidden="true">/</span>
+              <span>updated {updatedDate}</span>
+            </>
+          )}
+        </p>
+        <ShareLinks title={title} url={shareUrl} class="-mr-2" data-share-anchor />
+      </div>
     </header>
 
     {heroImage && (
@@ -70,6 +75,11 @@ const neighbours = disableNextBlogLinks
     <article class="prose md:prose-lg animate-enter max-w-none" style="--i: 2">
       <slot />
     </article>
+
+    <div class="mt-16 flex flex-wrap items-center justify-between gap-3 rounded-xl border bg-card px-5 py-3">
+      <p class="text-sm text-muted-foreground">Found this useful? Pass it on.</p>
+      <ShareLinks title={title} url={shareUrl} class="-mr-2" data-share-anchor />
+    </div>
 
     {neighbours.length > 0 && (
       <nav aria-label="More posts" class="mt-20">
@@ -92,4 +102,61 @@ const neighbours = disableNextBlogLinks
       </nav>
     )}
   </div>
+
+  <div
+    data-share-float
+    inert
+    class="group fixed right-4 bottom-4 z-40 flex translate-y-2 items-center rounded-full border bg-card/90 p-1 opacity-0 shadow-panel backdrop-blur transition duration-200 data-[visible]:translate-y-0 data-[visible]:opacity-100 sm:right-6 sm:bottom-6"
+  >
+    <!-- Collapsed to the trigger until hovered, focused, or tapped open on touch screens. -->
+    <div class="grid grid-cols-[0fr] transition-[grid-template-columns] duration-200 group-focus-within:grid-cols-[1fr] group-hover:grid-cols-[1fr] group-data-[open]:grid-cols-[1fr]">
+      <div class="overflow-hidden">
+        <ShareLinks title={title} url={shareUrl} caption={false} class="pr-0.5 pl-0.5" />
+      </div>
+    </div>
+    <button
+      type="button"
+      data-share-toggle
+      aria-expanded="false"
+      aria-label="Share this post"
+      title="Share"
+      class="inline-flex h-9 w-9 shrink-0 items-center justify-center rounded-full text-foreground transition hover:bg-accent"
+    >
+      <Share2 className="h-4 w-4" />
+    </button>
+  </div>
 </Layout>
+
+<script>
+  // The floating bar stands in only while neither inline share row is on screen.
+  const float = document.querySelector<HTMLElement>("[data-share-float]");
+  const anchors = document.querySelectorAll("[data-share-anchor]");
+  const header = anchors[0];
+  if (float && header) {
+    // Touch screens have no hover, so a tap on the trigger toggles the options instead.
+    const toggle = float.querySelector<HTMLButtonElement>("[data-share-toggle]");
+    const setOpen = (open: boolean) => {
+      float.toggleAttribute("data-open", open);
+      toggle?.setAttribute("aria-expanded", String(open));
+    };
+    toggle?.addEventListener("click", () => setOpen(!float.hasAttribute("data-open")));
+    document.addEventListener("click", (event) => {
+      if (!float.contains(event.target as Node)) setOpen(false);
+    });
+
+    const onScreen = new Set<Element>();
+    let pastHeader = false;
+    const observer = new IntersectionObserver((entries) => {
+      for (const entry of entries) {
+        if (entry.isIntersecting) onScreen.add(entry.target);
+        else onScreen.delete(entry.target);
+        if (entry.target === header) pastHeader = !entry.isIntersecting && entry.boundingClientRect.top < 0;
+      }
+      const visible = pastHeader && onScreen.size === 0;
+      float.toggleAttribute("data-visible", visible);
+      float.inert = !visible;
+      if (!visible) setOpen(false);
+    });
+    anchors.forEach((anchor) => observer.observe(anchor));
+  }
+</script>
