@@ -1,0 +1,80 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Lambda Performance Comparison: Go vs Java</title>
+  <desc id="desc">Average Lambda cold start by memory size. Go stays near 140 ms from 128 MB to 2048 MB, while Java takes 1500 to 1740 ms, roughly 12 times longer.</desc>
+  <defs>
+    <style>
+      .sans { font-family: "Commissioner Variable", "Commissioner", system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; }
+      .mono { font-family: "Source Code Pro Variable", "Source Code Pro", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+      .grid { stroke: #e4e0d8; stroke-width: 1; }
+      .tick { font-size: 15px; fill: #8a847a; }
+    </style>
+    <pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.2" fill="#e4e0d8"/>
+    </pattern>
+  </defs>
+
+  <rect width="1200" height="630" fill="#faf9f6"/>
+  <rect width="1200" height="630" fill="url(#dots)"/>
+  <rect x="24" y="24" width="1152" height="582" rx="22" fill="#f3f1ec" stroke="#e4e0d8" stroke-width="1.5"/>
+
+  <g class="sans">
+    <text x="64" y="112" font-size="22" font-weight="600" fill="#00add8" letter-spacing="3">AWS LAMBDA BENCHMARK</text>
+    <text x="62" y="186" font-size="64" font-weight="800" fill="#1c1a17">Go vs Java</text>
+    <text x="62" y="258" font-size="64" font-weight="800" fill="#1c1a17">on Lambda</text>
+    <text x="64" y="316" font-size="26" fill="#6b665f">Cold starts, execution time, and</text>
+    <text x="64" y="350" font-size="26" fill="#6b665f">memory from 128 MB to 2 GB</text>
+  </g>
+
+  <g class="mono" font-size="16">
+    <rect x="64" y="392" width="238" height="38" rx="19" fill="#e6f6fb" stroke="#00add8"/>
+    <circle cx="86" cy="411" r="6" fill="#00add8"/>
+    <text x="102" y="417" fill="#1c1a17">Go, aws-sdk-go-v2</text>
+    <rect x="64" y="442" width="238" height="38" rx="19" fill="#fdf1e6" stroke="#e76f00"/>
+    <circle cx="86" cy="461" r="6" fill="#e76f00"/>
+    <text x="102" y="467" fill="#1c1a17">Java, AWS SDK v2</text>
+    <text x="64" y="548" font-size="15" fill="#8a847a">arm64 · KMS encrypt · ~1,500 invocations per config</text>
+  </g>
+
+  <g>
+    <text x="640" y="150" class="sans" font-size="18" font-weight="600" fill="#6b665f">Average cold start (ms)</text>
+    <line x1="640" x2="1130" y1="389.4" y2="389.4" class="grid"/>
+    <line x1="640" x2="1130" y1="308.9" y2="308.9" class="grid"/>
+    <line x1="640" x2="1130" y1="228.3" y2="228.3" class="grid"/>
+    <line x1="640" x2="1130" y1="470" y2="470" stroke="#d9d3c7" stroke-width="1.5"/>
+    <text x="632" y="393.4" text-anchor="end" class="mono tick">500</text>
+    <text x="632" y="312.9" text-anchor="end" class="mono tick">1000</text>
+    <text x="632" y="232.3" text-anchor="end" class="mono tick">1500</text>
+
+    <g fill="#00add8">
+      <rect x="657" y="447.4" width="30" height="22.6" rx="3"/>
+      <rect x="755" y="447.4" width="30" height="22.6" rx="3"/>
+      <rect x="853" y="447.4" width="30" height="22.6" rx="3"/>
+      <rect x="951" y="447.7" width="30" height="22.3" rx="3"/>
+      <rect x="1049" y="447.5" width="30" height="22.5" rx="3"/>
+    </g>
+    <g fill="#e76f00">
+      <rect x="691" y="204.1" width="30" height="265.9" rx="3"/>
+      <rect x="789" y="194.2" width="30" height="275.8" rx="3"/>
+      <rect x="887" y="195.0" width="30" height="275.0" rx="3"/>
+      <rect x="985" y="190.4" width="30" height="279.6" rx="3"/>
+      <rect x="1083" y="227.6" width="30" height="242.4" rx="3"/>
+    </g>
+
+    <g class="mono" font-size="14" text-anchor="middle">
+      <text x="672" y="438" fill="#0086a8">140</text>
+      <text x="706" y="195" fill="#b85800">1651</text>
+    </g>
+
+    <g class="mono tick" text-anchor="middle">
+      <text x="689" y="496">128</text>
+      <text x="787" y="496">256</text>
+      <text x="885" y="496">512</text>
+      <text x="983" y="496">1024</text>
+      <text x="1081" y="496">2048</text>
+    </g>
+    <text x="885" y="522" text-anchor="middle" class="mono" font-size="13" fill="#8a847a">memory (MB)</text>
+
+    <rect x="960" y="120" width="170" height="44" rx="22" fill="#1c1a17"/>
+    <text x="1045" y="149" text-anchor="middle" class="sans" font-size="20" font-weight="800" fill="#faf9f6">~12x slower</text>
+  </g>
+</svg>
