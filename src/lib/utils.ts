@@ -2,12 +2,12 @@ import { type ClassValue, clsx } from "clsx";
 import { twMerge } from "tailwind-merge";
 
 export function cn(...inputs: ClassValue[]) {
-    return twMerge(clsx(inputs));
+  return twMerge(clsx(inputs));
 }
 
 /** Two-digit, zero-padded counter such as "03". */
 export function padTwo(n: number) {
-    return String(n).padStart(2, "0");
+  return String(n).padStart(2, "0");
 }
 
 /**
@@ -16,8 +16,8 @@ export function padTwo(n: number) {
  * "/blog/post" and "/index" to "/".
  */
 export function normalizePath(pathname: string) {
-    return pathname
-        .replace(/\.html$/, "")
-        .replace(/\/index$/, "/")
-        .replace(/(.)\/$/, "$1");
+  return pathname
+    .replace(/\.html$/, "")
+    .replace(/\/index$/, "/")
+    .replace(/(.)\/$/, "$1");
 }
