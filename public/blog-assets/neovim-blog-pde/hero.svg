@@ -8,8 +8,8 @@
       .label { font-size: 14px; fill: #6b665f; }
       .code { font-size: 16px; fill: #e8e4dc; }
       .ln { fill: #6b665f; }
-      .kw { fill: #f0a35e; }
-      .pp { fill: #6cc3cf; }
+      .kw { fill: #8fb4ff; }
+      .pp { fill: #c3a6ff; }
       .str { fill: #a8c47a; }
       .tilde { fill: #4a463f; }
     </style>
@@ -17,7 +17,7 @@
       <circle cx="2" cy="2" r="1.2" fill="#e4e0d8"/>
     </pattern>
     <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
-      <path d="M0 0 L10 5 L0 10 Z" fill="#3f9aa8"/>
+      <path d="M0 0 L10 5 L0 10 Z" fill="#1d63ed"/>
     </marker>
   </defs>
 
@@ -26,7 +26,7 @@
   <rect x="24" y="24" width="1152" height="582" rx="22" fill="#f3f1ec" stroke="#e4e0d8" stroke-width="1.5"/>
 
   <g class="sans">
-    <text x="64" y="112" font-size="22" font-weight="600" fill="#e76f00" letter-spacing="3">DEV ENVIRONMENT</text>
+    <text x="64" y="112" font-size="22" font-weight="600" fill="#1d63ed" letter-spacing="3">DEV ENVIRONMENT</text>
     <text x="62" y="182" font-size="56" font-weight="800" fill="#1c1a17">Docker + Neovim</text>
     <text x="62" y="246" font-size="56" font-weight="800" fill="#1c1a17">workspace</text>
     <text x="64" y="304" font-size="25" fill="#6b665f">One toolchain on every machine,</text>
@@ -34,17 +34,17 @@
   </g>
 
   <g class="mono" font-size="16">
-    <rect x="64" y="380" width="252" height="38" rx="19" fill="#fdf1e6" stroke="#e76f00"/>
-    <circle cx="86" cy="399" r="6" fill="#e76f00"/>
+    <rect x="64" y="380" width="252" height="38" rx="19" fill="#e8effd" stroke="#1d63ed"/>
+    <circle cx="86" cy="399" r="6" fill="#1d63ed"/>
     <text x="102" y="405" fill="#1c1a17">ubuntu:18.04 + clang</text>
-    <rect x="64" y="430" width="252" height="38" rx="19" fill="#e9eef1" stroke="#1f3a4d"/>
-    <circle cx="86" cy="449" r="6" fill="#1f3a4d"/>
+    <rect x="64" y="430" width="252" height="38" rx="19" fill="#ecf5e8" stroke="#3e7d2f"/>
+    <circle cx="86" cy="449" r="6" fill="#57a143"/>
     <text x="102" y="455" fill="#1c1a17">neovim + dotfiles</text>
   </g>
 
   <g class="mono" font-size="17">
     <rect x="64" y="510" width="420" height="52" rx="12" fill="#1c1a17"/>
-    <text x="86" y="542" fill="#e8e4dc" xml:space="preserve"><tspan fill="#e76f00">$</tspan> docker exec -it competitive bash</text>
+    <text x="86" y="542" fill="#e8e4dc" xml:space="preserve"><tspan fill="#57a143">$</tspan> docker exec -it competitive bash</text>
     <rect x="456" y="527" width="10" height="20" fill="#e8e4dc" opacity="0.8"/>
   </g>
 
@@ -58,22 +58,22 @@
     <text x="936" y="126" fill="#1c1a17">~/.dotfiles/nvim</text>
   </g>
 
-  <g stroke="#3f9aa8" stroke-width="2.5" fill="none" stroke-linecap="round">
+  <g stroke="#1d63ed" stroke-width="2.5" fill="none" stroke-linecap="round">
     <path d="M708 140 L708 184" marker-end="url(#arrow)"/>
     <path d="M1020 140 L1020 184" marker-end="url(#arrow)"/>
   </g>
-  <g class="mono" font-size="13" fill="#3f9aa8">
+  <g class="mono" font-size="13" fill="#1d63ed">
     <text x="720" y="167">/app/competitive</text>
     <text x="1008" y="167" text-anchor="end">/root/.config/nvim</text>
   </g>
 
-  <rect x="620" y="192" width="500" height="358" rx="14" fill="#e9eef1" stroke="#1f3a4d" stroke-width="1.5"/>
-  <text x="640" y="220" class="mono label" fill="#1f3a4d">container: competitive</text>
+  <rect x="620" y="192" width="500" height="358" rx="14" fill="#e8effd" stroke="#1d63ed" stroke-width="1.5"/>
+  <text x="640" y="220" class="mono label" fill="#1d63ed">container: competitive</text>
 
   <rect x="640" y="234" width="460" height="296" rx="10" fill="#1c1a17"/>
-  <circle cx="660" cy="254" r="5" fill="#e76f00"/>
+  <circle cx="660" cy="254" r="5" fill="#57a143"/>
   <circle cx="678" cy="254" r="5" fill="#d9d3c7"/>
-  <circle cx="696" cy="254" r="5" fill="#3f9aa8"/>
+  <circle cx="696" cy="254" r="5" fill="#1d63ed"/>
   <text x="870" y="259" text-anchor="middle" class="mono" font-size="13" fill="#8a847a">nvim main.cpp</text>
 
   <g class="mono code" xml:space="preserve">
