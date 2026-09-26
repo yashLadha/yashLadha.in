@@ -1,80 +1,56 @@
 <svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
   <title id="title">Lambda Performance Comparison: Go vs Java</title>
-  <desc id="desc">Average Lambda cold start by memory size. Go stays near 140 ms from 128 MB to 2048 MB, while Java takes 1500 to 1740 ms, roughly 12 times longer.</desc>
+  <desc id="desc">A cold start trace at 128 MB. The Go function finishes its INIT phase in 140 ms, while the Java function takes 1651 ms, so Go is ready about 1.5 seconds sooner.</desc>
   <defs>
     <style>
       .sans { font-family: "Commissioner Variable", "Commissioner", system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; }
       .mono { font-family: "Source Code Pro Variable", "Source Code Pro", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
-      .grid { stroke: #e4e0d8; stroke-width: 1; }
-      .tick { font-size: 15px; fill: #8a847a; }
+      .tick { font-size: 14px; fill: #6e7681; }
+      .lane { font-size: 15px; fill: #8b949e; }
     </style>
-    <pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse">
-      <circle cx="2" cy="2" r="1.2" fill="#e4e0d8"/>
+    <pattern id="ms" width="28.89" height="630" patternUnits="userSpaceOnUse" x="80">
+      <line x1="0.5" x2="0.5" y1="0" y2="630" stroke="#ffffff" stroke-opacity="0.035"/>
     </pattern>
+    <linearGradient id="java" x1="0" x2="1">
+      <stop offset="0" stop-color="#e76f00"/>
+      <stop offset="1" stop-color="#f59e3b"/>
+    </linearGradient>
   </defs>
 
-  <rect width="1200" height="630" fill="#faf9f6"/>
-  <rect width="1200" height="630" fill="url(#dots)"/>
-  <rect x="24" y="24" width="1152" height="582" rx="22" fill="#f3f1ec" stroke="#e4e0d8" stroke-width="1.5"/>
+  <rect width="1200" height="630" fill="#0f1317"/>
+  <rect x="80" width="1040" height="630" fill="url(#ms)"/>
+  <text x="1150" y="380" text-anchor="end" class="sans" font-size="420" font-weight="800" fill="#ffffff" fill-opacity="0.04">λ</text>
 
   <g class="sans">
-    <text x="64" y="112" font-size="22" font-weight="600" fill="#00add8" letter-spacing="3">AWS LAMBDA BENCHMARK</text>
-    <text x="62" y="186" font-size="64" font-weight="800" fill="#1c1a17">Go vs Java</text>
-    <text x="62" y="258" font-size="64" font-weight="800" fill="#1c1a17">on Lambda</text>
-    <text x="64" y="316" font-size="26" fill="#6b665f">Cold starts, execution time, and</text>
-    <text x="64" y="350" font-size="26" fill="#6b665f">memory from 128 MB to 2 GB</text>
+    <text x="80" y="92" class="mono" font-size="16" fill="#8b949e" letter-spacing="2">AWS LAMBDA · COLD START TRACE</text>
+    <text x="78" y="162" font-size="62" font-weight="800" fill="#f5f3ef">Go vs Java on Lambda</text>
+    <text x="80" y="206" font-size="23" fill="#8b949e">How long INIT takes before the first request is served</text>
   </g>
 
-  <g class="mono" font-size="16">
-    <rect x="64" y="392" width="238" height="38" rx="19" fill="#e6f6fb" stroke="#00add8"/>
-    <circle cx="86" cy="411" r="6" fill="#00add8"/>
-    <text x="102" y="417" fill="#1c1a17">Go, aws-sdk-go-v2</text>
-    <rect x="64" y="442" width="238" height="38" rx="19" fill="#fdf1e6" stroke="#e76f00"/>
-    <circle cx="86" cy="461" r="6" fill="#e76f00"/>
-    <text x="102" y="467" fill="#1c1a17">Java, AWS SDK v2</text>
-    <text x="64" y="548" font-size="15" fill="#8a847a">arm64 · KMS encrypt · ~1,500 invocations per config</text>
+  <g stroke="#ffffff" stroke-opacity="0.18" stroke-width="1.5" stroke-dasharray="3 5">
+    <line x1="161" x2="161" y1="300" y2="540"/>
+    <line x1="1034" x2="1034" y1="300" y2="540"/>
+  </g>
+  <path d="M161 308 V296 H1034 V308" fill="none" stroke="#f5f3ef" stroke-width="2"/>
+  <text x="597" y="282" text-anchor="middle" class="sans" font-size="21" font-weight="700" fill="#f5f3ef">Go is ready ~1.5 s sooner</text>
+
+  <text x="80" y="370" class="mono lane">go · 128 MB</text>
+  <rect x="80" y="380" width="81" height="38" rx="5" fill="#00add8"/>
+  <text x="174" y="405" class="mono" font-size="16" fill="#5fd4ee">140 ms</text>
+  <line x1="246" x2="1120" y1="399" y2="399" stroke="#00add8" stroke-opacity="0.45" stroke-width="2" stroke-dasharray="1 7" stroke-linecap="round"/>
+
+  <text x="80" y="456" class="mono lane">java · 128 MB</text>
+  <rect x="80" y="466" width="954" height="38" rx="5" fill="url(#java)"/>
+  <text x="96" y="491" class="mono" font-size="15" font-weight="700" fill="#2a1600">INIT</text>
+  <text x="1046" y="491" class="mono" font-size="16" fill="#f59e3b">1651 ms</text>
+
+  <line x1="80" x2="1120" y1="540" y2="540" stroke="#30363d" stroke-width="1.5"/>
+  <g class="mono tick" text-anchor="middle">
+    <text x="80" y="564">0</text>
+    <text x="369" y="564">500 ms</text>
+    <text x="658" y="564">1000 ms</text>
+    <text x="947" y="564">1500 ms</text>
   </g>
 
-  <g>
-    <text x="640" y="150" class="sans" font-size="18" font-weight="600" fill="#6b665f">Average cold start (ms)</text>
-    <line x1="640" x2="1130" y1="389.4" y2="389.4" class="grid"/>
-    <line x1="640" x2="1130" y1="308.9" y2="308.9" class="grid"/>
-    <line x1="640" x2="1130" y1="228.3" y2="228.3" class="grid"/>
-    <line x1="640" x2="1130" y1="470" y2="470" stroke="#d9d3c7" stroke-width="1.5"/>
-    <text x="632" y="393.4" text-anchor="end" class="mono tick">500</text>
-    <text x="632" y="312.9" text-anchor="end" class="mono tick">1000</text>
-    <text x="632" y="232.3" text-anchor="end" class="mono tick">1500</text>
-
-    <g fill="#00add8">
-      <rect x="657" y="447.4" width="30" height="22.6" rx="3"/>
-      <rect x="755" y="447.4" width="30" height="22.6" rx="3"/>
-      <rect x="853" y="447.4" width="30" height="22.6" rx="3"/>
-      <rect x="951" y="447.7" width="30" height="22.3" rx="3"/>
-      <rect x="1049" y="447.5" width="30" height="22.5" rx="3"/>
-    </g>
-    <g fill="#e76f00">
-      <rect x="691" y="204.1" width="30" height="265.9" rx="3"/>
-      <rect x="789" y="194.2" width="30" height="275.8" rx="3"/>
-      <rect x="887" y="195.0" width="30" height="275.0" rx="3"/>
-      <rect x="985" y="190.4" width="30" height="279.6" rx="3"/>
-      <rect x="1083" y="227.6" width="30" height="242.4" rx="3"/>
-    </g>
-
-    <g class="mono" font-size="14" text-anchor="middle">
-      <text x="672" y="438" fill="#0086a8">140</text>
-      <text x="706" y="195" fill="#b85800">1651</text>
-    </g>
-
-    <g class="mono tick" text-anchor="middle">
-      <text x="689" y="496">128</text>
-      <text x="787" y="496">256</text>
-      <text x="885" y="496">512</text>
-      <text x="983" y="496">1024</text>
-      <text x="1081" y="496">2048</text>
-    </g>
-    <text x="885" y="522" text-anchor="middle" class="mono" font-size="13" fill="#8a847a">memory (MB)</text>
-
-    <rect x="960" y="120" width="170" height="44" rx="22" fill="#1c1a17"/>
-    <text x="1045" y="149" text-anchor="middle" class="sans" font-size="20" font-weight="800" fill="#faf9f6">~12x slower</text>
-  </g>
+  <text x="80" y="604" class="mono" font-size="13" fill="#6e7681">average INIT duration · arm64 · ~1,500 invocations per config</text>
 </svg>
