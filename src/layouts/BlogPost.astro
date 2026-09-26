@@ -72,7 +72,7 @@ const neighbours = disableNextBlogLinks
       </figure>
     )}
 
-    <article class="prose md:prose-lg animate-enter max-w-none" style="--i: 2">
+    <article class="prose md:prose-lg animate-enter max-w-none" style="--i: 2" data-post-body>
       <slot />
     </article>
 
@@ -128,6 +128,11 @@ const neighbours = disableNextBlogLinks
 </Layout>
 
 <script>
+  import { initSectionLinks } from "../lib/sectionLinks";
+
+  const body = document.querySelector<HTMLElement>("[data-post-body]");
+  if (body) initSectionLinks(body);
+
   // The floating bar stands in only while neither inline share row is on screen.
   const float = document.querySelector<HTMLElement>("[data-share-float]");
   const anchors = document.querySelectorAll("[data-share-anchor]");

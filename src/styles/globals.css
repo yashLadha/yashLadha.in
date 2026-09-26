@@ -210,6 +210,27 @@
   content: none;
 }
 
+/* Permalink added to each heading by sectionLinks.ts, revealed on hover or focus. */
+.prose .heading-anchor {
+  @apply ml-2 font-mono text-[0.75em] font-normal text-transparent no-underline transition-colors;
+}
+
+.prose :is(h2, h3, h4):hover .heading-anchor,
+.prose .heading-anchor:focus-visible {
+  @apply text-muted-foreground;
+}
+
+.prose .heading-anchor:hover {
+  @apply text-brand;
+}
+
+/* Touch screens have no hover, so keep the permalink faintly visible there. */
+@media (hover: none) {
+  .prose .heading-anchor {
+    @apply text-muted-foreground/50;
+  }
+}
+
 .prose details {
   @apply my-6 overflow-hidden rounded-xl border bg-card;
 }
