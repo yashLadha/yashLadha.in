@@ -1,0 +1,87 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="600" viewBox="0 0 1200 600" role="img" aria-labelledby="title desc">
+  <title id="title">Neovim and the language server run inside the Docker container</title>
+  <desc id="desc">The host computer runs a Docker container. A shell opened with docker exec starts Neovim inside the container, and Neovim talks to the clangd language server in the same container: it sends requests such as didChange and completion, and receives completions and diagnostics back.</desc>
+  <defs>
+    <style>
+      .sans { font-family: "Commissioner Variable", "Commissioner", system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; }
+      .mono { font-family: "Source Code Pro Variable", "Source Code Pro", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+    </style>
+    <pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.2" fill="#e4e0d8"/>
+    </pattern>
+    <marker id="arrow-green" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 Z" fill="#57a143"/>
+    </marker>
+    <marker id="arrow-blue" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 Z" fill="#1d63ed"/>
+    </marker>
+    <marker id="arrow-gray" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 Z" fill="#8a847a"/>
+    </marker>
+    <clipPath id="lsp-box"><rect x="128" y="212" width="320" height="272" rx="14"/></clipPath>
+    <clipPath id="nvim-box"><rect x="752" y="212" width="320" height="272" rx="14"/></clipPath>
+  </defs>
+
+  <rect width="1200" height="600" fill="#faf9f6"/>
+  <rect width="1200" height="600" fill="url(#dots)"/>
+
+  <rect x="40" y="36" width="1120" height="528" rx="18" fill="#f3f1ec" stroke="#b9b2a5" stroke-width="1.5" stroke-dasharray="7 6"/>
+  <text x="68" y="76" class="sans" font-size="22" font-weight="700" fill="#1c1a17">Host computer</text>
+
+  <g class="mono" font-size="15">
+    <rect x="770" y="54" width="362" height="42" rx="10" fill="#1c1a17"/>
+    <text x="790" y="81" fill="#e8e4dc" xml:space="preserve"><tspan fill="#57a143">$</tspan> docker exec -it competitive bash</text>
+  </g>
+
+  <rect x="72" y="120" width="1056" height="412" rx="14" fill="#e8effd" stroke="#1d63ed" stroke-width="1.5"/>
+  <text x="96" y="156" class="sans" font-size="20" font-weight="700" fill="#1d63ed">Docker container</text>
+  <g class="mono" font-size="13">
+    <rect x="278" y="137" width="118" height="26" rx="13" fill="#ffffff" stroke="#1d63ed"/>
+    <text x="337" y="155" text-anchor="middle" fill="#1c1a17">ubuntu:18.04</text>
+  </g>
+
+  <path d="M951 98 L951 204" stroke="#8a847a" stroke-width="2.5" fill="none" stroke-linecap="round" stroke-dasharray="2 7" marker-end="url(#arrow-gray)"/>
+
+  <rect x="128" y="212" width="320" height="272" rx="14" fill="#ffffff" stroke="#1d63ed" stroke-width="1.5"/>
+  <rect x="128" y="212" width="8" height="272" fill="#1d63ed" clip-path="url(#lsp-box)"/>
+  <g class="sans">
+    <text x="164" y="262" font-size="30" font-weight="800" fill="#1c1a17">clangd</text>
+    <text x="164" y="292" font-size="18" fill="#6b665f">language server</text>
+  </g>
+  <g class="mono" font-size="15" fill="#1c1a17">
+    <circle cx="170" cy="341" r="4" fill="#1d63ed"/>
+    <text x="184" y="346">completion</text>
+    <circle cx="170" cy="377" r="4" fill="#1d63ed"/>
+    <text x="184" y="382">diagnostics</text>
+    <circle cx="170" cy="413" r="4" fill="#1d63ed"/>
+    <text x="184" y="418">go to definition</text>
+    <circle cx="170" cy="449" r="4" fill="#1d63ed"/>
+    <text x="184" y="454">hover docs</text>
+  </g>
+
+  <rect x="752" y="212" width="320" height="272" rx="14" fill="#1c1a17"/>
+  <rect x="752" y="212" width="8" height="272" fill="#57a143" clip-path="url(#nvim-box)"/>
+  <g class="sans">
+    <text x="788" y="262" font-size="30" font-weight="800" fill="#faf9f6">Neovim</text>
+    <text x="788" y="292" font-size="18" fill="#a8a296">editor and LSP client</text>
+  </g>
+  <g class="mono" font-size="15">
+    <text x="788" y="346" fill="#8a847a">config</text>
+    <text x="788" y="370" fill="#e8e4dc">/root/.config/nvim</text>
+    <text x="788" y="418" fill="#8a847a">workspace</text>
+    <text x="788" y="442" fill="#e8e4dc">/app/competitive</text>
+  </g>
+
+  <g stroke-width="3" fill="none" stroke-linecap="round">
+    <path d="M744 314 L460 314" stroke="#57a143" marker-end="url(#arrow-green)"/>
+    <path d="M456 386 L740 386" stroke="#1d63ed" marker-end="url(#arrow-blue)"/>
+  </g>
+  <g class="mono" font-size="14" text-anchor="middle">
+    <text x="600" y="298" fill="#3e7d2f">didChange, completion</text>
+    <text x="600" y="414" fill="#1d63ed">items, diagnostics</text>
+  </g>
+  <g class="sans" font-size="15" text-anchor="middle" fill="#6b665f">
+    <text x="600" y="340">request</text>
+    <text x="600" y="372">response</text>
+  </g>
+</svg>
