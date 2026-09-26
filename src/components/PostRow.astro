@@ -1,0 +1,29 @@
+---
+import type { PostSummary } from "../lib/posts";
+
+interface Props {
+  post: PostSummary;
+  /** Lines of description to show before truncating. */
+  descriptionLines?: 1 | 2;
+}
+
+const { post, descriptionLines = 1 } = Astro.props;
+---
+
+<a href={post.url} class="rail-row grid gap-x-8 gap-y-1.5 px-5 py-5 sm:grid-cols-[7.5rem_1fr_auto] sm:px-6">
+  <time datetime={post.isoDate} class="pt-0.5 font-mono text-xs text-muted-foreground tabular-nums">
+    {post.date}
+  </time>
+  <span class="min-w-0">
+    <span class="block font-medium tracking-tight">{post.title}</span>
+    <span
+      class:list={[
+        "mt-1 block text-sm text-muted-foreground",
+        descriptionLines === 1 ? "line-clamp-1" : "line-clamp-2",
+      ]}
+    >
+      {post.description}
+    </span>
+  </span>
+  <span class="pt-0.5 font-mono text-xs text-muted-foreground">{post.minutes} min</span>
+</a>

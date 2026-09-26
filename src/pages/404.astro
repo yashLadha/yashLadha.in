@@ -1,33 +1,38 @@
 ---
+import { ArrowLeft } from "lucide-react";
 import Layout from "../layouts/Layout.astro";
-import { Button } from "../components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../components/ui/card";
+import Seo from "../components/Seo.astro";
+import { buttonVariants } from "../components/ui/button";
 ---
 
-<Layout title="404: Not Found">
-  <title slot="header">404: Not Found</title>
-  <div class="min-h-[60vh] flex items-center justify-center">
-    <Card className="max-w-md text-center">
-      <CardHeader>
-        <CardTitle className="text-6xl font-bold text-muted-foreground mb-4">404</CardTitle>
-        <CardDescription className="text-xl">
-          Oops! The page you're looking for doesn't exist.
-        </CardDescription>
-      </CardHeader>
-      <CardContent className="space-y-4">
-        <p class="text-muted-foreground">
-          It seems like you've wandered into uncharted territory. 
-          Let's get you back on track!
-        </p>
-        <div class="flex gap-2 justify-center">
-          <Button asChild>
-            <a href="/">Go Home</a>
-          </Button>
-          <Button asChild variant="outline">
-            <a href="/projects">View Projects</a>
-          </Button>
-        </div>
-      </CardContent>
-    </Card>
-  </div>
+<Layout>
+  <Seo slot="header" seo={{ title: "Not found", description: "This page does not exist." }} />
+
+  <section class="animate-enter mx-auto flex min-h-[60vh] max-w-xl flex-col justify-center py-12">
+    <p class="overflow-x-auto whitespace-nowrap rounded-xl border bg-card px-4 py-3 font-mono text-crumb">
+      <span class="text-muted-foreground">GET</span>
+      <span data-missing-path class="text-foreground">
+        /missing-page
+      </span>
+      <span class="font-medium text-brand">404</span>
+    </p>
+    <h1 class="mt-8 text-4xl font-semibold tracking-display md:text-5xl">Nothing lives at this path.</h1>
+    <p class="mt-4 text-lead leading-relaxed text-foreground/75">
+      The link may be old or mistyped. The writing and the home page are still where they should be.
+    </p>
+    <div class="mt-8 flex flex-wrap gap-3">
+      <a href="/" class={buttonVariants()}>
+        <ArrowLeft />
+        Home
+      </a>
+      <a href="/blog" class={buttonVariants({ variant: "outline" })}>
+        Read the writing
+      </a>
+    </div>
+  </section>
 </Layout>
+
+<script>
+  const target = document.querySelector("[data-missing-path]");
+  if (target) target.textContent = location.pathname;
+</script>

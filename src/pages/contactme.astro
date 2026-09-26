@@ -1,100 +1,93 @@
 ---
+import { Mail } from "lucide-react";
+import CopyButton from "../components/CopyButton.astro";
+import PageHero from "../components/PageHero.astro";
+import SectionHeader from "../components/SectionHeader.astro";
 import Seo from "../components/Seo.astro";
+import SocialList from "../components/SocialList.astro";
+import { buttonVariants } from "../components/ui/button";
+import { EMAIL } from "../data/site";
 import Layout from "../layouts/Layout.astro";
-import siteMetadata from "../static/siteMetadata.json";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../components/ui/card";
-import { Button } from "../components/ui/button";
-import { Badge } from "../components/ui/badge";
-import { Separator } from "../components/ui/separator";
+import { padTwo } from "../lib/utils";
+
+const engagements = [
+  {
+    title: "Performance and cost for backend services",
+    body: "Profiling hot paths, finding where the money goes, and making a service cheaper to run without giving back latency.",
+    evidence: "systems at 50M+ requests/day",
+  },
+  {
+    title: "Observability and reliability for payment-grade systems",
+    body: "Tracing, alerting, and failure-mode reviews for services where a dropped request is a customer's money.",
+    evidence: "UPI payments at Amazon",
+  },
+  {
+    title: "Node.js runtime internals and debugging",
+    body: "Event loop stalls, memory growth, and long-lived WebSocket traffic, traced down to what the runtime is actually doing.",
+    evidence: "Node.js collaborator emeritus",
+  },
+  {
+    title: "Mentoring and open source onboarding",
+    body: "Helping engineers find their way around a large codebase and land their first upstream patches.",
+    evidence: "GSoC 2018, Code-in mentor 2017 and 2018",
+  },
+];
 ---
 
 <Layout>
-  <Seo slot="header" seo={siteMetadata} />
-  <div class="max-w-4xl mx-auto space-y-8">
-    <section class="text-center space-y-4">
-      <h1 class="text-4xl font-bold tracking-tight">Let's Collaborate</h1>
-      <p class="text-xl text-muted-foreground max-w-2xl mx-auto">
-        I'm always excited to work on new and interesting projects. Have an idea? Let's bring it to life!
-      </p>
+  <Seo
+    slot="header"
+    seo={{
+      title: "Collaborate",
+      description:
+        "Work with Yash Ladha on backend performance and cost, observability for payment systems, Node.js internals, and mentoring.",
+    }}
+  />
+
+  <PageHero
+    crumbs={[{ label: "collaborate" }]}
+    title="Working on something underneath?"
+    muted=" Let's talk."
+    lead="I am happiest on runtimes, infrastructure, and the failure modes in between. These are the conversations where I can be most useful."
+  />
+
+  <div class="grid gap-6 pb-16 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)] lg:items-start">
+    <section class="animate-enter" style="--i: 1">
+      <SectionHeader title="What I can help with" />
+      <ol class="rail-list">
+        {engagements.map((e, i) => (
+          <li class="grid gap-x-5 gap-y-1 px-5 py-5 sm:grid-cols-[2rem_1fr]">
+            <span class="pt-0.5 font-mono text-xs tabular-nums text-muted-foreground">{padTwo(i + 1)}</span>
+            <div>
+              <h3 class="font-medium tracking-tight">{e.title}</h3>
+              <p class="mt-1 text-sm leading-relaxed text-muted-foreground">{e.body}</p>
+              <p class="mt-3 font-mono text-2xs text-muted-foreground">
+                <span class="text-brand">#</span> {e.evidence}
+              </p>
+            </div>
+          </li>
+        ))}
+      </ol>
     </section>
 
-    <div class="grid md:grid-cols-2 gap-8">
-      <Card>
-        <CardHeader>
-          <CardTitle>Get In Touch</CardTitle>
-          <CardDescription>
-            Ready to start a conversation? Reach out through any of these channels.
-          </CardDescription>
-        </CardHeader>
-        <CardContent className="space-y-4">
-          <div class="space-y-3">
-            <Button asChild className="w-full justify-start" variant="outline">
-              <a href="mailto:admin@yashladha.in" class="flex items-center gap-2">
-                <span>📧</span>
-                admin@yashladha.in
-              </a>
-            </Button>
-            
-            <Button asChild className="w-full justify-start" variant="outline">
-              <a href="https://www.linkedin.com/in/yashladha/" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2">
-                <span>💼</span>
-                LinkedIn
-              </a>
-            </Button>
-            
-            <Button asChild className="w-full justify-start" variant="outline">
-              <a href="https://github.com/yashLadha" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2">
-                <span>🐙</span>
-                GitHub
-              </a>
-            </Button>
-            
-            <Button asChild className="w-full justify-start" variant="outline">
-              <a href="https://twitter.com/yashladha_" target="_blank" rel="noopener noreferrer" class="flex items-center gap-2">
-                <span>🐦</span>
-                Twitter
-              </a>
-            </Button>
-          </div>
-        </CardContent>
-      </Card>
-
-      <Card>
-        <CardHeader>
-          <CardTitle>Areas of Expertise</CardTitle>
-          <CardDescription>
-            My skills span a range of technical areas that I'm passionate about leveraging for innovative solutions.
-          </CardDescription>
-        </CardHeader>
-        <CardContent>
-          <div class="flex flex-wrap gap-2">
-            <Badge variant="secondary">Distributed Systems</Badge>
-            <Badge variant="secondary">Scalability</Badge>
-            <Badge variant="secondary">Advanced Algorithms</Badge>
-            <Badge variant="secondary">Generative AI</Badge>
-            <Badge variant="secondary">SOLID Principles</Badge>
-            <Badge variant="secondary">Software Craftsmanship</Badge>
-            <Badge variant="secondary">System Architecture</Badge>
-            <Badge variant="secondary">Language Internals</Badge>
-            <Badge variant="secondary">Framework Internals</Badge>
-          </div>
-        </CardContent>
-      </Card>
-    </div>
-
-    <Separator />
-
-    <Card className="text-center">
-      <CardContent className="pt-6">
-        <h3 class="text-2xl font-semibold mb-4">Ready to Build Something Amazing?</h3>
-        <p class="text-muted-foreground mb-6 max-w-2xl mx-auto">
-          Whether you have a specific project in mind or just want to explore possibilities, 
-          I'd love to hear from you. Let's create something impactful together!
+    <aside class="animate-enter lg:pt-12" style="--i: 2">
+      <div class="rounded-xl border bg-card p-5">
+        <p class="font-mono text-xs text-muted-foreground">
+          <span class="text-brand">$</span> mail {EMAIL}
         </p>
-        <Button asChild size="lg">
-          <a href="mailto:admin@yashladha.in">Start the Conversation</a>
-        </Button>
-      </CardContent>
-    </Card>
+        <p class="mt-4 text-sm leading-relaxed text-muted-foreground">
+          Email is the fastest way to reach me. A few lines on the system and the problem is plenty to start.
+        </p>
+        <div class="mt-5 flex flex-wrap gap-2">
+          <a href={`mailto:${EMAIL}`} class={buttonVariants()}>
+            <Mail />
+            Write an email
+          </a>
+          <CopyButton text={EMAIL} />
+        </div>
+      </div>
+
+      <SocialList class="mt-4" />
+    </aside>
   </div>
 </Layout>

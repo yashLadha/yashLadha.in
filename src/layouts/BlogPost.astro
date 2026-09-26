@@ -1,220 +1,95 @@
 ---
+import { ArrowLeft, ArrowRight } from "lucide-react";
 import Seo from "../components/Seo.astro";
-import { type Post, type PostIndex } from "../types/Post";
-import { getNextAndPrevBlogs } from "../utils/blogPosts";
+import { loadPosts } from "../lib/posts";
+import { normalizePath } from "../lib/utils";
+import type { Post } from "../types/Post";
 import Layout from "./Layout.astro";
-import { Button } from "../components/ui/button";
-import { Card, CardContent, CardHeader } from "../components/ui/card";
-import { Separator } from "../components/ui/separator";
 
+// Astro passes these to layouts of Markdown pages.
 export interface Props {
-  content: Post;
+  frontmatter: Post;
+  url: string;
 }
 
 const {
-  content: { title, description, pubDate, updatedDate, heroImage, disableNextBlogLinks = false },
-} = Astro.props as Props;
+  frontmatter: { title, description, updatedDate, heroImage, disableNextBlogLinks = false },
+  url,
+} = Astro.props;
 
-let nextPost: PostIndex | undefined;
-let prevPost: PostIndex | undefined;
+const pathname = normalizePath(url);
+const slug = pathname.split("/").pop();
 
-if (!disableNextBlogLinks) {
-  const posts = (await Astro.glob("../pages/blog/*.{md,mdx}"))
-    .sort((a, b) => new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf())
-    .map(({ frontmatter: { title, pubDate, updatedDate, heroImage }, url }) => ({
-      title,
-      pubDate,
-      updatedDate,
-      heroImage,
-      url,
-    }));
+const posts = await loadPosts();
+const index = posts.findIndex((p) => p.url === pathname);
+if (index === -1) throw new Error(`No post found for ${pathname}`);
+const post = posts[index];
 
-  const nextAndPrevBlogs = getNextAndPrevBlogs(posts, title);
-  nextPost = nextAndPrevBlogs.nextPost;
-  prevPost = nextAndPrevBlogs.prevPost;
-}
+// Posts are newest first, so the older post sits after this one.
+const neighbours = disableNextBlogLinks
+  ? []
+  : [
+      { label: "Previous", icon: ArrowLeft, post: posts[index + 1] },
+      { label: "Next", icon: ArrowRight, post: posts[index - 1] },
+    ].filter((n) => n.post);
 ---
 
 <Layout>
-  <Seo
-    slot="header"
-    seo={{
-      title,
-      description,
-      image: heroImage,
-    }}
-  />
-  
-  <div class="max-w-4xl mx-auto">
-    <Card className="mb-8">
-      <CardHeader className="text-center space-y-4">
-        {heroImage && (
-          <div class="w-full max-w-2xl mx-auto">
-            <img 
-              class="w-full h-auto rounded-lg shadow-lg" 
-              src={heroImage} 
-              alt={title}
-              loading="lazy"
-            />
-          </div>
-        )}
-        <div class="space-y-2">
-          <h1 class="text-3xl md:text-4xl font-bold tracking-tight">{title}</h1>
-          <div class="flex flex-col sm:flex-row items-center justify-center gap-2 text-sm text-muted-foreground">
-            {pubDate && (
-              <time class="flex items-center gap-1">
-                <span>📅</span>
-                {pubDate}
-              </time>
-            )}
-            {updatedDate && (
-              <>
-                {pubDate && <span class="hidden sm:inline">•</span>}
-                <time class="flex items-center gap-1">
-                  <span>🔄</span>
-                  Updated {updatedDate}
-                </time>
-              </>
-            )}
-          </div>
-        </div>
-      </CardHeader>
-    </Card>
+  <Seo slot="header" seo={{ title, description, image: heroImage }} />
 
-    <article class="prose prose-slate prose-xl max-w-none">
-      <CardContent className="px-0">
-        <slot />
-      </CardContent>
+  <div class="mx-auto max-w-[42rem]">
+    <header class="animate-enter pb-10 pt-6 md:pt-12">
+      <p class="flex items-center gap-2 font-mono text-crumb text-muted-foreground">
+        <a href="/blog" class="shrink-0 text-foreground transition-colors hover:text-brand">
+          ~/writing
+        </a>
+        <span aria-hidden="true">/</span>
+        <span class="truncate">{slug}</span>
+      </p>
+      <h1 class="mt-6 text-[2rem] font-semibold leading-[1.08] tracking-display sm:text-4xl md:text-5xl">{title}</h1>
+      <p class="mt-5 text-lead leading-relaxed text-foreground/75">{description}</p>
+      <p class="mt-6 flex flex-wrap items-center gap-x-3 gap-y-1 font-mono text-xs tabular-nums text-muted-foreground">
+        <time datetime={post.isoDate}>{post.date}</time>
+        <span aria-hidden="true">/</span>
+        <span>{post.minutes} min read</span>
+        {updatedDate && (
+          <>
+            <span aria-hidden="true">/</span>
+            <span>updated {updatedDate}</span>
+          </>
+        )}
+      </p>
+    </header>
+
+    {heroImage && (
+      <figure class="animate-enter mb-12 overflow-hidden rounded-xl border bg-card p-2" style="--i: 1">
+        <img class="h-auto w-full rounded-lg" src={heroImage} alt="" />
+      </figure>
+    )}
+
+    <article class="prose md:prose-lg animate-enter max-w-none" style="--i: 2">
+      <slot />
     </article>
 
-    {!disableNextBlogLinks && (nextPost || prevPost) && (
-      <>
-        <Separator className="my-8" />
-        <div class="grid md:grid-cols-2 gap-4 mt-12">
-          {prevPost && (
-            <Card className="hover:shadow-lg transition-shadow">
-              <CardContent className="p-6">
-                <div class="text-sm text-muted-foreground mb-2">← Previous Post</div>
-                <Button asChild variant="ghost" className="h-auto p-0 justify-start">
-                  <a href={prevPost.url?.replace(".html", "")} class="text-left">
-                    <h3 class="font-semibold text-base">{prevPost.title}</h3>
-                  </a>
-                </Button>
-              </CardContent>
-            </Card>
-          )}
-          
-          {nextPost && (
-            <Card className="hover:shadow-lg transition-shadow">
-              <CardContent className="p-6">
-                <div class="text-sm text-muted-foreground mb-2 text-right">Next Post →</div>
-                <Button asChild variant="ghost" className="h-auto p-0 justify-end">
-                  <a href={nextPost.url?.replace(".html", "")} class="text-right">
-                    <h3 class="font-semibold text-base">{nextPost.title}</h3>
-                  </a>
-                </Button>
-              </CardContent>
-            </Card>
-          )}
-        </div>
-      </>
+    {neighbours.length > 0 && (
+      <nav aria-label="More posts" class="mt-20">
+        <p class="mb-3 font-mono text-xs text-muted-foreground">Keep reading</p>
+        <ul class="rail-list">
+          {neighbours.map(({ label, icon: Icon, post }) => (
+            <li>
+              <a href={post.url} class="rail-row group flex items-center gap-4 px-5 py-4">
+                <span class="min-w-0 flex-1">
+                  <span class="block font-mono text-xs text-muted-foreground">
+                    {label} / {post.date}
+                  </span>
+                  <span class="mt-1 block font-medium tracking-tight">{post.title}</span>
+                </span>
+                <Icon className="h-4 w-4 shrink-0 text-muted-foreground transition-colors group-hover:text-foreground" />
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
     )}
   </div>
 </Layout>
-
-<style>
-  .prose {
-    @apply text-foreground;
-  }
-  
-  .prose h1 {
-    @apply text-4xl font-bold mt-10 mb-6 text-foreground;
-  }
-  
-  .prose h2 {
-    @apply text-3xl font-bold mt-8 mb-4 text-foreground;
-  }
-  
-  .prose h3 {
-    @apply text-2xl font-bold mt-6 mb-4 text-foreground;
-  }
-  
-  .prose h4 {
-    @apply text-xl font-semibold mt-5 mb-3 text-foreground;
-  }
-  
-  .prose p {
-    @apply text-lg leading-8 mb-6 text-foreground;
-  }
-  
-  .prose a {
-    @apply text-primary hover:underline;
-  }
-  
-  .prose code {
-    @apply bg-muted px-2 py-1 rounded text-base font-source;
-  }
-  
-  .prose pre {
-    @apply bg-muted p-6 rounded-lg overflow-x-auto my-6;
-  }
-  
-  .prose pre code {
-    @apply bg-transparent p-0 text-sm font-source;
-  }
-  
-  .prose blockquote {
-    @apply border-l-4 border-primary pl-6 italic my-6 text-muted-foreground text-lg;
-  }
-  
-  .prose ul {
-    @apply list-disc list-inside mb-6 space-y-2;
-  }
-  
-  .prose ol {
-    @apply list-decimal list-inside mb-6 space-y-2;
-  }
-  
-  .prose li {
-    @apply text-lg leading-8;
-  }
-  
-  .prose table {
-    @apply w-full border-collapse border border-border my-6;
-  }
-  
-  .prose th {
-    @apply bg-muted font-semibold p-3 border border-border text-left text-base;
-  }
-  
-  .prose td {
-    @apply p-3 border border-border text-base;
-  }
-  
-  .prose hr {
-    @apply border-border my-8;
-  }
-  
-  .prose img {
-    @apply rounded-lg shadow-sm my-6;
-  }
-  
-  .prose strong {
-    @apply font-semibold text-foreground;
-  }
-  
-  .prose em {
-    @apply italic;
-  }
-  
-  .prose > * + * {
-    @apply mt-6;
-  }
-  
-  .prose > h1 + *,
-  .prose > h2 + *,
-  .prose > h3 + *,
-  .prose > h4 + * {
-    @apply mt-4;
-  }
-</style>

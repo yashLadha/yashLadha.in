@@ -1,135 +1,180 @@
 ---
-import Seo from "../components/Seo.astro";
-import siteMetadata from "../static/siteMetadata.json";
+import { ArrowRight, Mail, Search } from "lucide-react";
 import Layout from "../layouts/Layout.astro";
-import { Button } from "../components/ui/button";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../components/ui/card";
+import Seo from "../components/Seo.astro";
+import CopyButton from "../components/CopyButton.astro";
+import PostRow from "../components/PostRow.astro";
+import ProjectRow from "../components/ProjectRow.astro";
+import SectionHeader from "../components/SectionHeader.astro";
+import SocialList from "../components/SocialList.astro";
+import { CareerTrace } from "../components/CareerTrace";
+import { EventLoop } from "../components/EventLoop";
+import { buttonVariants } from "../components/ui/button";
+import { Kbd } from "../components/ui/kbd";
+import { career } from "../data/career";
+import { upstream } from "../data/projects";
+import { EMAIL, github } from "../data/site";
+import { loadPosts } from "../lib/posts";
+import { cn } from "../lib/utils";
+
+const LATEST_POST_COUNT = 4;
+
+const posts = (await loadPosts()).slice(0, LATEST_POST_COUNT);
+const buildDate = new Date();
+const now = { year: buildDate.getUTCFullYear(), month: buildDate.getUTCMonth() + 1 };
+
+const interests = [
+  "system architecture",
+  "runtime internals",
+  "framework internals",
+  "distributed systems",
+  "advanced algorithms",
+];
 ---
 
 <Layout>
-  <Seo slot="header" seo={siteMetadata} />
-  <div class="max-w-4xl mx-auto space-y-12">
-    <section class="text-center space-y-6 py-12">
-      <h1 class="text-4xl md:text-6xl font-bold tracking-tight">
-        Hey, I am <span class="text-primary">Yash</span>
-      </h1>
-      <p class="text-xl text-muted-foreground max-w-2xl mx-auto">
-        Software Tinkerer, Innovator, and Leader
+  <Seo
+    slot="header"
+    seo={{
+      title: "Yash Ladha",
+      description:
+        "Software engineer and engineering leader at Amazon working on UPI payments, runtime internals, and distributed systems. Node.js collaborator emeritus.",
+    }}
+  />
+
+  <section class="grid items-center gap-12 pt-6 pb-20 md:pt-12 lg:grid-cols-[minmax(0,1fr)_minmax(0,1.12fr)] lg:pb-28">
+    <div class="animate-enter">
+      <p class="flex flex-wrap items-center gap-x-2 gap-y-1 font-mono text-crumb text-muted-foreground">
+        <span class="text-foreground">Yash Ladha</span>
+        <span aria-hidden="true">/</span>
+        <span>software engineer</span>
+        <span aria-hidden="true">/</span>
+        <span>Node.js collaborator emeritus</span>
       </p>
-      <div class="flex gap-4 justify-center">
-        <Button asChild size="lg" className="hero-button-primary">
-          <a href="/projects">View My Work</a>
-        </Button>
-        <Button asChild variant="outline" size="lg" className="hero-button-secondary hover:bg-primary hover:text-primary-foreground">
-          <a href="/contactme">Let's Collaborate</a>
-        </Button>
+      <h1 class="mt-6 text-[2.6rem] leading-[1.02] font-semibold tracking-display sm:text-6xl lg:text-[4.25rem]">
+        I build the layer you only notice <span class="text-muted-foreground">when it breaks.</span>
+      </h1>
+      <p class="mt-6 max-w-xl text-lead leading-relaxed text-foreground/80">
+        8+ years of system architecture, runtime internals, and distributed systems. Right now I work on UPI payments at
+        Amazon: making them cheaper to run, easier to see into, and harder to knock over.
+      </p>
+      <div class="mt-9 flex flex-wrap items-center gap-3">
+        <a href="/blog" class={cn(buttonVariants(), "group")}>
+          Read the writing
+          <ArrowRight className="transition-transform group-hover:translate-x-0.5" />
+        </a>
+        <a href={github.href} target="_blank" rel="noreferrer" class={buttonVariants({ variant: "outline" })}>
+          <github.icon />
+          {github.label}
+        </a>
+        <button type="button" data-open-palette class={cn(buttonVariants({ variant: "outline" }), "pr-2")}>
+          <Search />
+          Search
+          <Kbd>
+            <span data-mod-key>⌘</span>K
+          </Kbd>
+        </button>
       </div>
-    </section>
+    </div>
 
-    <section class="space-y-6">
-      <Card>
-        <CardHeader>
-          <CardTitle>About Me</CardTitle>
-          <CardDescription>Passionate about building impactful software solutions</CardDescription>
-        </CardHeader>
-        <CardContent className="prose prose-slate max-w-none">
-          <p>
-            I am a software engineer and an engineering leader passionate about System architecture, Language internals,
-            Framework internals and Advanced Algorithms. I have also worked as an ex-collaborator on the 
-            <a href="https://github.com/nodejs/node" target="_blank" class="text-primary hover:underline" rel="noreferrer nofollow">
-              Node.js
-            </a> project, where I helped improve the runtime and fix bugs.
-          </p>
+    <div class="animate-enter min-w-0" style="--i: 2">
+      <div class="mb-3 flex items-end justify-between gap-4 px-1">
+        <p class="text-sm text-muted-foreground">
+          <span class="font-medium text-foreground">What prints first?</span> A small trip through the Node.js event
+          loop.
+        </p>
+        <span class="hidden shrink-0 items-center gap-1.5 font-mono text-2xs text-muted-foreground sm:flex">
+          <Kbd>space</Kbd> run <Kbd>→</Kbd> step
+        </span>
+      </div>
+      <EventLoop client:visible />
+    </div>
+  </section>
 
-          <p>
-            I have over 8 years of experience in building valuable software solutions. I've worked across the full stack -
-            frontend, backend, and mobile development - leaving no area untouched. I've had the privilege of working with
-            great companies like 
-            <a href="https://www.browserstack.com/" class="text-primary hover:underline" target="_blank" rel="noreferrer nofollow">
-              BrowserStack
-            </a> and 
-            <a href="https://shipsy.io/" target="_blank" class="text-primary hover:underline" rel="noreferrer nofollow">
-              Shipsy
-            </a>, helping them build impactful products for their customers.
-          </p>
+  <section class="pb-24">
+    <SectionHeader title="Where I have spent my time" description="Hover or use the arrow keys to inspect a span.">
+      <span class="hidden items-center gap-1.5 font-mono text-2xs text-muted-foreground sm:flex">
+        <Kbd>↑</Kbd>
+        <Kbd>↓</Kbd> inspect
+      </span>
+    </SectionHeader>
+    <CareerTrace client:visible spans={career} now={now} />
+  </section>
 
-          <p>
-            I'm an avid open-source 
-            <a href="https://github.com/yashLadha" target="_blank" class="text-primary hover:underline" rel="noreferrer nofollow">
-              contributor
-            </a> and whenever I get the chance, I enjoy giving back to the community. I was a Google Summer of Code fellow with FOSSASIA,
-            and I've also contributed to several popular open-source projects like 
-            <a href="https://github.com/nodejs/node" class="text-primary hover:underline" target="_blank" rel="noreferrer nofollow">
-              Node.js
-            </a>, 
-            <a href="https://github.com/fossasia/badgeyay" class="text-primary hover:underline" rel="noreferrer nofollow">
-              BadgeYay
-            </a> and 
-            <a href="https://github.com/sukeesh/Jarvis" class="text-primary hover:underline" target="_blank" rel="noreferrer nofollow">
-              Jarvis
-            </a> - all of which have over 10,000 stars on their repositories.
-          </p>
-        </CardContent>
-      </Card>
-    </section>
+  <section class="grid gap-6 pb-24 lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)] lg:items-end">
+    <div>
+      <SectionHeader
+        title="Open source"
+        description="Projects I have contributed to, together past 10,000 stars on GitHub."
+      />
+      <ul class="rail-list">
+        {upstream.map((project) => (
+          <li>
+            <ProjectRow project={project} />
+          </li>
+        ))}
+      </ul>
+    </div>
 
-    <section class="grid md:grid-cols-3 gap-6">
-      <a href="/projects" class="block">
-        <Card className="hover:shadow-lg transition-shadow cursor-pointer h-full">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <span>🚀</span>
-              Projects
-            </CardTitle>
-            <CardDescription>
-              Explore my latest work and side projects
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <Button asChild variant="outline" className="w-full">
-              <span>View Projects</span>
-            </Button>
-          </CardContent>
-        </Card>
+    <aside class="rounded-xl border bg-card p-5 font-mono text-sm">
+      <p class="text-xs text-muted-foreground">
+        <span class="text-brand">$</span> cat ~/interests
+      </p>
+      <ol class="mt-3 space-y-1.5">
+        {interests.map((interest, index) => (
+          <li class="flex gap-4">
+            <span class="w-4 text-right text-muted-foreground tabular-nums">{index + 1}</span>
+            <span>{interest}</span>
+          </li>
+        ))}
+      </ol>
+      <p class="mt-5 border-t pt-4 font-sans leading-relaxed text-muted-foreground">
+        I also mentored for Google Code-in in 2017 and 2018, helping first-time contributors land their first patches.
+      </p>
+    </aside>
+  </section>
+
+  <section class="pb-24">
+    <SectionHeader title="Writing" description="Benchmarks, tooling, and notes on how things work underneath.">
+      <a href="/blog" class="group inline-flex items-center gap-1.5 text-sm font-medium">
+        All posts
+        <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
       </a>
+    </SectionHeader>
+    <ol class="rail-list">
+      {posts.map((post) => (
+        <li>
+          <PostRow post={post} />
+        </li>
+      ))}
+    </ol>
+  </section>
 
-      <a href="/blog" class="block">
-        <Card className="hover:shadow-lg transition-shadow cursor-pointer h-full">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <span>📝</span>
-              Blog
-            </CardTitle>
-            <CardDescription>
-              Read my thoughts on technology and development
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <Button asChild variant="outline" className="w-full">
-              <span>Read Blog</span>
-            </Button>
-          </CardContent>
-        </Card>
-      </a>
-
-      <a href="/contactme" class="block">
-        <Card className="hover:shadow-lg transition-shadow cursor-pointer h-full">
-          <CardHeader>
-            <CardTitle className="flex items-center gap-2">
-              <span>🤝</span>
-              Collaborate
-            </CardTitle>
-            <CardDescription>
-              Let's work together on something amazing
-            </CardDescription>
-          </CardHeader>
-          <CardContent>
-            <Button asChild variant="outline" className="w-full">
-              <span>Get In Touch</span>
-            </Button>
-          </CardContent>
-        </Card>
-      </a>
-    </section>
-  </div>
+  <section class="mb-10 rounded-2xl border bg-card">
+    <div class="grid gap-10 p-6 sm:p-10 lg:grid-cols-[minmax(0,1.2fr)_minmax(0,1fr)] lg:items-end">
+      <div>
+        <h2 class="text-3xl leading-tight font-semibold tracking-[-0.03em] md:text-4xl">
+          Got a system that should be faster, cheaper, or calmer?
+        </h2>
+        <p class="mt-4 max-w-lg leading-relaxed text-muted-foreground">
+          I like conversations about runtimes, infrastructure, and the failure modes in between. Email is the fastest
+          way to reach me.
+        </p>
+        <div class="mt-7 flex flex-wrap gap-3">
+          <a href={`mailto:${EMAIL}`} class={buttonVariants()}>
+            <Mail />
+            {EMAIL}
+          </a>
+          <CopyButton text={EMAIL} />
+        </div>
+      </div>
+      <SocialList class="bg-background" />
+    </div>
+  </section>
 </Layout>
+
+<script>
+  import { openCommandPalette } from "../lib/commandPalette";
+
+  document.querySelector("[data-open-palette]")?.addEventListener("click", openCommandPalette);
+</script>

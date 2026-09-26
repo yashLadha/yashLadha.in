@@ -1,0 +1,41 @@
+---
+import { Copy } from "lucide-react";
+import { buttonVariants } from "./ui/button";
+import { cn } from "../lib/utils";
+
+interface Props {
+  text: string;
+}
+
+const { text } = Astro.props;
+---
+
+<button
+  type="button"
+  data-copy-text={text}
+  class={cn(buttonVariants({ variant: "outline" }), "font-mono text-xs text-muted-foreground")}
+>
+  <Copy />
+  <span data-copy-label aria-live="polite">
+    copy
+  </span>
+</button>
+
+<script>
+  import { copyToClipboard } from "../lib/platform";
+
+  const FEEDBACK_MS = 1500;
+
+  document.querySelectorAll<HTMLButtonElement>("[data-copy-text]").forEach((button) => {
+    const label = button.querySelector("[data-copy-label]");
+    let resetTimer: number | undefined;
+
+    button.addEventListener("click", async () => {
+      if (!label) return;
+      const copied = await copyToClipboard(button.dataset.copyText ?? "");
+      label.textContent = copied ? "copied" : "copy failed";
+      window.clearTimeout(resetTimer);
+      resetTimer = window.setTimeout(() => (label.textContent = "copy"), FEEDBACK_MS);
+    });
+  });
+</script>

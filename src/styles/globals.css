@@ -1,106 +1,377 @@
-@tailwind base;
-@tailwind components;
-@tailwind utilities;
+@import "tailwindcss";
 
-@layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 210 40% 96%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-    --radius: 0.5rem;
-  }
+@plugin "@tailwindcss/typography";
 
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-  }
+@custom-variant dark (&:where(.dark, .dark *));
+
+:root {
+  --background: 40 20% 98%;
+  --foreground: 30 8% 10%;
+  --card: 40 20% 99%;
+  --card-foreground: 30 8% 10%;
+  --popover: 40 20% 99%;
+  --popover-foreground: 30 8% 10%;
+  --primary: 30 8% 10%;
+  --primary-foreground: 40 20% 98%;
+  --secondary: 40 12% 94%;
+  --secondary-foreground: 30 8% 10%;
+  --muted: 40 12% 94%;
+  --muted-foreground: 30 5% 40%;
+  --accent: 40 12% 92%;
+  --accent-foreground: 30 8% 10%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 40 20% 98%;
+  --border: 35 10% 87%;
+  --input: 35 10% 87%;
+  --ring: 14 85% 42%;
+  --brand: 14 85% 42%;
+  --selection: 14 85% 42% / 0.18;
+  --radius: 0.5rem;
+  --nav-height: 3.5rem;
+  color-scheme: light;
+}
+
+.dark {
+  --background: 30 6% 7%;
+  --foreground: 40 10% 90%;
+  --card: 30 6% 9%;
+  --card-foreground: 40 10% 90%;
+  --popover: 30 6% 9%;
+  --popover-foreground: 40 10% 90%;
+  --primary: 40 10% 92%;
+  --primary-foreground: 30 6% 7%;
+  --secondary: 30 5% 14%;
+  --secondary-foreground: 40 10% 90%;
+  --muted: 30 5% 12%;
+  --muted-foreground: 35 5% 62%;
+  --accent: 30 5% 15%;
+  --accent-foreground: 40 10% 90%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 40 10% 90%;
+  --border: 30 5% 18%;
+  --input: 30 5% 18%;
+  --ring: 18 90% 62%;
+  --brand: 18 90% 62%;
+  --selection: 18 90% 62% / 0.28;
+  color-scheme: dark;
+}
+
+@theme inline {
+  --font-sans:
+    "Geist Variable", ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji",
+    "Segoe UI Emoji";
+  --text-2xs: 0.6875rem;
+  --text-crumb: 0.8125rem;
+  --text-lead: 1.0625rem;
+  --tracking-display: -0.04em;
+
+  --font-mono:
+    "Source Code Pro Variable", ui-monospace, SFMono-Regular, Menlo, Monaco,
+    Consolas, monospace;
+
+  --color-border: hsl(var(--border));
+  --color-input: hsl(var(--input));
+  --color-ring: hsl(var(--ring));
+  --color-background: hsl(var(--background));
+  --color-foreground: hsl(var(--foreground));
+  --color-brand: hsl(var(--brand));
+  --color-primary: hsl(var(--primary));
+  --color-primary-foreground: hsl(var(--primary-foreground));
+  --color-secondary: hsl(var(--secondary));
+  --color-secondary-foreground: hsl(var(--secondary-foreground));
+  --color-destructive: hsl(var(--destructive));
+  --color-destructive-foreground: hsl(var(--destructive-foreground));
+  --color-muted: hsl(var(--muted));
+  --color-muted-foreground: hsl(var(--muted-foreground));
+  --color-accent: hsl(var(--accent));
+  --color-accent-foreground: hsl(var(--accent-foreground));
+  --color-popover: hsl(var(--popover));
+  --color-popover-foreground: hsl(var(--popover-foreground));
+  --color-card: hsl(var(--card));
+  --color-card-foreground: hsl(var(--card-foreground));
+
+  --radius-lg: var(--radius);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-sm: calc(var(--radius) - 4px);
+}
+
+/* Page-width wrapper shared by the navbar, main content, and footer. */
+@utility page-width {
+  margin-inline: auto;
+  width: 100%;
+  max-width: var(--container-6xl);
+  padding-inline: 1rem;
 }
 
 @layer base {
   * {
     @apply border-border;
   }
+
+  html {
+    scroll-padding-top: calc(var(--nav-height) + 1.5rem);
+  }
+
   body {
     @apply bg-background text-foreground;
   }
+
+  ::selection {
+    background-color: hsl(var(--selection));
+    color: inherit;
+  }
+
+  html:has(dialog[open]) {
+    overflow: hidden;
+  }
+
+  button:not(:disabled),
+  [role="button"]:not(:disabled) {
+    cursor: pointer;
+  }
+}
+
+/* The theme toggle drives this transition with a clip-path reveal, so disable the default crossfade. */
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+
+/* Shiki emits both themes as CSS variables; pick the dark one when the dark class is set. */
+.dark .astro-code,
+.dark .astro-code span {
+  color: var(--shiki-dark) !important;
+  background-color: var(--shiki-dark-bg) !important;
+}
+
+.prose {
+  --tw-prose-body: hsl(var(--foreground) / 0.87);
+  --tw-prose-headings: hsl(var(--foreground));
+  --tw-prose-lead: hsl(var(--muted-foreground));
+  --tw-prose-links: hsl(var(--foreground));
+  --tw-prose-bold: hsl(var(--foreground));
+  --tw-prose-counters: hsl(var(--muted-foreground));
+  --tw-prose-bullets: hsl(var(--muted-foreground));
+  --tw-prose-hr: hsl(var(--border));
+  --tw-prose-quotes: hsl(var(--foreground) / 0.8);
+  --tw-prose-quote-borders: hsl(var(--border));
+  --tw-prose-captions: hsl(var(--muted-foreground));
+  --tw-prose-kbd: hsl(var(--foreground));
+  --tw-prose-code: hsl(var(--foreground));
+  --tw-prose-th-borders: hsl(var(--border));
+  --tw-prose-td-borders: hsl(var(--border));
+}
+
+/* Unlayered so these win over the typography plugin, which lives in the utilities layer. */
+.prose a {
+  @apply font-medium underline decoration-brand/40 underline-offset-4 transition-colors;
+}
+
+.prose a:hover {
+  @apply text-brand decoration-brand;
+}
+
+.prose :where(h2, h3, h4) {
+  @apply font-sans font-semibold tracking-[-0.025em];
+}
+
+.prose :not(pre) > code {
+  @apply rounded-md border bg-muted px-1.5 py-0.5 font-mono text-[0.85em] font-medium;
+}
+
+.prose code::before,
+.prose code::after {
+  content: none;
+}
+
+.prose pre {
+  @apply my-8 rounded-xl border px-5 py-4 font-mono text-[0.8125rem] leading-relaxed;
+}
+
+.prose pre code {
+  @apply font-mono;
+}
+
+.prose blockquote {
+  @apply my-8 rounded-xl border border-l bg-card px-5 py-1 font-normal not-italic;
+}
+
+.prose blockquote > :first-child {
+  @apply mt-4;
+}
+
+.prose blockquote > :last-child {
+  @apply mb-4;
+}
+
+.prose blockquote p:first-of-type::before,
+.prose blockquote p:last-of-type::after {
+  content: none;
+}
+
+.prose img {
+  @apply rounded-xl border;
+}
+
+/* display: block lets wide tables scroll horizontally instead of overflowing the page. */
+.prose table {
+  @apply my-8 block w-max max-w-full overflow-x-auto rounded-xl border text-sm;
+  border-collapse: separate;
+  border-spacing: 0;
+}
+
+.prose thead {
+  @apply border-0;
+}
+
+.prose thead th {
+  @apply bg-muted px-4 py-3 align-bottom font-mono text-2xs font-medium uppercase tracking-wider text-muted-foreground;
+  border-bottom: 1px solid hsl(var(--border));
+}
+
+.prose tbody td {
+  @apply px-4 py-2.5 tabular-nums;
+  border-bottom: 1px solid hsl(var(--border));
+}
+
+.prose tbody td:first-child {
+  @apply font-medium whitespace-nowrap text-foreground;
+}
+
+.prose tbody tr {
+  @apply border-0 transition-colors;
+}
+
+.prose tbody tr:nth-child(even) {
+  @apply bg-muted/40;
+}
+
+.prose tbody tr:hover {
+  @apply bg-brand/5;
+}
+
+.prose tbody tr:last-child td {
+  @apply border-b-0;
 }
 
 @layer components {
-  .hero-button-primary {
-    @apply font-bold tracking-wide;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  /* Faint dot grid behind every page, fading out towards the bottom of the viewport. */
+  .dot-grid {
+    position: fixed;
+    inset: 0;
+    z-index: -1;
+    pointer-events: none;
+    background-image: radial-gradient(
+      hsl(var(--foreground) / 0.13) 1px,
+      transparent 1.2px
+    );
+    background-size: 22px 22px;
+    background-position: -11px -11px;
+    mask-image: radial-gradient(120% 70% at 50% 0%, black 30%, transparent 75%);
   }
-  
-  .hero-button-primary:hover {
-    transform: translateY(-2px) scale(1.05);
-    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+  .dark .dot-grid {
+    background-image: radial-gradient(
+      hsl(var(--foreground) / 0.09) 1px,
+      transparent 1.2px
+    );
   }
-  
-  .hero-button-primary:active {
-    transform: translateY(0) scale(1.02);
+
+  /* A bordered list whose rows show a brand-coloured rail on hover. */
+  .rail-list {
+    @apply overflow-hidden rounded-xl border bg-card;
   }
-  
-  .hero-button-secondary {
-    @apply font-semibold tracking-wide;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+
+  .rail-list > li {
+    @apply border-b last:border-b-0;
+  }
+
+  .rail-row {
+    @apply relative block transition-colors hover:bg-accent/40;
+  }
+
+  .rail-row::before {
+    content: "";
+    @apply absolute inset-y-0 left-0 w-0.5 bg-transparent transition-colors;
+  }
+
+  .rail-row:hover::before {
+    @apply bg-brand;
+  }
+
+  .shadow-panel {
+    box-shadow:
+      0 1px 0 0 hsl(var(--foreground) / 0.04),
+      0 20px 50px -24px hsl(var(--foreground) / 0.25);
+  }
+
+  /* Staggered entrance: set --i on siblings to offset them. */
+  .animate-enter {
+    animation: enter 600ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+    animation-delay: calc(var(--i, 0) * 70ms);
+  }
+
+  .animate-pop {
+    animation: pop 260ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  }
+
+  .palette-panel {
+    animation: rise 180ms cubic-bezier(0.2, 0.8, 0.2, 1) both;
+  }
+
+  /* Diagonal stripes that drift sideways to mark something as in progress. */
+  .live-stripes {
     position: relative;
     overflow: hidden;
   }
-  
-  .hero-button-secondary::before {
-    content: '';
+
+  .live-stripes::after {
+    content: "";
     position: absolute;
-    top: 0;
-    left: -100%;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
-    transition: left 0.5s;
+    inset: 0 -24px 0 0;
+    background-image: repeating-linear-gradient(
+      -45deg,
+      transparent 0 6px,
+      hsl(var(--background) / 0.28) 6px 12px
+    );
+    animation: drift 1.2s linear infinite;
   }
-  
-  .hero-button-secondary:hover::before {
-    left: 100%;
+}
+
+@keyframes enter {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
   }
-  
-  .hero-button-secondary:hover {
-    transform: translateY(-2px) scale(1.05);
-    box-shadow: 0 8px 20px -5px rgba(0, 0, 0, 0.1);
+}
+
+@keyframes pop {
+  from {
+    opacity: 0;
+    transform: translateY(3px) scale(0.96);
   }
-  
-  .hero-button-secondary:active {
-    transform: translateY(0) scale(1.02);
+}
+
+@keyframes rise {
+  from {
+    opacity: 0;
+    transform: translateY(-6px) scale(0.985);
+  }
+}
+
+@keyframes drift {
+  to {
+    transform: translateX(-24px);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
   }
 }

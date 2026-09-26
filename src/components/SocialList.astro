@@ -1,0 +1,28 @@
+---
+import { ArrowUpRight } from "lucide-react";
+import { socials } from "../data/site";
+
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<ul class:list={["rail-list", className]}>
+  {socials.map((social) => (
+    <li>
+      <a
+        href={social.href}
+        target="_blank"
+        rel="noreferrer"
+        class="rail-row group flex items-center gap-3 px-4 py-3 text-sm"
+      >
+        <social.icon className="h-4 w-4 text-muted-foreground group-hover:text-foreground" />
+        <span class="font-medium">{social.label}</span>
+        <span class="ml-auto font-mono text-xs text-muted-foreground">{social.handle}</span>
+        <ArrowUpRight className="h-3.5 w-3.5 text-muted-foreground transition group-hover:-translate-y-0.5 group-hover:translate-x-0.5" />
+      </a>
+    </li>
+  ))}
+</ul>

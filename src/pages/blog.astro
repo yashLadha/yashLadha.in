@@ -1,130 +1,80 @@
 ---
-import Seo from "../components/Seo.astro";
+import { ArrowRight } from "lucide-react";
 import Layout from "../layouts/Layout.astro";
-import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "../components/ui/card";
-import { Badge } from "../components/ui/badge";
+import PageHero from "../components/PageHero.astro";
+import PostRow from "../components/PostRow.astro";
+import Seo from "../components/Seo.astro";
+import { loadPosts } from "../lib/posts";
 
-// Use Astro.glob() to fetch all posts, and then sort them by date.
-const posts = (await Astro.glob("./blog/*.{md,mdx}")).sort(
-  (a, b) => new Date(b.frontmatter.pubDate).valueOf() - new Date(a.frontmatter.pubDate).valueOf(),
-);
+const posts = await loadPosts();
+const [latest, ...older] = posts;
+const totalMinutes = posts.reduce((sum, post) => sum + post.minutes, 0);
 ---
 
 <Layout>
   <Seo
     slot="header"
     seo={{
-      title: "Blog - Yash Ladha",
-      description:
-        "Hub to share interesting bits about software engineering, system architecture, and technology insights.",
+      title: "Writing",
+      description: "Notes on runtimes, infrastructure, benchmarks, and developer tooling by Yash Ladha.",
     }}
   />
 
-  <div class="max-w-4xl mx-auto space-y-8">
-    <section class="text-center space-y-4">
-      <h1 class="text-4xl font-bold tracking-tight">Blog</h1>
-      <p class="text-xl text-muted-foreground max-w-2xl mx-auto">
-        Sharing insights about software engineering, system architecture, and technology
+  <div class="mx-auto max-w-4xl pb-16">
+    <PageHero
+      crumbs={[{ label: "writing" }]}
+      title="Writing"
+      lead="Measured comparisons, tooling setups, and notes on how the systems underneath actually behave."
+    >
+      <p class="mt-4 font-mono text-xs text-muted-foreground">
+        {posts.length} posts, {totalMinutes} min total
       </p>
-    </section>
+    </PageHero>
 
-    {
-      posts.length > 0 ? (
-        <div class="grid gap-6">
-          {posts.map((post) => (
-            <article class="group">
-              <Card className="blog-card transition-shadow duration-300 ease-out">
-                <a href={post.url?.replace(".html", "")} data-astro-prefetch class="block">
-                  <div class="flex flex-col md:flex-row overflow-hidden">
-                    {post.frontmatter.heroImage && (
-                      <div class="md:w-1/3 overflow-hidden">
-                        <img
-                          src={post.frontmatter.heroImage}
-                          alt={post.frontmatter.title}
-                          class="blog-hero-image w-full h-48 md:h-full object-cover rounded-t-lg md:rounded-l-lg md:rounded-t-none"
-                          loading="lazy"
-                        />
-                      </div>
-                    )}
-
-                    <div class={`flex-1 ${post.frontmatter.heroImage ? "md:w-2/3" : "w-full"}`}>
-                      <CardHeader>
-                        <div class="flex items-start justify-between gap-4">
-                          <div class="flex-1">
-                            <CardTitle className="text-xl mb-2">
-                              {post.frontmatter.title}
-                            </CardTitle>
-                            <CardDescription className="text-base">
-                              {post.frontmatter.description}
-                            </CardDescription>
-                          </div>
-                        </div>
-                      </CardHeader>
-
-                      <CardContent>
-                        <div class="flex items-center justify-between">
-                          <div class="flex items-center gap-4 text-sm text-muted-foreground">
-                            {post.frontmatter.pubDate && (
-                              <time class="flex items-center gap-1">
-                                <span>📅</span>
-                                {post.frontmatter.pubDate}
-                              </time>
-                            )}
-                            {post.frontmatter.updatedDate && (
-                              <time class="flex items-center gap-1">
-                                <span>🔄</span>
-                                Updated {post.frontmatter.updatedDate}
-                              </time>
-                            )}
-                          </div>
-
-                          <Badge variant="outline" className="blog-badge">
-                            <span>Read More →</span>
-                          </Badge>
-                        </div>
-                      </CardContent>
-                    </div>
-                  </div>
-                </a>
-              </Card>
-            </article>
-          ))}
-        </div>
-      ) : (
-        <Card className="text-center py-12">
-          <CardContent>
-            <div class="space-y-4">
-              <div class="text-6xl">📝</div>
-              <h2 class="text-2xl font-semibold">No blog posts yet</h2>
-              <p class="text-muted-foreground">
-                Check back soon for insights about software engineering and technology!
-              </p>
+    {latest ? (
+      <div class="animate-enter space-y-6" style="--i: 2">
+        <a
+          href={latest.url}
+          class="group shadow-panel grid overflow-hidden rounded-xl border bg-card transition-colors hover:border-foreground/25 md:grid-cols-[1.1fr_1fr]"
+        >
+          <div class="flex flex-col gap-4 p-6 sm:p-8">
+            <p class="font-mono text-xs text-muted-foreground">
+              <span class="text-brand">latest</span>
+              <span aria-hidden="true"> · </span>
+              <time datetime={latest.isoDate}>{latest.date}</time>
+              <span aria-hidden="true"> · </span>
+              {latest.minutes} min read
+            </p>
+            <h2 class="text-2xl leading-snug font-semibold tracking-tight md:text-3xl">{latest.title}</h2>
+            <p class="leading-relaxed text-muted-foreground">{latest.description}</p>
+            <span class="mt-auto inline-flex items-center gap-1.5 pt-2 text-sm font-medium">
+              Read the post
+              <ArrowRight className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+            </span>
+          </div>
+          {latest.heroImage && (
+            <div class="aspect-[4/3] overflow-hidden border-t bg-muted md:aspect-auto md:border-t-0 md:border-l">
+              <img
+                src={latest.heroImage}
+                alt=""
+                class="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+              />
             </div>
-          </CardContent>
-        </Card>
-      )
-    }
+          )}
+        </a>
+
+        {older.length > 0 && (
+          <ol class="rail-list">
+            {older.map((post) => (
+              <li>
+                <PostRow post={post} descriptionLines={2} />
+              </li>
+            ))}
+          </ol>
+        )}
+      </div>
+    ) : (
+      <p class="rounded-xl border bg-card p-8 text-muted-foreground">No posts yet.</p>
+    )}
   </div>
 </Layout>
-
-<style>
-  .blog-card {
-    box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
-    transition: box-shadow 0.3s ease-out;
-  }
-
-  .blog-card:hover {
-    box-shadow:
-      0 10px 25px -3px rgba(0, 0, 0, 0.2),
-      0 4px 12px -2px rgba(0, 0, 0, 0.15),
-      0 20px 40px -8px rgba(0, 0, 0, 0.1);
-  }
-
-  .blog-hero-image {
-    transition: transform 0.3s ease-out;
-  }
-
-  .group:hover .blog-hero-image {
-    transform: scale(1.02);
-  }
-</style>

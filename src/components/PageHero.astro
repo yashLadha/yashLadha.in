@@ -1,0 +1,38 @@
+---
+interface Props {
+  /** Breadcrumb segments after the home link. */
+  crumbs: { label: string; href?: string }[];
+  title: string;
+  /** Trailing part of the title rendered in the muted colour. */
+  muted?: string;
+  lead?: string;
+}
+
+const { crumbs, title, muted, lead } = Astro.props;
+---
+
+<section class="animate-enter pt-6 pb-14 md:pt-12">
+  <p class="flex min-w-0 items-center gap-2 font-mono text-crumb text-muted-foreground">
+    <a href="/" class="shrink-0 text-foreground transition-colors hover:text-brand">
+      ~
+    </a>
+    {crumbs.map((crumb) => (
+      <>
+        <span aria-hidden="true">/</span>
+        {crumb.href ? (
+          <a href={crumb.href} class="shrink-0 text-foreground transition-colors hover:text-brand">
+            {crumb.label}
+          </a>
+        ) : (
+          <span class="truncate">{crumb.label}</span>
+        )}
+      </>
+    ))}
+  </p>
+  <h1 class="mt-6 max-w-3xl text-4xl leading-[1.05] font-semibold tracking-display text-balance sm:text-5xl">
+    {title}
+    {muted && <span class="text-muted-foreground">{muted}</span>}
+  </h1>
+  {lead && <p class="mt-6 max-w-xl text-lead leading-relaxed text-foreground/80">{lead}</p>}
+  <slot />
+</section>

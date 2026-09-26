@@ -1,31 +1,64 @@
 ---
-import { ModernProjectCard } from "../components/ModernProjectCard";
+import PageHero from "../components/PageHero.astro";
+import ProjectRow from "../components/ProjectRow.astro";
+import SectionHeader from "../components/SectionHeader.astro";
 import Seo from "../components/Seo.astro";
+import { buttonVariants } from "../components/ui/button";
+import { github } from "../data/site";
+import { tools, upstream } from "../data/projects";
 import Layout from "../layouts/Layout.astro";
-import ProjectInfo from "../static/repoList.json";
-import siteMetadata from "../static/siteMetadata.json";
+import { cn, padTwo } from "../lib/utils";
+
+const sections = [
+  {
+    title: "Upstream",
+    blurb: "Open source projects I have contributed to and helped maintain.",
+    projects: upstream,
+  },
+  {
+    title: "Tools I built",
+    blurb: "Small utilities, mostly written to remove a chore from my own day.",
+    projects: tools,
+  },
+];
 ---
 
 <Layout>
-  <Seo slot="header" seo={siteMetadata} />
-  <div class="max-w-6xl mx-auto space-y-8">
-    <section class="text-center space-y-4">
-      <h1 class="text-4xl font-bold tracking-tight">My Projects</h1>
-      <p class="text-xl text-muted-foreground max-w-2xl mx-auto">
-        A collection of open-source projects and contributions I've worked on
-      </p>
-    </section>
+  <Seo
+    slot="header"
+    seo={{
+      title: "Projects",
+      description:
+        "Open source work on Node.js, BadgeYay, and Jarvis, plus small Go, Rust, and Python tools by Yash Ladha.",
+    }}
+  />
 
-    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-      {ProjectInfo.map((project) => (
-        <ModernProjectCard
-          client:load
-          title={project.name}
-          description={project.description}
-          technologies={project.languages}
-          githubUrl={project.htmlURL}
-        />
-      ))}
-    </div>
-  </div>
+  <PageHero
+    crumbs={[{ label: "projects" }]}
+    title="Code I have shipped"
+    muted=" in the open."
+    lead="Runtime work upstream, and the small tools I reach for when something is tedious."
+  >
+    <a href={github.href} target="_blank" rel="noreferrer" class={cn(buttonVariants({ variant: "outline" }), "mt-6")}>
+      <github.icon />
+      <span class="font-mono text-xs">{github.handle}</span>
+    </a>
+  </PageHero>
+
+  {sections.map((section, i) => (
+    <section class="animate-enter pb-16" style={`--i: ${i + 1}`}>
+      <SectionHeader title={section.title} description={section.blurb}>
+        <span class="font-mono text-xs whitespace-nowrap text-muted-foreground tabular-nums">
+          {padTwo(section.projects.length)} repos
+        </span>
+      </SectionHeader>
+      <ul class="rail-list">
+        {section.projects.map((project) => (
+          <li>
+            <ProjectRow project={project} />
+          </li>
+        ))}
+      </ul>
+    </section>
+  ))}
 </Layout>

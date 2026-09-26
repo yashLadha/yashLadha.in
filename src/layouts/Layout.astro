@@ -1,20 +1,63 @@
 ---
-import { ModernNavBar } from "../components/ModernNavBar";
-import "../styles/base.css";
+import { CommandPalette } from "../components/CommandPalette";
+import { NavBar } from "../components/NavBar";
+import { Kbd } from "../components/ui/kbd";
+import { loadPosts } from "../lib/posts";
+import { normalizePath } from "../lib/utils";
 import "../styles/globals.css";
-import "@fontsource-variable/commissioner";
+import "@fontsource-variable/geist";
+import "@fontsource-variable/source-code-pro";
+
+const posts = await loadPosts();
 ---
 
 <!doctype html>
 <html lang="en">
   <head>
     <link rel="sitemap" href="/sitemap-index.xml" />
+    <script is:inline>
+      // Runs before first paint so the page never flashes the wrong theme.
+      let stored = null;
+      try {
+        stored = localStorage.getItem("theme");
+      } catch {
+        // Storage can be blocked; fall back to the system preference.
+      }
+      const prefersDark = window.matchMedia("(prefers-color-scheme: dark)").matches;
+      document.documentElement.classList.toggle("dark", stored ? stored === "dark" : prefersDark);
+    </script>
     <slot name="header" />
   </head>
   <body class="min-h-screen bg-background font-sans antialiased">
-    <ModernNavBar client:load />
-    <main class="container mx-auto px-4 py-8">
+    <a
+      href="#main"
+      class="sr-only rounded-md bg-foreground px-3 py-2 text-sm text-background focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-[60]"
+    >
+      Skip to content
+    </a>
+    <div class="dot-grid" aria-hidden="true"></div>
+    <NavBar client:load pathname={normalizePath(Astro.url.pathname)} />
+    <main id="main" class="page-width py-8">
       <slot />
     </main>
+    <footer class="page-width">
+      <div class="flex flex-wrap items-center justify-between gap-3 border-t py-6 font-mono text-xs text-muted-foreground">
+        <span>© {new Date().getFullYear()} Yash Ladha</span>
+        <span class="hidden items-center gap-1.5 md:flex">
+          <Kbd>
+            <span data-mod-key>⌘</span>K
+          </Kbd>{" "}
+          to jump anywhere
+        </span>
+      </div>
+    </footer>
+    <CommandPalette client:load posts={posts} />
+    <script>
+      import { isApplePlatform } from "../lib/platform";
+
+      if (!isApplePlatform()) {
+        document.querySelectorAll("[data-mod-key]").forEach((key) => (key.textContent = "Ctrl"));
+      }
+    </script>
   </body>
 </html>
