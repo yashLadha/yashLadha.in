@@ -1,0 +1,100 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="630" viewBox="0 0 1200 630" role="img" aria-labelledby="title desc">
+  <title id="title">Personal Development Environment using Docker and Neovim</title>
+  <desc id="desc">A host machine mounts a project directory and Neovim dotfiles into a Docker container, where Neovim edits a C++ file with the full Linux toolchain available.</desc>
+  <defs>
+    <style>
+      .sans { font-family: "Commissioner Variable", "Commissioner", system-ui, -apple-system, "Segoe UI", Helvetica, Arial, sans-serif; }
+      .mono { font-family: "Source Code Pro Variable", "Source Code Pro", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; }
+      .label { font-size: 14px; fill: #6b665f; }
+      .code { font-size: 16px; fill: #e8e4dc; }
+      .ln { fill: #6b665f; }
+      .kw { fill: #f0a35e; }
+      .pp { fill: #6cc3cf; }
+      .str { fill: #a8c47a; }
+      .tilde { fill: #4a463f; }
+    </style>
+    <pattern id="dots" width="24" height="24" patternUnits="userSpaceOnUse">
+      <circle cx="2" cy="2" r="1.2" fill="#e4e0d8"/>
+    </pattern>
+    <marker id="arrow" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M0 0 L10 5 L0 10 Z" fill="#3f9aa8"/>
+    </marker>
+  </defs>
+
+  <rect width="1200" height="630" fill="#faf9f6"/>
+  <rect width="1200" height="630" fill="url(#dots)"/>
+  <rect x="24" y="24" width="1152" height="582" rx="22" fill="#f3f1ec" stroke="#e4e0d8" stroke-width="1.5"/>
+
+  <g class="sans">
+    <text x="64" y="112" font-size="22" font-weight="600" fill="#e76f00" letter-spacing="3">DEV ENVIRONMENT</text>
+    <text x="62" y="182" font-size="56" font-weight="800" fill="#1c1a17">Docker + Neovim</text>
+    <text x="62" y="246" font-size="56" font-weight="800" fill="#1c1a17">workspace</text>
+    <text x="64" y="304" font-size="25" fill="#6b665f">One toolchain on every machine,</text>
+    <text x="64" y="338" font-size="25" fill="#6b665f">edited from the comfort of Neovim</text>
+  </g>
+
+  <g class="mono" font-size="16">
+    <rect x="64" y="380" width="252" height="38" rx="19" fill="#fdf1e6" stroke="#e76f00"/>
+    <circle cx="86" cy="399" r="6" fill="#e76f00"/>
+    <text x="102" y="405" fill="#1c1a17">ubuntu:18.04 + clang</text>
+    <rect x="64" y="430" width="252" height="38" rx="19" fill="#e9eef1" stroke="#1f3a4d"/>
+    <circle cx="86" cy="449" r="6" fill="#1f3a4d"/>
+    <text x="102" y="455" fill="#1c1a17">neovim + dotfiles</text>
+  </g>
+
+  <g class="mono" font-size="17">
+    <rect x="64" y="510" width="420" height="52" rx="12" fill="#1c1a17"/>
+    <text x="86" y="542" fill="#e8e4dc" xml:space="preserve"><tspan fill="#e76f00">$</tspan> docker exec -it competitive bash</text>
+    <rect x="456" y="527" width="10" height="20" fill="#e8e4dc" opacity="0.8"/>
+  </g>
+
+  <rect x="596" y="56" width="548" height="518" rx="18" fill="#faf9f6" stroke="#b9b2a5" stroke-width="1.5" stroke-dasharray="7 6"/>
+  <text x="620" y="88" class="mono label">host</text>
+
+  <g class="mono" font-size="14">
+    <rect x="620" y="104" width="176" height="34" rx="8" fill="#ffffff" stroke="#d9d3c7"/>
+    <text x="636" y="126" fill="#1c1a17">~/competitive</text>
+    <rect x="920" y="104" width="200" height="34" rx="8" fill="#ffffff" stroke="#d9d3c7"/>
+    <text x="936" y="126" fill="#1c1a17">~/.dotfiles/nvim</text>
+  </g>
+
+  <g stroke="#3f9aa8" stroke-width="2.5" fill="none" stroke-linecap="round">
+    <path d="M708 140 L708 184" marker-end="url(#arrow)"/>
+    <path d="M1020 140 L1020 184" marker-end="url(#arrow)"/>
+  </g>
+  <g class="mono" font-size="13" fill="#3f9aa8">
+    <text x="720" y="167">/app/competitive</text>
+    <text x="1008" y="167" text-anchor="end">/root/.config/nvim</text>
+  </g>
+
+  <rect x="620" y="192" width="500" height="358" rx="14" fill="#e9eef1" stroke="#1f3a4d" stroke-width="1.5"/>
+  <text x="640" y="220" class="mono label" fill="#1f3a4d">container: competitive</text>
+
+  <rect x="640" y="234" width="460" height="296" rx="10" fill="#1c1a17"/>
+  <circle cx="660" cy="254" r="5" fill="#e76f00"/>
+  <circle cx="678" cy="254" r="5" fill="#d9d3c7"/>
+  <circle cx="696" cy="254" r="5" fill="#3f9aa8"/>
+  <text x="870" y="259" text-anchor="middle" class="mono" font-size="13" fill="#8a847a">nvim main.cpp</text>
+
+  <g class="mono code" xml:space="preserve">
+    <text x="656" y="294"><tspan class="ln">1 </tspan> <tspan class="pp">#include</tspan> <tspan class="str">&lt;bits/stdc++.h&gt;</tspan></text>
+    <text x="656" y="318"><tspan class="ln">2 </tspan> <tspan class="kw">using namespace</tspan> std;</text>
+    <text x="656" y="342"><tspan class="ln">3 </tspan></text>
+    <text x="656" y="366"><tspan class="ln">4 </tspan> <tspan class="kw">int</tspan> main() {</text>
+    <text x="656" y="390"><tspan class="ln">5 </tspan>   <tspan class="kw">int</tspan> n; cin &gt;&gt; n;</text>
+    <text x="656" y="414"><tspan class="ln">6 </tspan>   cout &lt;&lt; n * 2 &lt;&lt; <tspan class="str">"\n"</tspan>;</text>
+    <text x="656" y="438"><tspan class="ln">7 </tspan>   <tspan class="kw">return</tspan> 0;</text>
+    <text x="656" y="462"><tspan class="ln">8 </tspan> }</text>
+    <text x="656" y="486" class="tilde">~</text>
+  </g>
+  <rect x="918" y="400" width="10" height="19" fill="#e8e4dc" opacity="0.8"/>
+
+  <rect x="640" y="498" width="460" height="32" fill="#2a2723"/>
+  <path d="M640 498 H1100 V520 A10 10 0 0 1 1090 530 H650 A10 10 0 0 1 640 520 Z" fill="#2a2723"/>
+  <path d="M640 498 H728 V530 H650 A10 10 0 0 1 640 520 Z" fill="#57a143"/>
+  <g class="mono" font-size="13">
+    <text x="684" y="519" text-anchor="middle" font-weight="700" fill="#1c1a17">NORMAL</text>
+    <text x="744" y="519" fill="#e8e4dc">main.cpp</text>
+    <text x="1084" y="519" text-anchor="end" fill="#8a847a">cpp  6:27</text>
+  </g>
+</svg>
