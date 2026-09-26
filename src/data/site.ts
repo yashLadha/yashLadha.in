@@ -1,12 +1,10 @@
 import {
     FileText,
-    Github,
-    Linkedin,
     MessageSquare,
     SquareStack,
-    Twitter,
     type LucideIcon,
 } from "lucide-react";
+import { Github, Linkedin, Twitter } from "../lib/brandIcons";
 
 export const EMAIL = "admin@yashladha.in";
 

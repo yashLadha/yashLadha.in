@@ -38,28 +38,24 @@ export async function loadPosts(): Promise<PostSummary[]> {
         }),
     );
 
-    const posts = await Promise.all(
-        modules.map(async (post) => {
-            const published = parsePubDate(post);
-            const words = (await post.rawContent())
-                .split(/\s+/)
-                .filter(Boolean).length;
-            return {
-                title: post.frontmatter.title,
-                description: post.frontmatter.description,
-                url: postUrl(post),
-                date: published.toLocaleDateString("en-US", {
-                    month: "short",
-                    day: "numeric",
-                    year: "numeric",
-                    timeZone: "UTC",
-                }),
-                isoDate: published.toISOString().slice(0, 10),
-                minutes: Math.max(1, Math.ceil(words / WORDS_PER_MINUTE)),
-                heroImage: post.frontmatter.heroImage,
-            };
-        }),
-    );
+    const posts = modules.map((post) => {
+        const published = parsePubDate(post);
+        const words = post.rawContent().split(/\s+/).filter(Boolean).length;
+        return {
+            title: post.frontmatter.title,
+            description: post.frontmatter.description,
+            url: postUrl(post),
+            date: published.toLocaleDateString("en-US", {
+                month: "short",
+                day: "numeric",
+                year: "numeric",
+                timeZone: "UTC",
+            }),
+            isoDate: published.toISOString().slice(0, 10),
+            minutes: Math.max(1, Math.ceil(words / WORDS_PER_MINUTE)),
+            heroImage: post.frontmatter.heroImage,
+        };
+    });
 
     return posts.sort((a, b) => b.isoDate.localeCompare(a.isoDate));
 }
