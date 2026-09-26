@@ -11,9 +11,13 @@ export function padTwo(n: number) {
 }
 
 /**
- * Canonical route path without the ".html" suffix or trailing slash that
- * `build.format: "file"` and dev URLs add, e.g. "/blog/post.html" to "/blog/post".
+ * Canonical route path without the ".html" suffix, "/index" segment, or trailing
+ * slash that `build.format: "file"` and dev URLs add, e.g. "/blog/post.html" to
+ * "/blog/post" and "/index" to "/".
  */
 export function normalizePath(pathname: string) {
-    return pathname.replace(/\.html$/, "").replace(/(.)\/$/, "$1");
+    return pathname
+        .replace(/\.html$/, "")
+        .replace(/\/index$/, "/")
+        .replace(/(.)\/$/, "$1");
 }
