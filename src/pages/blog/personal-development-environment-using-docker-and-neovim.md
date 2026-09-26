@@ -3,6 +3,7 @@ layout: "../../layouts/BlogPost.astro"
 title: "Personal Development Environment using Docker and Neovim"
 description: "Discover how to set up a consistent and efficient personal development environment using Docker and Neovim. Learn to overcome environment issues and leverage containerization and a preferred code editor for a seamless coding experience."
 pubDate: "Sep 09 2022"
+heroImage: "/blog-assets/neovim-blog-pde/hero.svg"
 ---
 
 It is not very uncommon that we move to a new development environment and do not see the necessary build tools and config present
@@ -14,7 +15,7 @@ I've noticed many inconsistencies when developing on an environment that isn't c
 >
 > Technically, we can execute any shell program inside Docker container, even `neovim`
 
-<img class="bg-clip-border rounded-lg" width="720" height="360" src="/blog-assets/neovim-blog-pde/container-explanation.png" />
+<img class="bg-clip-border rounded-lg" width="720" height="360" src="/blog-assets/neovim-blog-pde/container-explanation.svg" alt="Neovim and the clangd language server both run inside the Docker container on the host computer" />
 
 ### Step 1: Select Appropriate Docker Image for Usage
 
