@@ -1,0 +1,147 @@
+---
+import { Menu, Moon, Search, Sun, X } from "lucide-react";
+import { buttonVariants } from "./ui/button";
+import { Kbd } from "./ui/kbd";
+import { navItems } from "../data/site";
+import { cn } from "../lib/utils";
+
+interface Props {
+  pathname: string;
+}
+
+const { pathname } = Astro.props;
+
+const isActive = (href: string) =>
+  pathname === href || pathname.startsWith(`${href}/`);
+
+const iconButton = cn(buttonVariants({ variant: "ghost", size: "icon" }), "h-9 w-9");
+const themeButton = cn(buttonVariants({ variant: "ghost", size: "icon" }), "relative h-9 w-9");
+---
+
+<nav class="sticky top-0 z-50 w-full border-b bg-background/80 backdrop-blur supports-[backdrop-filter]:bg-background/60">
+  <div class="page-width flex h-(--nav-height) items-center justify-between gap-4">
+    <a href="/" class="font-semibold tracking-tight transition-opacity hover:opacity-80">
+      Yash Ladha
+    </a>
+
+    <div class="hidden items-center gap-1 md:flex">
+      {
+        navItems.map((item) => (
+          <a
+            href={item.href}
+            aria-current={isActive(item.href) ? "page" : undefined}
+            class="rounded-md px-3 py-1.5 text-sm text-muted-foreground transition-colors hover:text-foreground aria-[current=page]:bg-accent aria-[current=page]:text-foreground"
+          >
+            {item.label}
+          </a>
+        ))
+      }
+      <button
+        type="button"
+        data-open-palette
+        class={cn(
+          buttonVariants({ variant: "outline", size: "sm" }),
+          "ml-2 h-8 pr-1.5 pl-2.5 font-normal text-muted-foreground",
+        )}
+      >
+        <Search />
+        Search
+        <Kbd><span data-mod-key>⌘</span>K</Kbd>
+      </button>
+      <button
+        type="button"
+        data-theme-toggle
+        class={themeButton}
+        aria-label="Switch to dark mode"
+        title="Switch to dark mode"
+      >
+        <Sun className="h-5 w-5 rotate-0 scale-100 transition-transform duration-500 dark:-rotate-90 dark:scale-0" />
+        <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-transform duration-500 dark:rotate-0 dark:scale-100" />
+      </button>
+    </div>
+
+    <div class="flex items-center gap-1 md:hidden">
+      <button type="button" data-open-palette class={iconButton} aria-label="Search">
+        <Search className="h-5 w-5" />
+      </button>
+      <button
+        type="button"
+        data-theme-toggle
+        class={themeButton}
+        aria-label="Switch to dark mode"
+        title="Switch to dark mode"
+      >
+        <Sun className="h-5 w-5 rotate-0 scale-100 transition-transform duration-500 dark:-rotate-90 dark:scale-0" />
+        <Moon className="absolute h-5 w-5 rotate-90 scale-0 transition-transform duration-500 dark:rotate-0 dark:scale-100" />
+      </button>
+      <button
+        type="button"
+        data-menu-toggle
+        class={cn(iconButton, "group")}
+        aria-label="Open menu"
+        aria-expanded="false"
+        aria-controls="mobile-menu"
+      >
+        <Menu className="h-5 w-5 group-aria-expanded:hidden" />
+        <X className="hidden h-5 w-5 group-aria-expanded:block" />
+      </button>
+    </div>
+  </div>
+
+  <div id="mobile-menu" class="border-t bg-background md:hidden" hidden>
+    <div class="page-width space-y-1 py-3">
+      {
+        navItems.map((item) => (
+          <a
+            href={item.href}
+            aria-current={isActive(item.href) ? "page" : undefined}
+            class="block rounded-md px-3 py-2 text-sm font-medium transition-colors hover:bg-accent aria-[current=page]:bg-accent"
+          >
+            {item.label}
+          </a>
+        ))
+      }
+    </div>
+  </div>
+</nav>
+
+<script>
+  import { openCommandPalette } from "../lib/commandPalette";
+  import { currentTheme, THEME_CHANGE_EVENT, toggleTheme } from "../lib/theme";
+
+  const themeButtons = document.querySelectorAll<HTMLButtonElement>("[data-theme-toggle]");
+
+  function labelThemeButtons() {
+    const label = currentTheme() === "dark" ? "Switch to light mode" : "Switch to dark mode";
+    themeButtons.forEach((button) => {
+      button.setAttribute("aria-label", label);
+      button.title = label;
+    });
+  }
+
+  labelThemeButtons();
+  window.addEventListener(THEME_CHANGE_EVENT, labelThemeButtons);
+
+  themeButtons.forEach((button) =>
+    button.addEventListener("click", () => {
+      const { left, top, width, height } = button.getBoundingClientRect();
+      toggleTheme({ x: left + width / 2, y: top + height / 2 });
+    }),
+  );
+
+  document
+    .querySelectorAll("[data-open-palette]")
+    .forEach((button) => button.addEventListener("click", openCommandPalette));
+
+  const menuToggle = document.querySelector<HTMLButtonElement>("[data-menu-toggle]")!;
+  const menu = document.getElementById("mobile-menu")!;
+
+  function setMenuOpen(open: boolean) {
+    menu.hidden = !open;
+    menuToggle.setAttribute("aria-expanded", String(open));
+    menuToggle.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+  }
+
+  menuToggle.addEventListener("click", () => setMenuOpen(menu.hidden));
+  menu.querySelectorAll("a").forEach((link) => link.addEventListener("click", () => setMenuOpen(false)));
+</script>

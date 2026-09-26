@@ -1,6 +1,6 @@
 ---
 import { CommandPalette } from "../components/CommandPalette";
-import { NavBar } from "../components/NavBar";
+import NavBar from "../components/NavBar.astro";
 import { Kbd } from "../components/ui/kbd";
 import { loadPosts } from "../lib/posts";
 import { normalizePath } from "../lib/utils";
@@ -41,7 +41,7 @@ const posts = await loadPosts();
       Skip to content
     </a>
     <div class="dot-grid" aria-hidden="true"></div>
-    <NavBar client:load pathname={normalizePath(Astro.url.pathname)} />
+    <NavBar pathname={normalizePath(Astro.url.pathname)} />
     <main id="main" class="page-width py-8">
       <slot />
     </main>
