@@ -21,7 +21,10 @@ import {
 import { Kbd } from "./ui/kbd";
 import { EMAIL, navItems, socials } from "../data/site";
 import type { PostSummary } from "../lib/posts";
-import { OPEN_COMMAND_PALETTE_EVENT } from "../lib/commandPalette";
+import {
+    OPEN_COMMAND_PALETTE_EVENT,
+    SHOW_TOAST_EVENT,
+} from "../lib/commandPalette";
 import { copyToClipboard, isApplePlatform } from "../lib/platform";
 import { toggleTheme } from "../lib/theme";
 import { cn } from "../lib/utils";
@@ -161,11 +164,15 @@ export function CommandPalette({ posts }: { posts: PostSummary[] }) {
                 else open();
             }
         };
+        const onToast = (event: Event) =>
+            showToast((event as CustomEvent<string>).detail);
         window.addEventListener("keydown", onKeyDown);
         window.addEventListener(OPEN_COMMAND_PALETTE_EVENT, open);
+        window.addEventListener(SHOW_TOAST_EVENT, onToast);
         return () => {
             window.removeEventListener("keydown", onKeyDown);
             window.removeEventListener(OPEN_COMMAND_PALETTE_EVENT, open);
+            window.removeEventListener(SHOW_TOAST_EVENT, onToast);
             window.clearTimeout(toastTimer.current);
         };
     }, []);

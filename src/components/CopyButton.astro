@@ -5,14 +5,17 @@ import { cn } from "../lib/utils";
 
 interface Props {
   text: string;
+  /** Toast shown after a successful copy. */
+  toast?: string;
 }
 
-const { text } = Astro.props;
+const { text, toast = "Copied to clipboard" } = Astro.props;
 ---
 
 <button
   type="button"
   data-copy-text={text}
+  data-copy-toast={toast}
   class={cn(buttonVariants({ variant: "outline" }), "font-mono text-xs text-muted-foreground")}
 >
   <Copy />
@@ -22,6 +25,7 @@ const { text } = Astro.props;
 </button>
 
 <script>
+  import { showToast } from "../lib/commandPalette";
   import { copyToClipboard } from "../lib/platform";
 
   const FEEDBACK_MS = 1500;
@@ -34,6 +38,7 @@ const { text } = Astro.props;
       if (!label) return;
       const copied = await copyToClipboard(button.dataset.copyText ?? "");
       label.textContent = copied ? "copied" : "copy failed";
+      showToast(copied ? (button.dataset.copyToast ?? "") : "Could not copy");
       window.clearTimeout(resetTimer);
       resetTimer = window.setTimeout(() => (label.textContent = "copy"), FEEDBACK_MS);
     });
